@@ -1,0 +1,131 @@
+{include file='public/header' /}
+<script src="__STATIC__/ueditor/ueditor.config.js"></script>
+<script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
+<script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+<body>
+        <div class="x-body">
+            <form class="layui-form layui-form-pane" action="" method="post" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label for="L_title" class="layui-form-label">
+                        标题
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" id="title" name="title" value="{$article.title}" required lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="author" class="layui-form-label">
+                        作者
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="author" value="{$article.author}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            所在类别
+                        </label>
+                        <div class="layui-input-block">
+                            <select lay-verify="required" name="cate">
+                                <option>
+                                </option>
+                                <optgroup label="Alexa相关">
+                                {volist name="cate" id="ca"}
+                                	<option value="{$ca.id}" {if condition="$ca['id'] eq $article['cate']"}selected=""{/if}>{$ca.catename}</option>
+                                {/volist}
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="keywords" class="layui-form-label">
+                        关键词
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="keywords" value="{$article.keywords}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="desc" class="layui-form-label">
+                        描述
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="desc" value="{$article.desc}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="kkeywords" class="layui-form-label">
+                        缩略图
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="file" name="thumb" class="layui-btn layui-btn-primary">
+                        {if condition="$article['thumb'] neq ''"}
+                        <img style="float:left;" src="{$article.thumb}" width="200">
+                        {else /}
+                        暂无缩略图
+                        {/if}
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="order" class="layui-form-label">
+                       排序
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="order" value="{$article.order}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label for="see" class="layui-form-label">
+                        浏览
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="see" value="{$article.see}" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block">
+                        <textarea id="content" name="content">{$article.content}</textarea>
+                    </div>
+                    <label for="content" class="layui-form-label" style="top: -2px;">
+                        内容
+                    </label>
+                </div>
+
+                <div class="layui-form-item">
+                    <input class="layui-btn" type="submit" value="立即发布" lay-filter="add" lay-submit>
+                       
+                </div>
+            </form>
+        </div>
+        {include file='public/base_js' /}
+
+        <script>
+            layui.use(['form','layer','layedit'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer
+              ,layedit = layui.layedit;
+
+
+                layedit.set({
+                  uploadImage: {
+                    url: "./upimg.json" //接口url
+                    ,type: 'post' //默认post
+                  }
+                })
+  
+            });
+        </script>
+        <script type="text/javascript">
+
+            //实例化编辑器
+            //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+            UE.getEditor('content',{initialFrameWidth:1000,initialFrameHeight:300,});
+        </script>
+    </body>
+
+</html>

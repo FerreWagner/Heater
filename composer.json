@@ -1,0 +1,16 @@
+{
+  "name" : "freespider/alexa-admin",
+  "description" : "PHP admin system",
+  "license":"Apache-2.0",
+  "authors": [
+		{
+			"name": "FerreWagner",
+			"email": "1573646491@qq.com"
+		}
+	],
+  "require" : {
+    "php" : ">=5.4.0"
+  },
+  "keywords" : [ "FerreWagner", "alexa-admin", "admin system"],
+  "type" : "project"
+}

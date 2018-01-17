@@ -1,0 +1,58 @@
+{include file='public/header' /}
+
+    
+    <body>
+        <div class="x-body">
+            <form class="layui-form" method="post" action="{:url('system/linkupdate')}">
+                <input type="hidden" name="id" value="{$link.id}">
+                <div class="layui-form-item">
+                    <label for="name" class="layui-form-label">
+                        <span class="x-red">*</span>链接名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="name" name="name" required="" lay-verify="required" autocomplete="off"  value="{$link.name}" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="link" class="layui-form-label">
+                        <span class="x-red">*</span>URL
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="link" name="url" required="" lay-verify="required"
+                        autocomplete="off" value="{$link.url}" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="sort" class="layui-form-label">
+                        <span class="x-red">*</span>排序
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="number" id="sort" name="sort" required="" lay-verify="required"
+                        autocomplete="off" value="{$link.sort}" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <input class="layui-btn" type="submit" lay-filter="save" lay-submit="">
+                </div>
+            </form>
+        </div>
+
+        {include file='public/base_js' /}
+
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+            
+
+              //监听提交
+              
+              
+            });
+        </script>
+    </body>
+
+</html>

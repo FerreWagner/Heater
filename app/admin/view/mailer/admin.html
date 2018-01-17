@@ -1,0 +1,137 @@
+{include file='public/header' /}
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+              <a><cite>首页</cite></a>
+              <a><cite>会员管理</cite></a>
+              <a><cite>基本设置</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
+        </div>
+        <div class="x-body">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+              <ul class="layui-tab-title">
+                <li class="layui-this">后台root用户邮箱设置(Tips:每项必填)</li>
+              </ul>
+              <div class="layui-tab-content" >
+                <div class="layui-tab-item layui-show">
+                    <form class="layui-form layui-form-pane" action="" method="post">
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>邮箱主机
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="host" autocomplete="off" placeholder="smtp.gmail.com" class="layui-input" value="{$xml_file.host}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>端口号
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="port" autocomplete="off" placeholder="25" class="layui-input" value="{$xml_file.port}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>用户名
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="username" autocomplete="off" placeholder="xxx@gmail.com" class="layui-input" value="{$xml_file.username}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>密码
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="password" autocomplete="off" placeholder="******" class="layui-input" value="{$xml_file.password}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>外部标题
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="outtitle" autocomplete="off" placeholder="您好我是Ferre,欢迎注册Alexa_Admin后台" class="layui-input" value="{$xml_file.outtitle}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>邮件标题
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="title" autocomplete="off" placeholder="您好我是Ferre,欢迎注册Alexa_Admin后台" class="layui-input" value="{$xml_file.title}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>邮件内容
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="content" autocomplete="off" placeholder="Welcome" class="layui-input" value="{$xml_file.content}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>接收方名字
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="recive_name" autocomplete="off" placeholder="Welcome" class="layui-input" value="{$xml_file.recive_name}">
+                            </div>
+                        </div>
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>显示发送方邮箱
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="recive_address" autocomplete="off" placeholder="Welcome" class="layui-input" value="{$xml_file.recive_address}">
+                            </div>
+                        </div>
+                        
+                       <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>发送方名字
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="recive_username" autocomplete="off" placeholder="Welcome" class="layui-input" value="{$xml_file.recive_username}">
+                            </div>
+                        </div>
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">
+                                <span class='x-red'>*</span>邮件每行字数
+                            </label>
+                            <div class="layui-input-block">
+                                <input type="text" name="line" autocomplete="off" placeholder="50" class="layui-input" value="{$xml_file.line}">
+                            </div>
+                        </div>
+
+
+
+                        <div class="layui-form-item">
+                            <input class="layui-btn" type="submit" lay-submit="" lay-filter="*" value="保存">
+                        </div>
+                    </form>
+                    <div style="height:100px;"></div>
+                </div>
+
+
+              </div>
+            </div>
+        </div>
+        {include file='public/base_js' /}
+
+        <script>
+            layui.use(['element','layer','form'], function(){
+                $ = layui.jquery;//jquery
+              lement = layui.element();//面包导航
+              layer = layui.layer;//弹出层
+              form = layui.form()
+
+              })
+            </script>
+
+    </body>
+</html>
