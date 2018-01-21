@@ -1,0 +1,75 @@
+{include file='public/header' /}
+
+    <body>
+        <div class="x-body">
+            <blockquote class="layui-elem-quote">
+            Echarts 实例：浏览器源数据：
+            </blockquote>
+            <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+            <div id="main" style="width: 100%;height:500px;"></div>
+        </div>
+        <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+        	    title : {
+        	        text: '管理员日志',
+        	        subtext: '登录情况'
+        	    },
+        	    tooltip : {
+        	        trigger: 'axis'
+        	    },
+        	    legend: {
+        	        data:['成功','失败','我的登录']
+        	    },
+        	    toolbox: {
+        	        show : true,
+        	        feature : {
+        	            mark : {show: true},
+        	            dataView : {show: true, readOnly: false},
+        	            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+        	            restore : {show: true},
+        	            saveAsImage : {show: true}
+        	        }
+        	    },
+        	    calculable : true,
+        	    xAxis : [
+        	        {
+        	            type : 'category',
+        	            boundaryGap : false,
+        	            data : ['-7天','-6天','-5天','-4天','-3天','-2天','昨天']
+        	        }
+        	    ],
+        	    yAxis : [
+        	        {
+        	            type : 'value'
+        	        }
+        	    ],
+        	    series : [
+        	        {
+        	            name:'成功',
+        	            type:'line',
+        	            smooth:true,
+        	            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+        	            data:[{volist name="normal" id="no"}{$no},{/volist}]
+        	        },
+        	        {
+        	            name:'失败',
+        	            type:'line',
+        	            smooth:true,
+        	            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+        	            data:[{volist name="error" id="er"}{$er},{/volist}]
+        	        },
+        	        {
+        	            name:'我的登录',
+        	            type:'line',
+        	            smooth:true,
+        	            itemStyle: {normal: {areaStyle: {type: 'default'}}},
+        	            data:[{volist name="my" id="my"}{$my},{/volist}]
+        	        }
+        	    ]
+        	};
+        	                    
+        myChart.setOption(option);
+    	</script>
+    </body>
+</html>
