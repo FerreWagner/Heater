@@ -23,13 +23,10 @@
                             链接
                         </th>
                         <th>
-                            描述
+                            标题
                         </th>
                                                 <th>
                             排序
-                        </th>
-                        <th>
-                            显示状态
                         </th>
                         <th>
                             操作
@@ -37,37 +34,34 @@
                     </tr>
                 </thead>
                 <tbody id="x-img">
+                    {volist name="banner" id="ba"}
                     <tr>
                         <td>
                             1
                         </td>
                         <td>
-                            <img  src="./images/banner.png" width="200" alt="">点击图片试试
+                            <img  src="{$ba.thumb}" width="60" alt="">点击图片试试
                         </td>
                         <td >
-                            http://www.xuebingsi.com
+                            <a href="{$ba.link}" target="_blank">{$ba.link}</a>
                         </td>
                         <td >
-                            十月活动轮播
+                            {$ba.title}
                         </td>
                         <td>
-                        	1
+                            {$ba.sort}
                         </td>
-                        <td class="td-status">
-                            <span class="layui-btn layui-btn-normal layui-btn-mini">
-                                已显示
-                            </span>
-                        </td>
-                        
+
                         <td class="td-manage">
                             <a title="编辑" href="{:url('banner/edit')}" class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="banner_del(this,'1')" style="text-decoration:none">
+                            <a title="删除" onclick="return confirm('你确定删除该文章？')"  href="{:url('banner/delete', ['id' => $ba['id']])}" style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
                         </td>
                     </tr>
+                    {/volist}
                 </tbody>
             </table>
 
