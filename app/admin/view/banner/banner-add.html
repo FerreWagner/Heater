@@ -3,27 +3,18 @@
     
     <body>
         <div class="x-body">
-            <form class="layui-form" action="{:url('banner/add')}" method="post">
+            <form class="layui-form" action="{:url('banner/add')}" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
-                    <label for="link" class="layui-form-label">
-                        <span class="x-red">*</span>轮播图
+                    <label for="thumb" class="layui-form-label">
+                        轮播图
                     </label>
-                    <div class="layui-input-inline">
-                      <div class="site-demo-upbar">
-                        <input type="file" name="pic" class="layui-upload-file" id="test">
-                      </div>
+                    <div class="layui-input-block">
+                        <input type="file" name="thumb" class="layui-btn layui-btn-primary"/>
+                        <!-- <input type="button" value="上传" class="layui-btn" onclick="doUpload();">   -->
                     </div>
+
                 </div>
-                <div class="layui-form-item">
-                    <label  class="layui-form-label">缩略图
-                    </label>
-                    <img id="LAY_demo_upload" width="400" src="">
-                </div>
-                <div class="layui-form-item">
-                    <label  class="layui-form-label">
-                    </label>
-                </div>
-                
+
                 <div class="layui-form-item">
                     <label for="link" class="layui-form-label">
                         <span class="x-red">*</span>链接
@@ -71,6 +62,7 @@
                     </label>
                     <input type="submit" class="layui-btn" />
                 </div>
+                {:token()}
             </form>
         </div>
                 {include file='public/base_js' /}
@@ -84,7 +76,7 @@
 
               //图片上传接口
               layui.upload({
-                url: './upload.json' //上传接口
+                url: "{:url('banner/img')}" //上传接口
                 ,success: function(res){ //上传成功后的回调
                     console.log(res);
                   $('#LAY_demo_upload').attr('src',res.url);

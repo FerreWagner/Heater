@@ -5,20 +5,22 @@ use think\Validate;
 class Banner extends Validate
 {
     protected $rule = [     //错误规则
-        'username'    => 'unique:admin|require|max:20|min:2',    //此处的unique必须跟表明(如link),才能生效
-        'password'    => 'require|min:4',
-        'email'       => 'email',
+        'title'    => 'unique:banner|require|max:255',    //此处的unique必须跟表明(如link),才能生效
+        'desc'     => 'require',
+        'link'     => 'require|url',
+        'sort'     => 'require|number',
     ];
-    
+
     protected $message = [
-        'username.require'   => '昵称不得为空',
-        'username.unique'    => '昵称不得重复',
-        'password.require'   => '密码不得为空',
-        'email.require'      => 'email不得为空',
+        'title.require'   => '标题不得为空',
+        'title.unique'    => '标题不得重复',
+        'desc.require'    => '描述不得为空',
+        'sort.require'    => '文章内容不得为空',
+        'sort.number'     => '排序必须为数字',
     ];
-    
+
     protected $scene = [    //场景有二,一个是添加,一个是编辑
-        'add' => ['username', 'password', 'email'],
-        'edit'=> ['username', 'email'],               //这里只是定义继承了username和email的验证，password没有定义
+        'add' => ['title', 'desc', 'link', 'sort'],
+        'edit'=> ['title', 'desc', 'link', 'sort'],               //这里只是定义继承了title和cate的验证，content没有定义
     ];
 }
