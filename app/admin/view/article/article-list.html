@@ -49,9 +49,6 @@
                             创建时间
                         </th>
                         <th>
-                            浏览次数
-                        </th>
-                        <th>
                             操作
                         </th>
                     </tr>
@@ -75,9 +72,6 @@
                             </td>
                             <td >
                                 {$art.time|date="Y-m-d H:i:s",###}
-                            </td>
-                            <td >
-                                {$art.see}
                             </td>
                             <td class="td-manage">
                                 <a title="编辑" href="{:url('admin/article/edit', ['id' => $art['id']])}" class="ml-5" style="text-decoration:none">
