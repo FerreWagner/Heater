@@ -27,9 +27,22 @@ class Banner extends Base
         return $this->view->fetch('banner-edit');
     }
     
+    public function add(Request $request)
+    {
+        if ($request->isPost()){
+            halt(1);
+        }
+        return $this->view->fetch('banner-add');
+    }
+    
     public function delete($id)
     {
         
+    }
+    
+    public function img()
+    {
+        return json_encode(['code' => 0, 'msg' => 'success', 'data' => ['src' => 'url', 'ext' => 'jpg']]);
     }
     
 }
