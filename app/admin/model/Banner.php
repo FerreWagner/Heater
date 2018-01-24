@@ -32,7 +32,7 @@ class Banner extends Model
                     //获取后缀
                     $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
                     //上传到七牛后保存的文件名(加盐)
-                    $key = config('qiniu.salt').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+                    $key = config('qiniu.banner').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
                     //构建鉴权对象
                     $auth = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                     //要上传的空间
@@ -85,7 +85,7 @@ class Banner extends Model
                 //获取后缀
                 $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
                 //上传到七牛后保存的文件名(加盐)
-                $key = config('qiniu.salt').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+                $key = config('qiniu.banner').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
                 //要上传的空间
                 $token = $auth->uploadToken(config('qiniu.bucket'));
                 //初始化uploadmanager对象并进行文件的上传
@@ -116,11 +116,11 @@ class Banner extends Model
                 $bucketMgr = new BucketManager($auth, $config);
                 $key       = explode('/', $_arts['thumb'])[1];
                 $err       = $bucketMgr->delete(config('qiniu.bucket'), $key);
-                if ($err) {
-                    halt($err);
-                }else {
-                    return true;
-                }
+//                 if ($err) {
+//                     halt($err);
+//                 }else {
+//                     return true;
+//                 }
                 
                    
             }

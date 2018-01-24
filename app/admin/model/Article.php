@@ -131,11 +131,11 @@ class Article extends Model
                 $bucketMgr = new BucketManager($auth, $config);
                 $key       = explode('/', $_arts['thumb'])[1];
                 $err       = $bucketMgr->delete(config('qiniu.bucket'), $key);
-                if ($err) {
-                    halt($err);
-                }else {
-                    return true;
-                }
+//                 if ($err) {
+//                     halt($err);
+//                 }else {
+//                     return true;
+//                 }
                 
                    
             }

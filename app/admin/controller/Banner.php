@@ -18,6 +18,7 @@ class Banner extends Base
     public function index()
     {
         $banner = db('banner')->order('sort', 'desc')->select();
+        
         $count  = db('banner')->count();
         $this->view->assign([
             'banner' => $banner,
