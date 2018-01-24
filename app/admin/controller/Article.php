@@ -144,8 +144,10 @@ class Article extends Base
         $tag     = explode(',', $system->tag);   //处理系统tag
         $art_tag = explode(',', $article['tag']);//文章tag
         
-        //当然这里只是做简略处理，为了不让article表性能变低，我们将type字段分离到system表，如果在三方服务器和本地均存有图片，那么我们可以通过判断路径名来确定是否添加http://这样的完整路径
-        $article['thumb'] = $system->type == 0 ? $article['thumb'] : 'http://'.$article['thumb'];
+        //七牛图片处理
+        if (!empty($article['thumb']) && substr($article['thumb'], 1, 7) != 'uploads') {
+            $article['thumb'] = 'http://'.$article['thumb'];
+        }
         
         $this->assign([
             'cate'    => $cate,
