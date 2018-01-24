@@ -53,7 +53,7 @@
                         </td>
 
                         <td class="td-manage">
-                            <a title="编辑" href="{:url('banner/edit')}" class="ml-5" style="text-decoration:none">
+                            <a title="编辑" href="{:url('banner/edit', ['id' => $ba['id']])}" class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
                             <a title="删除" onclick="return confirm('你确定删除该文章？')"  href="{:url('banner/delete', ['id' => $ba['id']])}" style="text-decoration:none">

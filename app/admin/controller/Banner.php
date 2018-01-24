@@ -14,6 +14,7 @@ use app\admin\model\Banner as BannerModel;
 
 class Banner extends Base
 {
+    
     public function index()
     {
         $banner = db('banner')->select();
@@ -21,12 +22,28 @@ class Banner extends Base
         return $this->view->fetch('banner-list');
     }
     
-    public function edit(Request $request)
+    public function edit(Request $request, $id)
     {
         if ($request->isPost()){
-            //TODO 处理编辑数据
+            $data = $request->param();
+            $validate = Loader::validate('Banner');
+            if(!$validate->scene('edit')->check($data)){
+                $this->error($validate->getError());
+            }
+            
+            $_banner = new BannerModel();
+            $save    = $_banner->update($data);
+            
+            if($save){
+                $this->success('修改成功！',url('admin/banner/index'));
+            }else{
+                $this->error('修改失败！');
+            }
+            return;
         }
         
+        $banner = db('banner')->find($id);
+        $this->view->assign('banner', $banner);
         return $this->view->fetch('banner-edit');
     }
     
@@ -44,8 +61,8 @@ class Banner extends Base
             if(!$validate->scene('add')->check($data)){
                 $this->error($validate->getError());
             }
-            $article = new BannerModel();
-            if($article->allowField(true)->save($data)){
+            $_banner = new BannerModel();
+            if($_banner->allowField(true)->save($data)){
                 $this->redirect('admin/banner/index');
             }else{
                 $this->error('添加失败');

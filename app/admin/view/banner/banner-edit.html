@@ -1,21 +1,21 @@
 {include file='public/header' /}
     <body>
         <div class="x-body">
-            <form class="layui-form">
+            <form class="layui-form" action="" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
-                    <label for="link" class="layui-form-label">
-                        <span class="x-red">*</span>轮播图
+                    <label for="thumb" class="layui-form-label">
+                        轮播图
                     </label>
-                    <div class="layui-input-inline">
-                      <div class="site-demo-upbar">
-                        <input type="file" name="file" class="layui-upload-file" id="test">
-                      </div>
+                    <div class="layui-input-block">
+                        <input type="file" name="thumb" class="layui-btn layui-btn-primary"/>
+                        <!-- <input type="button" value="上传" class="layui-btn" onclick="doUpload();">   -->
                     </div>
+
                 </div>
                 <div class="layui-form-item">
                     <label  class="layui-form-label">缩略图
                     </label>
-                    <img id="LAY_demo_upload" width="400" src="./images/banner.png">
+                    <img id="LAY_demo_upload" width="400" src="{$banner.thumb}">
                 </div>
                 <div class="layui-form-item">
                     <label  class="layui-form-label">
@@ -27,7 +27,7 @@
                         <span class="x-red">*</span>链接
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="link" name="link" required="" lay-verify="required" value="http://www.xuebingsi.com" autocomplete="off" class="layui-input">
+                        <input type="text" id="link" name="link" required="" lay-verify="required" value="{$banner.link}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -35,7 +35,7 @@
                         <span class="x-red">*</span>标题
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="title" name="title" required="" lay-verify="required" value="标题" autocomplete="off" class="layui-input">
+                        <input type="text" id="title" name="title" required="" lay-verify="required" value="{$banner.title}" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
                         <span class="x-red">*</span>
@@ -46,7 +46,7 @@
                         <span class="x-red">*</span>描述
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="desc" name="desc" required="" lay-verify="required" value="十月活动轮播" autocomplete="off" class="layui-input">
+                        <input type="text" id="desc" name="desc" required="" lay-verify="required" value="{$banner.desc}" autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
                         <span class="x-red">*</span>
@@ -57,15 +57,13 @@
                         <span class="x-red">*</span>排序
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="link" name="link" required="" lay-verify="required" autocomplete="off" class="layui-input">
+                        <input type="text" id="sort" name="sort" value="{$banner.sort}" required="" lay-verify="required" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label for="L_repass" class="layui-form-label">
                     </label>
-                    <button  class="layui-btn" lay-filter="add" lay-submit="">
-                        增加
-                    </button>
+                    <input type="submit" class="layui-btn" lay-filter="add" />
                 </div>
             </form>
         </div>
