@@ -20,6 +20,8 @@ class Category extends Base
         //cate data
         $catemodel = new CateGoryModel();
         $cate      = $catemodel->order('sort', 'asc')->select();
+        $_cateres  = $catemodel->catetree();    //执行模型层的数据处理
+        
         //count cate data
         $cate_count = CateGoryModel::count();
         
@@ -37,6 +39,7 @@ class Category extends Base
             
 //             $catemodel->data($_data);
 //             $_add = $catemodel->save();
+
             $_add = $catemodel->allowField(true)->save($_data);
             $_add ? $this->redirect('admin/category/index') : $this->error('Add Cate Error.Dear');
         }
@@ -44,6 +47,7 @@ class Category extends Base
         $this->view->assign([
             'cate'       => $cate, 
             'cate_count' => $cate_count,
+            '_cateres'   => $_cateres,
         ]);
         return $this->view->fetch('category-list');
     }
@@ -57,8 +61,14 @@ class Category extends Base
      */
     public function edit($id)
     {
-        $cate = CateGoryModel::find($id);
-        $this->view->assign('cate', $cate);
+        $_cate     = new CateGoryModel();
+        $_cates    = CateGoryModel::find($id);
+        $_cateres  = $_cate->catetree();    //执行模型层的数据处理
+        
+        $this->view->assign([
+            '_cates'   => $_cates,
+            '_cateres' => $_cateres,
+        ]);
         return $this->view->fetch('category-edit');
     }
 
@@ -77,6 +87,7 @@ class Category extends Base
             if(!$validate->scene('edit')->check($_data)){
                 $this->error($validate->getError());
             }
+            
             $res = CateGoryModel::update($_data, ['id' => $_data['id']]);
             $res ? $this->redirect('admin/category/index') : $this->error('Edit Cate Error.Dear');
         }
