@@ -50,10 +50,12 @@
                 </div>
                 <div class="layui-form-item">
                     <label for="keywords" class="layui-form-label">
-                       Tag
+                        Tag
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="tag" value="{$article.tag}" autocomplete="off" class="layui-input">
+                        {volist name="tag" id="tag"}
+                        	<input type="checkbox" name="tag[]" value="{$tag}" title="{$tag}" {if in_array($tag, $art_tag)}checked{/if}>
+                        {/volist}
                     </div>
                 </div>
                 <div class="layui-form-item">
