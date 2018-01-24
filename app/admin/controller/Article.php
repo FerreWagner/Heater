@@ -7,6 +7,7 @@ use app\admin\common\Base;
 use think\Loader;
 use app\admin\model\Article as ArticleModel;
 use think\Validate;
+use app\admin\model\System;
 
 class Article extends Base
 {
@@ -63,11 +64,14 @@ class Article extends Base
     {
         //add
         if ($request->isPost()){
-            
             $token      = Validate::token('__token__','',['__token__'=>input('param.__token__')]);    //CSRF validate
             if (!$token) $this->error('CSRF ATTACK.');
             
             $data = input('post.');
+            
+            //处理tag
+            $data['tag'] = implode(',', $data['tag']);
+            
             $data['time'] = time();    //写入时间戳
             $validate = Loader::validate('Article');
             if(!$validate->scene('add')->check($data)){
@@ -82,8 +86,17 @@ class Article extends Base
             return;
         }
         //page
-        $cate = db('category')->field(['id', 'catename'])->order('sort', 'asc')->select();
-        $this->view->assign('cate', $cate);
+        $system = System::find(1);
+        $cate   = db('category')->field(['id', 'catename'])->order('sort', 'asc')->select();
+        
+        //处理tag
+        $tag    = explode(',', $system->tag);
+        
+        $this->view->assign([
+            'cate' => $cate,
+            'tag'  => $tag,
+        ]);
+        
         return $this->view->fetch('article-add');
     }
     

@@ -54,7 +54,9 @@
                         Tag
                     </label>
                     <div class="layui-input-block">
-                        <input type="checkbox" name="" title="写作" checked>
+                        {volist name="tag" id="tag"}
+                        	<input type="checkbox" name="tag[]" value="{$tag}" title="{$tag}" checked>
+                        {/volist}
                     </div>
                 </div>
                 <div class="layui-form-item">
