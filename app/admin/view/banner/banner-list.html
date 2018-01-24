@@ -3,13 +3,12 @@
         <div class="x-nav">
             <span class="layui-breadcrumb">
               <a><cite>首页</cite></a>
-              <a><cite>会员管理</cite></a>
               <a><cite>轮播列表</cite></a>
             </span>
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <xblock><a href="{:url('banner/add')}"><button class="layui-btn"><i class="layui-icon">&#xe608;</i>添加</button></a><span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
+            <xblock><a href="{:url('banner/add')}"><button class="layui-btn"><i class="layui-icon">&#xe608;</i>添加</button></a><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -37,7 +36,7 @@
                     {volist name="banner" id="ba"}
                     <tr>
                         <td>
-                            1
+                            {$ba.id}
                         </td>
                         <td>
                             <img  src="{$ba.thumb}" width="60" alt="">点击图片试试
