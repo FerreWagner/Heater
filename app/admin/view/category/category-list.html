@@ -57,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody id="x-link">
-                    {volist name="cate" id="ca"}
+                    {volist name="_cateres" id="ca"}
 	                    <tr>
 	                        <td>
 	                            {$ca.id}
@@ -65,7 +65,7 @@
 	                        <td>
 	                            {$ca.sort}
 	                        </td>
-	                        <td>{$ca.catename}</td>
+	                        <td><?php echo str_repeat('-',$ca['level']*4);?>{$ca.catename}</td>
 	                        <td class="td-manage">
 	                            <a title="编辑" href="{:url('admin/category/edit', array('id'=>$ca['id']))}" class="ml-5" style="text-decoration:none">
 	                                <i class="layui-icon">&#xe642;</i>
@@ -100,30 +100,6 @@
 
             })
 
-
-
-              
-            //批量删除提交
-             function delAll () {
-                layer.confirm('确认要删除吗？',function(index){
-                    //捉到所有被选中的，发异步进行删除
-                    layer.msg('删除成功', {icon: 1});
-                });
-             }
-
-             //-编辑
-            function cate_edit (title,url,id,w,h) {
-                x_admin_show(title,url,w,h); 
-            }
-           
-            /*-删除*/
-            function cate_del(obj,id){
-                layer.confirm('确认要删除吗？',function(index){
-                    //发异步删除数据
-                    $(obj).parents("tr").remove();
-                    layer.msg('已删除!',{icon:1,time:1000});
-                });
-            }
             </script>
     </body>
 </html>

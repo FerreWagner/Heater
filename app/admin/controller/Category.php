@@ -19,7 +19,7 @@ class Category extends Base
     {
         //cate data
         $catemodel = new CateGoryModel();
-        $cate      = $catemodel->order('sort', 'asc')->select();
+        
         $_cateres  = $catemodel->catetree();    //执行模型层的数据处理
         
         //count cate data
@@ -45,7 +45,6 @@ class Category extends Base
         }
         
         $this->view->assign([
-            'cate'       => $cate, 
             'cate_count' => $cate_count,
             '_cateres'   => $_cateres,
         ]);
