@@ -15,7 +15,7 @@
                 <div class="layui-form-item">
                     <label  class="layui-form-label">缩略图
                     </label>
-                    <img id="LAY_demo_upload" width="400" src="{$banner.thumb}">
+                    <img id="LAY_demo_upload" width="400" src="{if !empty($banner['thumb']) && substr($banner['thumb'], 1, 6) != 'banner'}http://{/if}{$banner.thumb}">
                 </div>
                 <div class="layui-form-item">
                     <label  class="layui-form-label">
