@@ -28,166 +28,9 @@
 </div>
 <!-- /Preloader -->
 
-<!-- Header -->
-<header id="home" class="header">
+{include file="header/header" /}
 
-<!-- Navigation -->
-<nav id="navigation" class="navbar affix">
-
-	<!-- Company Information -->
-	<div class="information hidden-sm hidden-xs">
-		<div class="container">
-			<div class="row">
-
-				<!-- Feedback -->
-				<div class="col-md-7">
-					<a href="" class="iframe-popup"><span class="icon icon_pin_alt"></span> 988782, Our Street, L.A.</a>
-					<a href="#"><span class="icon icon_mail_alt"></span> clients@example.com</a>
-					<a href="#"><span class="icon icon_phone"></span> +1 987 123 456</a>
-				</div>
-				<!-- /Feedback -->
-
-				<!-- Social -->
-				<div class="col-md-5">
-					<ul class="social">
-						<li><a href="#" class="fa fa-fw fa-facebook"></a></li>
-						<li><a href="#" class="fa fa-fw fa-twitter"></a></li>
-						<li><a href="#" class="fa fa-fw fa-google-plus"></a></li>
-						<li><a href="#" class="fa fa-fw fa-dribbble"></a></li>
-						<li><a href="#" class="fa fa-fw fa-pinterest"></a></li>
-					</ul>
-				</div>
-				<!-- /Social -->
-
-			</div>
-		</div>
-	</div>
-	<!-- /Company Information -->
-
-	<div class="container">
-
-		<div class="row">
-			<div class="col-md-12">
-
-				<!-- Navigation Header -->
-				<div class="navbar-header">
-
-					<!-- Toggle Button -->
-					<button type="button"
-							class="navbar-toggle collapsed"
-							data-toggle="collapse"
-							data-target="#main-menu"
-							aria-expanded="false"
-							aria-controls="main-menu">
-
-						<span class="sr-only">Toggle Navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-
-					</button>
-					<!-- /Toggle Button -->
-
-					<!-- Brand -->
-					<a href="#" class="brand">
-
-						<!-- Logo Big -->
-						<img src="__STATIC__/home/images/logo.png" class="logo-big" alt="">
-						<!-- /Logo Big -->
-
-						<!-- Logo Small -->
-						<img src="__STATIC__/home/images/logo-small.png" class="logo-small" alt="">
-						<!-- /Logo Small -->
-
-					</a>
-					<!-- /Brand -->
-
-				</div>
-				<!-- /Navigation Header -->
-
-				<!-- Navigation -->
-				<div id="main-menu" class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.html">Home</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">About</a>
-							<ul class="dropdown-menu">
-								<li><a href="404.html">About me</a></li>
-								<li><a href="services.html">进程</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">Pages</a>
-							<ul class="dropdown-menu">
-								<li><a href="404.html">404</a></li>
-								<li><a href="services.html">Services</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">Blog</a>
-							<ul class="dropdown-menu">
-								<li><a href="blog.html">Post List - Right Sidebar</a></li>
-								<li><a href="blog.html">Post List - Right Sidebar</a></li>
-								<li><a href="single-post.html">Single Post</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">Portfolio</a>
-							<ul class="dropdown-menu">
-								<li><a href="portfolio.html">category</a></li>
-								<li><a href="single-project.html">具体产品单页面</a></li>
-							</ul>
-						</li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-				<!-- /Navigation -->
-
-			</div>
-		</div>
-
-	</div>
-</nav>
-<!-- /Navigation -->
-
-</header>
-<!-- /Header -->
-
-<!-- Slider -->
-<div class="slider owl-carousel owl-theme">
-
-<!-- Slide -->
-<div class="item mask" style="background: url(__STATIC__/home/images/home.jpg) no-repeat center top / cover;" data-stellar-background-ratio="0.4">
-
-	<div class="container height-100p">
-		<div class="row height-100p">
-
-			<div class="col-sm-6 col-md-6 height-100p bounceInLeft wow" data-wow-duration="1.3s" data-wow-delay="0.3s" data-stellar-ratio="0.7">
-				<div class="vertical-middle">
-					<h1 class="text-white">Welcome to <span class="text-theme">CleaThin</span></h1>
-					<div class="text-white h4">
-						It is a long established fact that a reader will be distracted by the readable content of a
-						page when looking at its layout.
-					</div>
-					<a href="#about" class="smooth-scroll btn btn-theme">Start Watching</a>
-				</div>
-			</div>
-
-			<div class="col-sm-6 col-md-4 col-md-offset-2 height-100p bounceInRight wow" data-wow-duration="1.3s" data-stellar-ratio="0.8">
-				<div class="vertical-middle">
-					<img src="__STATIC__/home/images/devices.png" class="img-responsive" alt="">
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-</div>
-<!-- /Slide -->
-
-
-</div>
-<!-- /Slider -->
+{include file="banner/banner" /}
 
 <!-- Main -->
 <main class="main-container">
@@ -379,6 +222,52 @@
 
 
 
+
+
+<!-- Section: Statistics -->
+<section id="statistics" class="section bg-tuna">
+	<div class="container">
+
+		<div class="row">
+
+			<!-- Statistic Block -->
+			<div class="col-sm-3 col-xs-6 stat">
+				<span class="icon_pens icon zoomIn wow" data-wow-duration="0.7s"></span>
+				<div class="number animate-number h2" data-value="180"></div>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Finished Projects</h4>
+			</div>
+			<!-- /Statistic Block -->
+
+			<!-- Statistic Block -->
+			<div class="col-sm-3 col-xs-6 stat">
+				<span class="icon_group icon zoomIn wow" data-wow-duration="0.7s"></span>
+				<div class="number animate-number h2" data-value="1806"></div>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Happy Customers</h4>
+			</div>
+			<!-- /Statistic Block -->
+
+			<!-- Statistic Block -->
+			<div class="col-sm-3 col-xs-6 stat">
+				<span class="icon_mug icon zoomIn wow" data-wow-duration="0.7s"></span>
+				<div class="number animate-number h2" data-value="238"></div>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Coffee</h4>
+			</div>
+			<!-- /Statistic Block -->
+
+			<!-- Statistic Block -->
+			<div class="col-sm-3 col-xs-6 stat">
+				<span class="icon_building icon zoomIn wow" data-wow-duration="0.7s"></span>
+				<div class="number animate-number h2" data-value="3485"></div>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Days at Work</h4>
+			</div>
+			<!-- /Statistic Block -->
+
+		</div>
+
+	</div>
+</section>
+<!-- /Section: Statistics -->
+
 <!-- Section: More Features -->
 <section id="more-features" class="section">
 	<div class="container">
@@ -505,112 +394,6 @@
 	</div>
 </section>
 <!-- /Section: More Features -->
-
-<!-- Section: Statistics -->
-<section id="statistics" class="section bg-tuna">
-	<div class="container">
-
-		<div class="row">
-
-			<!-- Statistic Block -->
-			<div class="col-sm-3 col-xs-6 stat">
-				<span class="icon_pens icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="180"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Finished Projects</h4>
-			</div>
-			<!-- /Statistic Block -->
-
-			<!-- Statistic Block -->
-			<div class="col-sm-3 col-xs-6 stat">
-				<span class="icon_group icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="1806"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Happy Customers</h4>
-			</div>
-			<!-- /Statistic Block -->
-
-			<!-- Statistic Block -->
-			<div class="col-sm-3 col-xs-6 stat">
-				<span class="icon_mug icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="238"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Coffee</h4>
-			</div>
-			<!-- /Statistic Block -->
-
-			<!-- Statistic Block -->
-			<div class="col-sm-3 col-xs-6 stat">
-				<span class="icon_building icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="3485"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Days at Work</h4>
-			</div>
-			<!-- /Statistic Block -->
-
-		</div>
-
-	</div>
-</section>
-<!-- /Section: Statistics -->
-
-<!-- Section: Best Features -->
-<section id="beast-features" class="section">
-	<div class="container">
-
-		<!-- Section Header -->
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<header class="text-center">
-					<h2 class="section-title">Best Features in <span class="text-theme">This Project</span></h2>
-					<p class="section-subtitle">It is a long established fact that a reader</p>
-				</header>
-			</div>
-		</div>
-		<!-- /Section Header -->
-
-		<!-- Section Content -->
-		<div class="row section-content">
-
-
-			<div class="col-md-6">
-
-				<h3>List of Features</h3>
-
-				<ul class="list">
-					<li>
-						<h4 class="title bounceInUp wow" data-wow-duration="1.3s" data-wow-delay="0.2s">Clean Design</h4>
-						<p class="description fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.2s">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</li>
-					<li>
-						<h4 class="title bounceInUp wow" data-wow-duration="1.3s" data-wow-delay="0.4s">Mobile Friendly</h4>
-						<p class="description fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.4s">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</li>
-					<li>
-						<h4 class="title bounceInUp wow" data-wow-duration="1.3s" data-wow-delay="0.6s">Well Documented</h4>
-						<p class="description fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.6s">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</li>
-				</ul>
-
-			</div>
-
-			<!-- Section Image -->
-			<div class="col-md-6 hidden-sm hidden-xs bounceInRight wow" data-wow-duration="1.3s">
-				<img src="__STATIC__/home/images/devices.png" class="img-responsive" alt="">
-			</div>
-			<!-- /Section Image -->
-
-		</div>
-		<!-- /Section Content -->
-
-	</div>
-</section>
-<!-- /Section: Best Features -->
 
 <!-- Section: Testimonials -->
 <section id="testimonials" class="section-small bg-light-gray">
@@ -807,146 +590,7 @@
 </main>
 <!-- /Main -->
 
-<!-- Footer -->
-<footer class="footer section-small">
-<div class="container">
-	<div class="row">
-
-		<!-- Footer Column -->
-		<div class="col-md-3 col-xs-6 footer-col">
-
-			<!-- Footer Logo -->
-			<div class="logo">
-				<img src="__STATIC__/home/images/logo.png" alt="">
-			</div>
-			<!-- /Footer Logo -->
-
-			<!-- Footer Text -->
-			<p class="text">
-				It is a long established fact that a reader will be distracted by the readable.
-			</p>
-			<!-- /Footer Text -->
-
-			<hr>
-
-			<!-- Copyright -->
-			<p class="copyright">
-				Copyright &copy; 2015-2016 <strong>Valery Timofeev</strong>
-			</p>
-			<!-- /Copyright -->
-
-			<!-- Footer Social -->
-			<ul class="social-inline">
-				<li><a href="#" class="fa fa-fw fa-facebook"></a></li>
-				<li><a href="#" class="fa fa-fw fa-twitter"></a></li>
-				<li><a href="#" class="fa fa-fw fa-google-plus"></a></li>
-				<li><a href="#" class="fa fa-fw fa-dribbble"></a></li>
-				<li><a href="#" class="fa fa-fw fa-pinterest"></a></li>
-			</ul>
-			<!-- /Footer Social -->
-
-		</div>
-		<!-- /Footer Column -->
-
-		<!-- Footer Column -->
-		<div class="col-md-3 col-xs-6 footer-col">
-
-			<h3 class="title">Latest From <span class="text-theme">Blog</span></h3>
-
-			<!-- Footer Post -->
-			<div class="media post">
-				<div class="media-left">
-					<div class="image">
-						<img src="__STATIC__/home/images/last-post-01.jpg" alt="">
-					</div>
-				</div>
-				<div class="media-body">
-					<p class="text">
-						It is a long established fact that a reader will be distracted.
-					</p>
-					<a href="#">Read more</a>
-				</div>
-			</div>
-			<!-- /Footer Post -->
-
-			<!-- Footer Post -->
-			<div class="media post">
-				<div class="media-left">
-					<div class="image">
-						<img src="__STATIC__/home/images/last-post-02.jpg" alt="">
-					</div>
-				</div>
-				<div class="media-body">
-					<p class="text">
-						It is a long established fact that a reader will be distracted.
-					</p>
-					<a href="#">Read more</a>
-				</div>
-			</div>
-			<!-- /Footer Post -->
-
-		</div>
-		<!-- /Footer Column -->
-
-		<!-- Footer Column -->
-		<div class="col-md-2 col-xs-6 footer-col">
-
-			<h3 class="title">Site Menu</h3>
-
-			<!-- Footer Menu -->
-			<ul class="menu">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Features</a></li>
-				<li><a href="#">Projects</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-			<!-- /Footer Menu -->
-
-		</div>
-		<!-- /Footer Column -->
-
-		<!-- Footer Column -->
-		<div class="col-md-4 col-xs-6 footer-col">
-
-			<h3 class="title">Signup to <span class="text-theme">Newsletter</span></h3>
-
-			<!-- Footer Signup Form -->
-			<div class="signup-form">
-				<form method="post" class="form-inline">
-					<div class="form-group">
-						<input type="email" class="form-control" placeholder="Your E-mail...*" required>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-theme"><i class="fa fa-fw fa-envelope"></i></button>
-					</div>
-				</form>
-
-			</div>
-			<!-- /Footer Signup Form -->
-
-			<hr>
-
-			<!-- Footer Tags -->
-			<div class="tags">
-				<a href="#" class="tag">web</a>
-				<a href="#" class="tag">design</a>
-				<a href="#" class="tag">clean</a>
-				<a href="#" class="tag">minimal</a>
-				<a href="#" class="tag">pixel perfect</a>
-				<a href="#" class="tag">blog</a>
-				<a href="#" class="tag">gallery</a>
-			</div>
-			<!-- /Footer Tags -->
-
-		</div>
-		<!-- /Footer Column -->
-
-	</div>
-</div>
-</footer>
-<!-- /Footer -->
+{include file="footer/footer" /}
 
 <!-- Scroll To Top -->
 <div id="scroll-to-top" class="scroll-to-top">
