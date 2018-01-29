@@ -6,6 +6,11 @@ use think\Controller;
 class Base extends Controller
 {
     
+    public function _initialize()
+    {
+        $this->cate();
+    }
+    
     /**
      * 获取前台导航栏
      * TODO:前台对应order值进行循环
@@ -20,7 +25,7 @@ class Base extends Controller
                 $cateres[$k]['child'] = 0;
             }
         }
-        
+//         halt($cateres);
         $this->view->assign('cateres',$cateres);
     }
     

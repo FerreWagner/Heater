@@ -78,37 +78,27 @@
 				<!-- Navigation -->
 				<div id="main-menu" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.html">Home</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">About</a>
-							<ul class="dropdown-menu">
-								<li><a href="404.html">About me</a></li>
-								<li><a href="{:url('index/header/process')}">进程</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">Pages</a>
-							<ul class="dropdown-menu">
-								<li><a href="404.html">404</a></li>
-								<li><a href="services.html">Services</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">Blog</a>
-							<ul class="dropdown-menu">
-								<li><a href="blog.html">Post List - Right Sidebar</a></li>
-								<li><a href="blog.html">Post List - Right Sidebar</a></li>
-								<li><a href="single-post.html">Single Post</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle">Portfolio</a>
-							<ul class="dropdown-menu">
-								<li><a href="portfolio.html">category</a></li>
-								<li><a href="single-project.html">具体产品单页面</a></li>
-							</ul>
-						</li>
-						<li><a href="contact.html">Contact</a></li>
+					{volist name="cateres" id="cares"}
+						{if $cares['child'] != 0}
+					
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle">{$cares['catename']}</a>
+								<ul class="dropdown-menu">
+									{if !empty($cares['child'])}
+									
+									<?php foreach($cares['child'] as $_k2 => $_v2): ?>
+										<li><a href="#">{$_v2['catename']}</a></li>
+									<?php endforeach;?>
+									
+									{/if}
+								</ul>
+							</li>
+						{else /}
+						
+						<li><a href="#">{$cares['catename']}</a></li>
+						
+						{/if}
+					{/volist}
 					</ul>
 				</div>
 				<!-- /Navigation -->
