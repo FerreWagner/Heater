@@ -25,7 +25,7 @@ class Base extends Controller
                 $cateres[$k]['child'] = 0;
             }
         }
-//         halt($cateres);
+        
         $this->view->assign('cateres',$cateres);
     }
     

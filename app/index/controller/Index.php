@@ -7,10 +7,17 @@ class Index extends Base
 {
     public function index()
     {
-        
+        $this->banner();
         return $this->view->fetch('index');
     }
     
+    
+    
+    public function banner()
+    {
+        $banner = db('banner')->field('title,desc,thumb,link,sort')->select();
+        $this->view->assign('banner', $banner);
+    }
     
     
 }
