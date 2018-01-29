@@ -21,7 +21,9 @@ class Index extends Base
     
     public function cateSearch()
     {
-        
+        $param = input('cate');
+//        db('article')->
+        return $this->view->fetch('list');
     }
     
     
