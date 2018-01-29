@@ -19,5 +19,10 @@ class Index extends Base
         $this->view->assign('banner', $banner);
     }
     
+    public function cateSearch()
+    {
+        
+    }
+    
     
 }
