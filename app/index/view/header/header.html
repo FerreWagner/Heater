@@ -81,12 +81,12 @@
 						{if $cares['child'] != 0}
 					
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle">{$cares['catename']}</a>
+								<a href="{:url('index/index/catesearch', ['id' => $cares['id']])}" class="dropdown-toggle">{$cares['catename']}</a>
 								<ul class="dropdown-menu">
 									{if !empty($cares['child'])}
 									
 									<?php foreach($cares['child'] as $_k2 => $_v2): ?>
-										<li><a href="#">{$_v2['catename']}</a></li>
+										<li><a href="{:url('index/index/catesearch', ['id' => $_v2['id']])}">{$_v2['catename']}</a></li>
 									<?php endforeach;?>
 									
 									{/if}
@@ -94,7 +94,7 @@
 							</li>
 						{else /}
 						
-						<li><a href="#">{$cares['catename']}</a></li>
+						<li><a href="{if $cares.catename == 'HOME'}/{else /}{:url('index/index/catesearch', ['id' => $cares['id']])}{/if}">{$cares['catename']}</a></li>
 						
 						{/if}
 					{/volist}
