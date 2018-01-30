@@ -22,7 +22,7 @@ class Index extends Base
     
     public function cateSearch()
     {
-        $id    = input('id');
+        $id = input('id');
         
         //多页面和单页面
         if (!in_array($id, config('index_module.singlepage'))){

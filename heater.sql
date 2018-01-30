@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-01-26 09:35:16
+-- Generation Time: 2018-01-30 10:57:28
 -- 服务器版本： 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -43,7 +43,7 @@ CREATE TABLE `heater_admin` (
 --
 
 INSERT INTO `heater_admin` (`id`, `username`, `password`, `count`, `email`, `role`, `switch`, `update_time`, `create_time`) VALUES
-(1, 'ferre', '6226514790b1175cf90bca075f3887a6c54ef58e', 58, '1573646491@qq.com', 0, 'true', 1516777041, 1513926388),
+(1, 'ferre', '6226514790b1175cf90bca075f3887a6c54ef58e', 61, '1573646491@qq.com', 0, 'true', 1517279896, 1513926388),
 (3, 'root', '6226514790b1175cf90bca075f3887a6c54ef58e', 11, '1573646491@qq.com', 0, 'true', 1516847736, 1514172018);
 
 -- --------------------------------------------------------
@@ -157,7 +157,10 @@ INSERT INTO `heater_alog` (`id`, `type`, `name`, `ip`, `time`) VALUES
 (91, 1, 'ferre', '127.0.0.1', 1516691151),
 (92, 1, 'ferre', '127.0.0.1', 1516762717),
 (93, 1, 'ferre', '127.0.0.1', 1516777040),
-(94, 1, 'root', '127.0.0.1', 1516847736);
+(94, 1, 'root', '127.0.0.1', 1516847736),
+(95, 1, 'ferre', '127.0.0.1', 1517197202),
+(96, 1, 'ferre', '127.0.0.1', 1517278880),
+(97, 1, 'ferre', '127.0.0.1', 1517279895);
 
 -- --------------------------------------------------------
 
@@ -179,6 +182,17 @@ CREATE TABLE `heater_article` (
   `time` int(11) DEFAULT NULL,
   `pic` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `heater_article`
+--
+
+INSERT INTO `heater_article` (`id`, `author`, `title`, `cate`, `order`, `content`, `thumb`, `desc`, `keywords`, `tag`, `time`, `pic`) VALUES
+(1, 'Ferre', 'Alexa', '7', 6, '<p>1</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295326, ''),
+(2, 'Ferre', 'Alexa2', '7', 6, '<p>2</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295748, ''),
+(3, 'Ferre', 'Alexa3', '11', 6, '<p>3</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301107, ''),
+(4, 'Ferre', '这这这', '11', 6, '<p>4</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301127, ''),
+(5, 'Ferre', '文档中心', '3', 6, '<p>5</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301441, '');
 
 -- --------------------------------------------------------
 
@@ -213,6 +227,14 @@ CREATE TABLE `heater_banner` (
   `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `heater_banner`
+--
+
+INSERT INTO `heater_banner` (`id`, `title`, `desc`, `thumb`, `link`, `sort`, `time`) VALUES
+(1, 'Yii帮助Web开发人员建立复杂的应用程序，可以减少开发时间。', 'Yii是一个免费的，开源的，基于PHP5的Web应用程序开发框架，代码简洁，DRY设计并且鼓励快速开发。它的工作可以简化您的应用程序开发，并有助于确保一个非常高效的，可扩展和可维护的终端产品。', '/banner/20180129\\0ed41257c73cc8c847144acadc80d91b.jpg', 'http://www.baidu.com', 1, 1517197326),
+(2, 'You have successfully created your Yii-powered application.', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ', '/banner/20180129\\2a48ebccea3604cc595f71ddfb34924a.jpg', 'http://fheater.com/admin/index/index.html', 2, 1517198289);
+
 -- --------------------------------------------------------
 
 --
@@ -237,7 +259,11 @@ INSERT INTO `heater_category` (`id`, `catename`, `sort`, `pid`) VALUES
 (4, 'ABOUT', 4, 0),
 (5, 'CONTACT', 5, 0),
 (6, '服务内容', 6, 0),
-(7, '柱状图', 0, 2);
+(7, '柱状图', 0, 2),
+(8, 'FEATURES', 0, 4),
+(9, 'DESIGN', 0, 4),
+(10, 'CLIENTS', 0, 4),
+(11, '折线图', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -276,7 +302,7 @@ CREATE TABLE `heater_system` (
 --
 
 INSERT INTO `heater_system` (`id`, `is_close`, `title`, `keywords`, `desc`, `tag`, `is_mail`, `type`, `record`, `is_update`) VALUES
-(1, 0, 'Alexa 1', '萨法1', 'About Alexa', 'Alexa,Charts,图形化,可视化工具', 1, 1, '蜀ICP备17036283号-2', 0);
+(1, 0, 'Alexa 1', '萨法1', 'About Alexa', 'Alexa,Charts,图形化,可视化工具', 1, 0, '蜀ICP备17036283号-2', 0);
 
 -- --------------------------------------------------------
 
@@ -356,17 +382,17 @@ ALTER TABLE `heater_tourist`
 -- 使用表AUTO_INCREMENT `heater_admin`
 --
 ALTER TABLE `heater_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `heater_alog`
 --
 ALTER TABLE `heater_alog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 --
 -- 使用表AUTO_INCREMENT `heater_article`
 --
 ALTER TABLE `heater_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- 使用表AUTO_INCREMENT `heater_artsee`
 --
@@ -376,12 +402,12 @@ ALTER TABLE `heater_artsee`
 -- 使用表AUTO_INCREMENT `heater_banner`
 --
 ALTER TABLE `heater_banner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `heater_category`
 --
 ALTER TABLE `heater_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- 使用表AUTO_INCREMENT `heater_link`
 --
