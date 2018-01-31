@@ -6,6 +6,12 @@ use think\Model;
 
 class Category extends Model
 {
+    
+    /**
+     * 找到栏目的子栏目id
+     * @param unknown $id
+     * @return unknown
+     */
     public function getCate($id)
     {
         static $arr = [];
@@ -26,4 +32,23 @@ class Category extends Model
         $arr = empty($arr) ? $get->id : $arr;
         return $arr;
     }
+    
+    /**
+     * 找到产品栏目的id及其下的子栏目
+     * @return NULL[]
+     */
+    public function findCateId()
+    {
+        static $cate_pid = [];
+        
+        $cateres = $this->field('id, pid')->select();
+        foreach ($cateres as $k => $v){
+            if (config('index_module.productid') == $v->pid){
+                $cate_pid[] = $v->id;
+            }
+        }
+        $cate_pid[] = config('index_module.productid');
+        return $cate_pid;
+    }
+    
 }

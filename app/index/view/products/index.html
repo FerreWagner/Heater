@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
     <!-- Page title -->
-    <title>Heater-{$category.catename}</title>
+    <title>Heater-{$pro.catename}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -19,7 +19,9 @@
 </head>
 <body>
 
+<!-- Header -->
 {include file="header/header" /}
+<!-- /Header -->
 
 <!-- Section: Page Header -->
 <section class="section-page-header">
@@ -28,8 +30,8 @@
 
             <!-- Page Title -->
             <div class="col-md-8">
-                <h1 class="title">Portfolio - 4 Columns</h1>
-                <div class="subtitle">There are many variations of passages </div>
+                <h1 class="title">{$pro.catename} - {$pro.title}</h1>
+                <div class="subtitle">{$pro.desc}</div>
             </div>
             <!-- /Page Title -->
 
@@ -37,7 +39,7 @@
             <div class="col-md-4">
                 <ul class="breadcrumb">
                     <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
-                    <li><a href="{:url('index/index/catesearch', ['id' => $category['id']])}">{$category.catename}</a></li>
+                    <li><a href="{:url('index/index/catesearch', ['id' => $pro['id']])}">{$pro.catename}</a></li>
                 </ul>
             </div>
             <!-- /Breadcrumbs -->
@@ -56,121 +58,80 @@
             <!-- Project -->
             <div class="row">
 
-                <div class="projects-list">
+                <!-- Project Images -->
+                <div class="col-md-8">
 
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-01.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-01.jpg">
-                            </div>
-                        </a>
+
+                    <div class="project-carousel owl-carousel owl-theme">
+
+                        <div class="item">
+                            <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
+                                <div class="gallery-image">
+                                    <img src="__STATIC__/home/images/home-02.jpg">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="item">
+                            <a href="__STATIC__/home/images/home.jpg" class="image-popup">
+                                <div class="gallery-image">
+                                    <img src="__STATIC__/home/images/home.jpg">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="item">
+                            <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
+                                <div class="gallery-image">
+                                    <img src="__STATIC__/home/images/home-02.jpg">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="item">
+                            <a href="__STATIC__/home/images/home.jpg" class="image-popup">
+                                <div class="gallery-image">
+                                    <img src="__STATIC__/home/images/home.jpg">
+                                </div>
+                            </a>
+                        </div>
+
                     </div>
 
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-02.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-02.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-03.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-03.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-04.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-04.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-05.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-05.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-06.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-06.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-07.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-07.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-08.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-08.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-09.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-09.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-10.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-10.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-11.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-11.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-12.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-12.jpg">
-                            </div>
-                        </a>
-                    </div>
 
                 </div>
+                <!-- /Project Images -->
 
-                <!-- Pagination -->
-                <div class="col-md-12">
-                    <ul class="pagination">
-                        <li><span>Page 1 of 5</span></li>
-                        <li><a href="#">&laquo;</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Next</a></li>
-                        <li><a href="#">&raquo;</a></li>
+                <!-- Project Information -->
+                <div class="col-md-4 project-information">
+
+                    <h3 class="title">Project Description</h3>
+                    <p>
+                        It is a long established fact that a reader will be distracted by the readable content of a page
+                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                        distribution of letters, as opposed to using 'Content here, content here', making it look like
+                        readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                        default model text.
+                    </p>
+
+                    <h3 class="title">Project Details</h3>
+                    <ul class="details">
+                        <li><span>Client: </span> John Joseph Doe</li>
+                        <li><span>Date: </span> March 28, 2016</li>
+                        <li><span>Tags: </span> Photography, Illustration</li>
                     </ul>
+
+
+                    <ul class="social-share">
+                        <li><a href="#"><i class="fa fa-fw fa-facebook"></i> 3</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-twitter"></i> 2</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-google-plus"></i> 4</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-dribbble"></i> 8</a></li>
+                        <li><a href="#"><i class="fa fa-fw fa-pinterest"></i> 19</a></li>
+                    </ul>
+
                 </div>
-                <!-- /Pagination -->
+                <!-- /Project Information -->
 
             </div>
             <!-- /Project -->

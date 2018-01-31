@@ -55,94 +55,15 @@
 		<!-- Section Content -->
 		<div class="row mt">
 
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s">
-				<a href="__STATIC__/home/images/project-01.jpg" class="project-item image-popup">
+			{volist name="product" id="pro"}
+			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" {if $i == 1}{else /}data-wow-delay="{$i*0.2-0.2}s"{/if}>
+				<a href="{:url('index/products/index', ['id' => $pro['id']])}" target="_blank" class="project-item">
 					<div class="gallery-image">
-						<img src="__STATIC__/home/images/project-01.jpg" alt="">
+						<img src="{$pro.thumb}" alt="{$pro.keywords}" width=360 height=202>
 					</div>
 					<div class="info">
-						<div class="h4 title">Buildings</div>
-						<p class="description"># web-design</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 12
-							<i class="fa fa-fw fa-share-square-o"></i> 4
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.2s">
-				<a href="__STATIC__/home/images/project-02.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="__STATIC__/home/images/project-02.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">Nautical Nonsense</div>
-						<p class="description"># illustration</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 18
-							<i class="fa fa-fw fa-share-square-o"></i> 3
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.4s">
-				<a href="__STATIC__/home/images/project-03.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="__STATIC__/home/images/project-03.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">Coffee</div>
-						<p class="description"># creative</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 14
-							<i class="fa fa-fw fa-share-square-o"></i> 8
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.6s">
-				<a href="__STATIC__/home/images/project-04.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="__STATIC__/home/images/project-04.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">New York City</div>
-						<p class="description"># web-design</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 32
-							<i class="fa fa-fw fa-share-square-o"></i> 2
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="0.8s">
-				<a href="__STATIC__/home/images/project-05.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="__STATIC__/home/images/project-05.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">The Writer's Collection</div>
-						<p class="description"># creative</p>
-						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 29
-							<i class="fa fa-fw fa-share-square-o"></i> 12
-						</div>
-					</div>
-				</a>
-			</div>
-
-			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" data-wow-delay="1.0s">
-				<a href="__STATIC__/home/images/project-06.jpg" class="project-item image-popup">
-					<div class="gallery-image">
-						<img src="__STATIC__/home/images/project-06.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="h4 title">Overhead</div>
-						<p class="description"># illustration</p>
+						<div class="h4 title">{$pro.title}</div>
+						<p class="description"># {$pro.desc}</p>
 						<div class="social">
 							<i class="fa fa-fw fa-heart-o"></i> 17
 							<i class="fa fa-fw fa-share-square-o"></i> 3
@@ -150,6 +71,7 @@
 					</div>
 				</a>
 			</div>
+			{/volist}
 
 		</div>
 		<!-- /Section content -->
@@ -632,34 +554,6 @@
 <!-- TODO: Remove this block, Demo-version only -->
 <!-- Styleswitcher -->
 <div id="styleswitcher" class="styleswitcher">
-<div class="styleswitcher-content">
-
-	<h4 class="styleswitcher-title">Color Presets</h4>
-	<div class="styleswitcher-block">
-		<ul class="styleswitcher-list-colors">
-			<li><a href="javascript: switchStyle('theme-persimmon')" style="background: #996de9;" title="Persimmon"></a></li>
-			<li><a href="javascript: switchStyle('theme-atomic-tangerine')" style="background: #ff9e55;" title="Atomic Tangerine"></a></li>
-			<li><a href="javascript: switchStyle('theme-yellow-sea')" style="background: #fab000;" title="Yellow Sea"></a></li>
-			<li><a href="javascript: switchStyle('theme-rio-grande')" style="background: #aed605;" title="Rio Grande"></a></li>
-			<li><a href="javascript: switchStyle('theme-vida-loca')" style="background: #38b71f;" title="Vida Loca"></a></li>
-			<li><a href="javascript: switchStyle('theme-mountain-meadow')" style="background: #1fb768;" title="Mountain Meadow"></a></li>
-			<li><a href="javascript: switchStyle('theme-java')" style="background: #1fb7a4;" title="Java"></a></li>
-			<li><a href="javascript: switchStyle('theme-mariner')" style="background: #3274cd;" title="Mariner"></a></li>
-			<li><a href="javascript: switchStyle('theme-medium-purple')" style="background: #996de9;" title="Medium Purple"></a></li>
-			<li><a href="javascript: switchStyle('theme-lavender-magenta')" style="background: #e94de4;" title="Lavender Magenta"></a></li>
-		</ul>
-	</div>
-
-	<h4 class="styleswitcher-title">Navigation Style</h4>
-	<div class="styleswitcher-block">
-		<select id="styleswitcher-navbar-style">
-			<option value="style-1">Default</option>
-			<option value="style-2">Fill</option>
-			<option value="style-3">Underline</option>
-		</select>
-	</div>
-
-</div>
 
 <div class="styleswitcher-button vertical-middle"><i class="fa fa-gear"></i></div>
 </div>

@@ -9,6 +9,7 @@ class Index extends Base
     public function index()
     {
         $this->banner();
+        $this->product();
         return $this->view->fetch('index');
     }
     
@@ -20,6 +21,10 @@ class Index extends Base
         $this->view->assign('banner', $banner);
     }
     
+    /**
+     * cate搜索页
+     * @return string
+     */
     public function cateSearch()
     {
         $id = input('id');
@@ -50,6 +55,23 @@ class Index extends Base
         
         $template = in_array($id, config('index_module.singlepage')) ? 'single' : 'multi';
         return $this->view->fetch($template);
+    }
+    
+    public function product()
+    {
+        $cate    = new IndexCate();
+        $pro_pid = $cate->findCateId();
+        
+        $product = db('article')
+            ->field('id, title, thumb, keywords, desc')
+            ->where('cate', 'in', $pro_pid)
+            ->order('order', 'desc')
+            ->limit(6)
+            ->select();
+        
+        //TODO 1、七牛云图片显示处理 2、七牛云图片长宽处理
+        
+        $this->view->assign('product', $product);
     }
     
     
