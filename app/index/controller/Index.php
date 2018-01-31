@@ -39,9 +39,16 @@ class Index extends Base
         }else {
             $art = db('article')->where('id', $id)->select();
         }
-        halt($art);
         
-        $template = $id < config('index_module.artlimit') ? 'single' : 'multi';
+        //catename
+        $category = db('category')->field('id, catename')->find($id);
+        
+        $this->view->assign([
+            'art'      => $art,
+            'category' => $category,
+        ]);
+        
+        $template = in_array($id, config('index_module.singlepage')) ? 'single' : 'multi';
         return $this->view->fetch($template);
     }
     
