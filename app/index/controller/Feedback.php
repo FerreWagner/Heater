@@ -32,7 +32,10 @@ class Feedback extends Base
 
             $model = new FeedbackModel();
             $res   = $model->indexAdd($data);
-            $res ? $this->redirect('index/index/index') : $this->error('Pls contact Admin');
+            
+            $this->feedMail('1573646491@qq.com', '名为'.$data['name'].'的用户'.$data['email'].'在'.date("Y-m-d H:i:s",time()).'向您反馈了消息:'.$data['message']);
+            
+            $res ? $this->success('您的信息已发送至管理员邮箱,谢谢您的反馈.', 'index/index/index') : $this->error('Pls contact Admin');
         }
     }
     
@@ -41,11 +44,9 @@ class Feedback extends Base
     /**
      * 邮件服务
      */
-    public function mailServe($email, $content)
+    public function feedMail($email, $content)
     {
         if (Mail::isMail() == config('mail.close')) return true;
-    
-        //         $user_email = session('user_data')['email'];
     
         $mail = new Mail();
         $mail->getXml('admin');
