@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page title -->
+    <title>Heater-Design</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="__STATIC__/home/css/theme.css">
+
+</head>
+<body>
+
+<!-- Header -->
+{include file="header/header" /}
+<!-- /Header -->
+
+<!-- Section: Page Header -->
+<section class="section-page-header">
+    <div class="container">
+        <div class="row">
+
+            <!-- Page Title -->
+            <div class="col-md-8">
+                <h1 class="title">Heater Design</h1>
+                <div class="subtitle">There are many variations of passages </div>
+            </div>
+            <!-- /Page Title -->
+
+            <!-- Breadcrumbs -->
+            <div class="col-md-4">
+                <ul class="breadcrumb">
+                    <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
+                    <li>DESIGN</li>
+                </ul>
+            </div>
+            <!-- /Breadcrumbs -->
+
+        </div>
+    </div>
+</section>
+<!-- /Section: Page Header -->
+
+<!-- Main -->
+<main class="main-container">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Our History -->
+            <div class="col-md-8">
+
+                <h3 class="title">{$design.title}</h3>
+                <p class="text-justify">
+                    {$design.content}
+                </p>
+
+            </div>
+            <!-- Our History -->
+
+            <!-- Our Skills -->
+            <div class="col-md-4">
+
+                <h3 class="title">Our Skills</h3>
+
+                <div class="skills">
+
+
+                    <div class="title"> HTML5 <span>80%</span></div>
+                    <div class="progress">
+                        <div style="width: 80%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80"
+                             role="progressbar" class="progress-bar fadeInLeft wow" data-wow-duration="1.3s" data-wow-delay="0.3s"></div>
+                    </div>
+
+                    <div class="title"> CSS3 <span>75%</span></div>
+                    <div class="progress">
+                        <div style="width: 75%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75"
+                             role="progressbar" class="progress-bar fadeInLeft wow" data-wow-duration="1.3s" data-wow-delay="0.6s"></div>
+                    </div>
+
+                    <div class="title"> JavaScript &amp; jQuery <span>85%</span></div>
+                    <div class="progress">
+                        <div style="width: 85%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="85"
+                             role="progressbar" class="progress-bar fadeInLeft wow" data-wow-duration="1.3s" data-wow-delay="0.9s"></div>
+                    </div>
+
+                    <div class="title"> PHP <span>90%</span></div>
+                    <div class="progress">
+                        <div style="width: 90%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="90"
+                             role="progressbar" class="progress-bar fadeInLeft wow" data-wow-duration="1.3s" data-wow-delay="1.2s"></div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /Our Skills -->
+
+        </div>
+
+        <!-- Our Team -->
+        <!-- /Our Team -->
+
+        <!-- Happy Clients -->
+        <!-- /Happy Clients -->
+
+    </div>
+</main>
+<!-- /Main -->
+
+<!-- Footer -->
+{include file="footer/footer" /}
+<!-- /Footer -->
+
+<!-- Scroll To Top -->
+<div id="scroll-to-top" class="scroll-to-top">
+    <i class="icon fa fa-angle-up"></i>
+</div>
+<!-- /Scroll To Top -->
+
+<!-- Modal: Result Message -->
+<div class="modal fade" id="result" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4 class="modal-title">Sending message</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="result-icon">
+                    <div class="icon-border">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" preserveAspectRatio="none">
+                            <circle cx="8" cy="8" r="6.215" transform="rotate(90 8 8)"></circle>
+                        </svg>
+                        <i class="icon fa fa-check"></i>
+                    </div>
+                </div>
+
+                <p class="modal-result h4 text-center"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /Modal: Result Message -->
+
+<!-- SCRIPTS -->
+{include file="public/base-js" /}
+<!-- /SCRIPTS -->
+
+<!-- TODO: Remove this block, Demo-version only -->
+<!-- Styleswitcher -->
+
+<link rel="stylesheet" type="text/css" href="__STATIC__/home/demo/styleswitcher.css">
+<script src="__STATIC__/home/demo/styleswitcher.js"></script>
+<!-- /Styleswitcher -->
+</body>
+</html>
