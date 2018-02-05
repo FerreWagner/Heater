@@ -22,4 +22,9 @@ class Article extends Base
         return $this->view->fetch('single-page');
     }
     
+    public function blog()
+    {
+        halt(input('id'));
+    }
+    
 }

@@ -13,7 +13,6 @@ class Base extends Controller
     
     /**
      * 获取前台导航栏
-     * TODO:前台对应order值进行循环
      */
     public function cate(){
         $cateres   = db('category')->where(['pid' => 0])->select(); //顶级分类的pid=0

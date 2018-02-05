@@ -31,4 +31,12 @@ class Article extends Model
         return $this->field('id, title, content, thumb, desc, author')->where('cate', config('index_module.cateclients'))->order('order', 'desc')->select();
     }
     
+    /**
+     * 首页页尾的两篇post数据
+     */
+    public function footerPost()
+    {
+        return $this->field('id, title, desc, thumb')->where('cate', config('index_module.cateblog'))->order('order', 'desc')->limit(2)->select();
+    }
+    
 }

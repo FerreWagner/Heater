@@ -8,13 +8,13 @@
 
 			<!-- Footer Logo -->
 			<div class="logo">
-				<img src="__STATIC__/home/images/logo.png" alt="">
+				<img src="__STATIC__/home/images/logo.png" alt="{$sys.desc}">
 			</div>
 			<!-- /Footer Logo -->
 
 			<!-- Footer Text -->
 			<p class="text">
-				It is a long established fact that a reader will be distracted by the readable.
+				{$sys.desc}
 			</p>
 			<!-- /Footer Text -->
 
@@ -22,17 +22,16 @@
 
 			<!-- Copyright -->
 			<p class="copyright">
-				Copyright &copy; 2015-2016 <strong>Valery Timofeev</strong>
+				{$sys.record}
 			</p>
 			<!-- /Copyright -->
 
 			<!-- Footer Social -->
 			<ul class="social-inline">
-				<li><a href="#" class="fa fa-fw fa-facebook"></a></li>
-				<li><a href="#" class="fa fa-fw fa-twitter"></a></li>
+				<li><a href="https://github.com/FerreWagner/Heater" target="_blank" class="fa fa-fw fa-github"></a></li>
+				<li><a href="https://weibo.com/u/3877828291" target="_blank" class="fa fa-fw fa-weibo"></a></li>
+				<li><a href="//shang.qq.com/wpa/qunwpa?idkey=15d229c0ccaf8f5e4901e4be5ff5580f7bdbbf4baab700894dd4212802ce0243" target="_blank" class="fa fa-fw fa-qq"></a></li>
 				<li><a href="#" class="fa fa-fw fa-google-plus"></a></li>
-				<li><a href="#" class="fa fa-fw fa-dribbble"></a></li>
-				<li><a href="#" class="fa fa-fw fa-pinterest"></a></li>
 			</ul>
 			<!-- /Footer Social -->
 
@@ -45,36 +44,23 @@
 			<h3 class="title">Latest From <span class="text-theme">Blog</span></h3>
 
 			<!-- Footer Post -->
-			<div class="media post">
-				<div class="media-left">
-					<div class="image">
-						<img src="__STATIC__/home/images/last-post-01.jpg" alt="">
+				{volist name="blog" id="blog"}
+					<div class="media post">
+						<div class="media-left">
+							<div class="image">
+								<img src="{$blog.thumb}" width=60 height=60 alt="{$blog.desc}">
+							</div>
+						</div>
+						<div class="media-body">
+							<p class="text">
+								{$blog.title}
+							</p>
+							<a href="{:url('index/article/blog', ['id' => $blog.id])}" target="_blank">Read more</a>
+						</div>
 					</div>
-				</div>
-				<div class="media-body">
-					<p class="text">
-						It is a long established fact that a reader will be distracted.
-					</p>
-					<a href="#">Read more</a>
-				</div>
-			</div>
+				{/volist}
 			<!-- /Footer Post -->
 
-			<!-- Footer Post -->
-			<div class="media post">
-				<div class="media-left">
-					<div class="image">
-						<img src="__STATIC__/home/images/last-post-02.jpg" alt="">
-					</div>
-				</div>
-				<div class="media-body">
-					<p class="text">
-						It is a long established fact that a reader will be distracted.
-					</p>
-					<a href="#">Read more</a>
-				</div>
-			</div>
-			<!-- /Footer Post -->
 
 		</div>
 		<!-- /Footer Column -->
@@ -86,12 +72,11 @@
 
 			<!-- Footer Menu -->
 			<ul class="menu">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Features</a></li>
-				<li><a href="#">Projects</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Contact</a></li>
+				{volist name="cateres" id="cares"}
+					{if $cares['pid'] == 0}
+						<li><a href="{if $cares.catename == 'HOME'}/{else /}{:url('index/index/catesearch', ['id' => $cares['id']])}{/if}">{$cares.catename}</a></li>
+					{/if}
+				{/volist}
 			</ul>
 			<!-- /Footer Menu -->
 
@@ -101,10 +86,10 @@
 		<!-- Footer Column -->
 		<div class="col-md-4 col-xs-6 footer-col">
 
-			<h3 class="title">Signup to <span class="text-theme">Newsletter</span></h3>
+			<h3 class="title">Site <span class="text-theme">Tag</span></h3>
 
 			<!-- Footer Signup Form -->
-			<div class="signup-form">
+			<!-- <div class="signup-form">
 				<form method="post" class="form-inline">
 					<div class="form-group">
 						<input type="email" class="form-control" placeholder="Your E-mail...*" required>
@@ -114,20 +99,16 @@
 					</div>
 				</form>
 
-			</div>
+			</div> -->
 			<!-- /Footer Signup Form -->
 
 			<hr>
 
 			<!-- Footer Tags -->
 			<div class="tags">
-				<a href="#" class="tag">web</a>
-				<a href="#" class="tag">design</a>
-				<a href="#" class="tag">clean</a>
-				<a href="#" class="tag">minimal</a>
-				<a href="#" class="tag">pixel perfect</a>
-				<a href="#" class="tag">blog</a>
-				<a href="#" class="tag">gallery</a>
+			{volist name="$tag" id="tag"}
+				<a href="#" class="tag">{$tag}</a>
+			{/volist}
 			</div>
 			<!-- /Footer Tags -->
 

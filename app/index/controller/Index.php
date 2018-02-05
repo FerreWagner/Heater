@@ -4,6 +4,7 @@ namespace app\index\controller;
 use app\index\common\Base;
 use app\index\model\Category as IndexCate;
 use app\index\model\Article as ArticleModel;
+use app\admin\model\System;
 
 class Index extends Base
 {
@@ -13,15 +14,23 @@ class Index extends Base
         $this->product();
         
         $art    = new ArticleModel();
+        $system = new System();
+        
         //单页面数据
         $design = $art->design();
         $fea    = $art->features();
         $client = $art->clients();
+        $blog   = $art->footerPost();
+        $sys    = $system->getSys();
+        $tag    = explode(',', $sys['tag']);
         
         $this->view->assign([
             'design' => $design,
             'fea'    => $fea,
             'client' => $client,
+            'blog'   => $blog,
+            'sys'    => $sys,
+            'tag'    => $tag,
         ]);
         
         return $this->view->fetch('index');
