@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
     <!-- Page title -->
-    <title>{$sys.title}-{$category.catename}</title>
+    <title>{$sys.title}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -11,15 +11,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-	<link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.png">
 
     <!-- Style -->
-	<link rel="stylesheet" href="__STATIC__/home/css/theme.css">
+    <link rel="stylesheet" href="css/theme.css">
 
 </head>
 <body>
 
-{include file="header/header" /}
+<!-- Header -->
+<header id="home" class="header">
+
+    <!-- Navigation -->
+    <nav id="navigation" class="navbar">
+
+        <!-- Company Information -->
+        <div class="information hidden-sm hidden-xs">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Feedback -->
+                    <div class="col-md-7">
+                        <a href="http://sc.chinaz.com" class="iframe-popup"><span class="icon icon_pin_alt"></span> 988782, Our Street, L.A.</a>
+                        <a href="#"><span class="icon icon_mail_alt"></span> clients@example.com</a>
+                        <a href="#"><span class="icon icon_phone"></span> +1 987 123 456</a>
+                    </div>
+                    <!-- /Feedback -->
+
+                    <!-- Social -->
+                    <div class="col-md-5">
+                        <ul class="social">
+                            <li><a href="#" class="fa fa-fw fa-facebook"></a></li>
+                            <li><a href="#" class="fa fa-fw fa-twitter"></a></li>
+                            <li><a href="#" class="fa fa-fw fa-google-plus"></a></li>
+                            <li><a href="#" class="fa fa-fw fa-dribbble"></a></li>
+                            <li><a href="#" class="fa fa-fw fa-pinterest"></a></li>
+                        </ul>
+                    </div>
+                    <!-- /Social -->
+
+                </div>
+            </div>
+        </div>
+        <!-- /Company Information -->
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- Navigation Header -->
+                    <div class="navbar-header">
+
+                        <!-- Toggle Button -->
+                        <button type="button"
+                                class="navbar-toggle collapsed"
+                                data-toggle="collapse"
+                                data-target="#main-menu"
+                                aria-expanded="false"
+                                aria-controls="main-menu">
+
+                            <span class="sr-only">Toggle Navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+
+                        </button>
+                        <!-- /Toggle Button -->
+
+                        <!-- Brand -->
+                        <a href="#" class="brand">
+
+                            <!-- Logo Big -->
+                            <img src="images/logo.png" class="logo-big">
+                            <!-- /Logo Big -->
+
+                            <!-- Logo Small -->
+                            <img src="images/logo-small.png" class="logo-small">
+                            <!-- /Logo Small -->
+
+                        </a>
+                        <!-- /Brand -->
+
+                    </div>
+                    <!-- /Navigation Header -->
+
+                    <!-- Navigation -->
+                    <div id="main-menu" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle">Pages</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="404.html">404</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle">Blog</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="blog-left-sidebar.html">Post List - Left Sidebar</a></li>
+                                    <li><a href="blog.html">Post List - Right Sidebar</a></li>
+                                    <li><a href="single-post.html">Single Post</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle">Portfolio</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="portfolio-2-col.html">2 Columns</a></li>
+                                    <li><a href="portfolio-3-col.html">3 Columns</a></li>
+                                    <li><a href="portfolio.html">4 Columns</a></li>
+                                    <li><a href="single-project.html">Project Page</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!-- /Navigation -->
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- /Navigation -->
+
+</header>
+<!-- /Header -->
 
 <!-- Section: Page Header -->
 <section class="section-page-header">
@@ -36,8 +155,9 @@
             <!-- Breadcrumbs -->
             <div class="col-md-4">
                 <ul class="breadcrumb">
-                    <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
-                    <li><a href="{:url('index/index/catesearch', ['id' => $category['id']])}">{$category.catename}</a></li>
+                    <li><i class="fa fa-fw fa-home"></i> <a href="#">Home</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li>Single Post</li>
                 </ul>
             </div>
             <!-- /Breadcrumbs -->
@@ -60,9 +180,9 @@
 
                     <!-- Post Image -->
                     <div class="image">
-                        <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
+                        <a href="images/home-02.jpg" class="image-popup">
                             <div class="gallery-image">
-                                <img src="__STATIC__/home/images/home-02.jpg">
+                                <img src="images/home-02.jpg">
                             </div>
                         </a>
                     </div>
@@ -162,7 +282,7 @@
                             <div class="media">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/author-image-01.jpg">
+                                        <img src="images/author-image-01.jpg">
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -187,7 +307,7 @@
                                     <div class="media">
                                         <div class="media-left">
                                             <div class="image">
-                                                <img src="__STATIC__/home/images/author-image-01.jpg">
+                                                <img src="images/author-image-01.jpg">
                                             </div>
                                         </div>
                                         <div class="media-body">
@@ -208,7 +328,7 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <div class="image">
-                                                        <img src="__STATIC__/home/images/author-image-01.jpg">
+                                                        <img src="images/author-image-01.jpg">
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
@@ -225,7 +345,7 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <div class="image">
-                                                        <img src="__STATIC__/home/images/author-image-01.jpg">
+                                                        <img src="images/author-image-01.jpg">
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
@@ -249,7 +369,7 @@
                             <div class="media">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/author-image-01.jpg">
+                                        <img src="images/author-image-01.jpg">
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -351,7 +471,7 @@
                             <div class="media post">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-01.jpg">
+                                        <img src="images/last-post-01.jpg">
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -369,7 +489,7 @@
                             <div class="media post">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-02.jpg">
+                                        <img src="images/last-post-02.jpg">
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -387,7 +507,7 @@
                             <div class="media post">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-03.jpg">
+                                        <img src="images/last-post-03.jpg">
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -502,7 +622,7 @@
 
                 <!-- Footer Logo -->
                 <div class="logo">
-                    <img src="__STATIC__/home/images/logo.png">
+                    <img src="images/logo.png">
                 </div>
                 <!-- /Footer Logo -->
 
@@ -542,7 +662,7 @@
                 <div class="media post">
                     <div class="media-left">
                         <div class="image">
-                            <img src="__STATIC__/home/images/last-post-01.jpg">
+                            <img src="images/last-post-01.jpg">
                         </div>
                     </div>
                     <div class="media-body">
@@ -558,7 +678,7 @@
                 <div class="media post">
                     <div class="media-left">
                         <div class="image">
-                            <img src="__STATIC__/home/images/last-post-02.jpg">
+                            <img src="images/last-post-02.jpg">
                         </div>
                     </div>
                     <div class="media-body">
@@ -671,12 +791,54 @@
 <!-- /Modal: Result Message -->
 
 <!-- SCRIPTS -->
-{include file="public/base-js" /}
+<script src="js/jquery-2.2.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/masonry.pkgd.min.js"></script>
+<script src="js/general.js"></script>
 <!-- /SCRIPTS -->
 
+<!-- TODO: Remove this block, Demo-version only -->
+<!-- Styleswitcher -->
+<div id="styleswitcher" class="styleswitcher">
+    <div class="styleswitcher-content">
 
-<link rel="stylesheet" type="text/css" href="__STATIC__/home/demo/styleswitcher.css">
-<script src="__STATIC__/home/demo/styleswitcher.js"></script>
+        <h4 class="styleswitcher-title">Color Presets</h4>
+        <div class="styleswitcher-block">
+            <ul class="styleswitcher-list-colors">
+                <li><a href="javascript: switchStyle('theme-persimmon')" style="background: #ff5555;" title="Persimmon"></a></li>
+                <li><a href="javascript: switchStyle('theme-atomic-tangerine')" style="background: #ff9e55;" title="Atomic Tangerine"></a></li>
+                <li><a href="javascript: switchStyle('theme-yellow-sea')" style="background: #fab000;" title="Yellow Sea"></a></li>
+                <li><a href="javascript: switchStyle('theme-rio-grande')" style="background: #aed605;" title="Rio Grande"></a></li>
+                <li><a href="javascript: switchStyle('theme-vida-loca')" style="background: #38b71f;" title="Vida Loca"></a></li>
+                <li><a href="javascript: switchStyle('theme-mountain-meadow')" style="background: #1fb768;" title="Mountain Meadow"></a></li>
+                <li><a href="javascript: switchStyle('theme-java')" style="background: #1fb7a4;" title="Java"></a></li>
+                <li><a href="javascript: switchStyle('theme-mariner')" style="background: #3274cd;" title="Mariner"></a></li>
+                <li><a href="javascript: switchStyle('theme-medium-purple')" style="background: #996de9;" title="Medium Purple"></a></li>
+                <li><a href="javascript: switchStyle('theme-lavender-magenta')" style="background: #e94de4;" title="Lavender Magenta"></a></li>
+            </ul>
+        </div>
+
+        <h4 class="styleswitcher-title">Navigation Style</h4>
+        <div class="styleswitcher-block">
+            <select id="styleswitcher-navbar-style">
+                <option value="style-1">Default</option>
+                <option value="style-2">Fill</option>
+                <option value="style-3">Underline</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="styleswitcher-button vertical-middle"><i class="fa fa-gear"></i></div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="demo/styleswitcher.css">
+<script src="demo/styleswitcher.js"></script>
 <!-- /Styleswitcher -->
 </body>
 </html>

@@ -2,6 +2,7 @@
 namespace app\index\common;
 
 use think\Controller;
+use app\admin\model\System;
 
 class Base extends Controller
 {
@@ -9,6 +10,16 @@ class Base extends Controller
     public function _initialize()
     {
         $this->cate();
+        
+        //system数据
+        $system = new System();
+        $sys    = $system->getSys();
+        $tag    = explode(',', $sys['tag']);
+        $this->view->assign([
+            'sys' => $sys,
+            'tag'    => $tag,
+            
+        ]);
     }
     
     /**
@@ -27,7 +38,6 @@ class Base extends Controller
         
         $this->view->assign('cateres',$cateres);
     }
-    
     
     
 }

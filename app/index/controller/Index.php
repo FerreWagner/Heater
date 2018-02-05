@@ -21,16 +21,13 @@ class Index extends Base
         $fea    = $art->features();
         $client = $art->clients();
         $blog   = $art->footerPost();
-        $sys    = $system->getSys();
-        $tag    = explode(',', $sys['tag']);
+        
         
         $this->view->assign([
             'design' => $design,
             'fea'    => $fea,
             'client' => $client,
             'blog'   => $blog,
-            'sys'    => $sys,
-            'tag'    => $tag,
         ]);
         
         return $this->view->fetch('index');
