@@ -12,13 +12,16 @@ class Index extends Base
         $this->banner();
         $this->product();
         
-        $art = new ArticleModel();
+        $art    = new ArticleModel();
         $design = $art->design();
+        $fea    = $art->features();
         
         
         $this->view->assign([
             'design' => $design,
+            'fea'    => $fea,
         ]);
+        
         return $this->view->fetch('index');
     }
     

@@ -12,7 +12,15 @@ class Article extends Model
      */
     public function design()
     {
-        return $this->field('id, title, desc, content')->where('cate', config('index_module.catedesign'))->limit(3)->order('order', 'desc')->select();
+        return $this->field('id, title, content')->where('cate', config('index_module.catedesign'))->limit(3)->order('order', 'desc')->select();
+    }
+    
+    /**
+     * 首页的features页面
+     */
+    public function features()
+    {
+        return $this->field('id, title, content')->where('cate', config('index_module.catefeatures'))->limit(6)->order('order', 'desc')->select();
     }
     
 }

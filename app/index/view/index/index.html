@@ -171,7 +171,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<header class="text-center">
-					<h2 class="section-title">More <span class="text-theme">TODO 单页面 Features</span></h2>
+					<h2 class="section-title">Our <span class="text-theme"> Features</span></h2>
 					<p class="section-subtitle">It is a long established fact that a reader</p>
 				</header>
 			</div>
@@ -182,105 +182,21 @@
 		<div class="row section-content zoomIn wow">
 
 			<!-- Feature Block -->
+			{volist name="fea" id="fea"}
 			<div class="col-md-4 col-sm-6 more-feature">
 				<div class="media">
 					<div class="media-left">
-						<span class="icon_link_alt icon"></span>
+						<span class="{if $i == 1}icon_link_alt{elseif $i == 2 /}icon_easel{elseif $i == 3 /}icon_puzzle{elseif $i == 4 /}icon_download{elseif $i == 5 /}icon_heart_alt{elseif $i == 6 /}icon_cogs{/if} icon"></span>
 					</div>
 					<div class="media-body">
-						<h3 class="title">HTML5 & CSS3</h3>
+						<h3 class="title"><a href="{:url('index/article/singlepage', ['id' => $fea.id])}" target="_blank">{$fea.title}</a></h3>
 						<p class="description">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
+							{$fea.content}
 						</p>
 					</div>
 				</div>
 			</div>
-			<!-- /Feature Block -->
-
-			<!-- Feature Block -->
-			<div class="col-md-4 col-sm-6 more-feature">
-				<div class="media">
-					<div class="media-left">
-						<span class="icon_easel icon"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="title">Lightweight & SEO</h3>
-						<p class="description">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</div>
-				</div>
-			</div>
-			<!-- /Feature Block -->
-
-			<!-- Feature Block -->
-			<div class="col-md-4 col-sm-6 more-feature">
-				<div class="media">
-					<div class="media-left">
-						<span class="icon_puzzle icon"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="title">Easy To Customize</h3>
-						<p class="description">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</div>
-				</div>
-			</div>
-			<!-- /Feature Block -->
-
-			<!-- Feature Block -->
-			<div class="col-md-4 col-sm-6 more-feature">
-				<div class="media">
-					<div class="media-left">
-						<span class="icon_download icon"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="title">500+ Downloads</h3>
-						<p class="description">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</div>
-				</div>
-			</div>
-			<!-- /Feature Block -->
-
-			<!-- Feature Block -->
-			<div class="col-md-4 col-sm-6 more-feature">
-				<div class="media">
-					<div class="media-left">
-						<span class="icon_heart_alt icon"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="title">Made With Love</h3>
-						<p class="description">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</div>
-				</div>
-			</div>
-			<!-- /Feature Block -->
-
-			<!-- Feature Block -->
-			<div class="col-md-4 col-sm-6 more-feature">
-				<div class="media">
-					<div class="media-left">
-						<span class="icon_cogs icon"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="title">24/7 Support</h3>
-						<p class="description">
-							It is a long established fact that a reader will be distracted by the readable content
-							of a page when looking at its layout.
-						</p>
-					</div>
-				</div>
-			</div>
+			{/volist}
 			<!-- /Feature Block -->
 
 		</div>

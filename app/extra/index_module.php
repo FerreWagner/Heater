@@ -5,4 +5,5 @@ return [
     'propage'    => 12,     //一页12product显示
     'productid'  => 2,
     'catedesign' => 9,      //design的cateid
+    'catefeatures' => 8,    //features的cateid
 ];
