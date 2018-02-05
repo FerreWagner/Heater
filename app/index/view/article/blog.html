@@ -30,8 +30,8 @@
 
             <!-- Page Title -->
             <div class="col-md-8">
-                <h1 class="title">Blog - Single Post</h1>
-                <div class="subtitle">There are many variations of passages </div>
+                <h1 class="title">Blog - {$blog.title}</h1>
+                <div class="subtitle">{$blog.desc}</div>
             </div>
             <!-- /Page Title -->
 
@@ -40,7 +40,7 @@
                 <ul class="breadcrumb">
                     <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
                     <li><a href="#">Blog</a></li>
-                    <li>Single Post</li>
+                    <li>{$blog.title}</li>
                 </ul>
             </div>
             <!-- /Breadcrumbs -->
@@ -63,16 +63,16 @@
 
                     <!-- Post Image -->
                     <div class="image">
-                        <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
+                        <a href="{$blog.thumb}" class="image-popup">
                             <div class="gallery-image">
-                                <img src="__STATIC__/home/images/home-02.jpg">
+                                <img src="{$blog.thumb}">
                             </div>
                         </a>
                     </div>
                     <!-- /Post Image -->
 
                     <!-- Post Title -->
-                    <h2 class="title">Single Post With Image</h2>
+                    <h2 class="title">{$blog.title}</h2>
                     <!-- /Post Title -->
 
                     <!-- Post Metadata -->
@@ -159,147 +159,26 @@
                 <div class="widget">
 
                     <h4 class="title">Recent Comments</h4>
-                    <ul class="comments">
+                    
 
-                        <li>
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="image">
-                                        <img src="__STATIC__/home/images/author-image-01.jpg">
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="author">John Doe</h4>
-                                    <span class="date">28 March 2016</span>
-                                    <p class="text">
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                        that it has a more-or-less normal distribution of letters, as opposed to using
-                                        'Content here, content here', making it look like readable English. Many desktop
-                                        publishing packages and web page editors now use Lorem Ipsum as their default
-                                        model text, and a search for 'lorem ipsum' will uncover many web sites still in
-                                        their infancy. Various versions have evolved over the years, sometimes by
-                                        accident, sometimes on purpose (injected humour and the like).
-                                    </p>
-                                </div>
-                            </div>
-
-                            <ul class="comments">
-
-                                <li>
-                                    <div class="media">
-                                        <div class="media-left">
-                                            <div class="image">
-                                                <img src="__STATIC__/home/images/author-image-01.jpg">
-                                            </div>
-                                        </div>
-                                        <div class="media-body">
-                                            <h4 class="author">John Doe</h4>
-                                            <span class="date">28 March 2016</span>
-                                            <p class="text">
-                                                It is a long established fact that a reader will be distracted by the readable
-                                                content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                                that it has a more-or-less normal distribution of letters, as opposed to using
-                                                'Content here, content here', making it look like readable English. Many desktop
-                                                publishing.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <ul class="comments">
-                                        <li>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <div class="image">
-                                                        <img src="__STATIC__/home/images/author-image-01.jpg">
-                                                    </div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="author">John Doe</h4>
-                                                    <span class="date">28 March 2016</span>
-                                                    <p class="text">
-                                                        It is a long established fact that a reader will be distracted by the readable
-                                                        content of a page when looking at its layout.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media">
-                                                <div class="media-left">
-                                                    <div class="image">
-                                                        <img src="__STATIC__/home/images/author-image-01.jpg">
-                                                    </div>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4 class="author">John Doe</h4>
-                                                    <span class="date">28 March 2016</span>
-                                                    <p class="text">
-                                                        It is a long established fact that a reader will be distracted by the readable
-                                                        content of a page when looking at its layout.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <div class="media">
-                                <div class="media-left">
-                                    <div class="image">
-                                        <img src="__STATIC__/home/images/author-image-01.jpg">
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="author">John Doe</h4>
-                                    <span class="date">28 March 2016</span>
-                                    <p class="text">
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                        that it has a more-or-less normal distribution of letters.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                    <div class="send-comment">
-
-                        <form method="post">
-
-                            <input type="hidden" name="form" value="Contact">
-
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <input type="text" name="name" class="form-control" placeholder="Your Name... *" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="email" name="email" class="form-control" placeholder="E-mail address... *" required>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <textarea name="message" class="form-control" placeholder="Message... "></textarea>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <button type="submit" class="btn btn-theme"><i class="fa fa-plus"></i> Add Comment</button>
-                                </div>
-                            </div>
-
-                        </form>
-
-
-                    </div>
+                    <!-- 来必力City版安装代码 -->
+						<div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc0NC8xMDI5OA==">
+						<script type="text/javascript">
+						   (function(d, s) {
+						       var j, e = d.getElementsByTagName(s)[0];
+						
+						       if (typeof LivereTower === 'function') { return; }
+						
+						       j = d.createElement(s);
+						       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+						       j.async = true;
+						
+						       e.parentNode.insertBefore(j, e);
+						   })(document, 'script');
+						</script>
+						<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+						</div>
+					<!-- City版安装代码已完成 -->
 
                 </div>
                 <!-- /Comments -->
@@ -315,11 +194,9 @@
 
                     <h4 class="title">Categories</h4>
                     <ul class="sidebar-menu">
-                        <li><a href="#">Photography</a></li>
-                        <li><a href="#">Illustration</a></li>
-                        <li><a href="#">Web-Design</a></li>
-                        <li><a href="#">Art</a></li>
-                        <li><a href="#">Coding</a></li>
+                    {volist name="cate" id="cate"}
+                        <li><a href="#">{$cate.catename}</a></li>
+                    {/volist}
                     </ul>
 
                 </div>

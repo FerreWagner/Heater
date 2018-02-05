@@ -2,6 +2,7 @@
 namespace app\index\controller;
 
 use app\index\common\Base;
+use app\index\model\Article as ArticleModel;
 
 class Article extends Base
 {
@@ -24,7 +25,13 @@ class Article extends Base
     
     public function blog()
     {
-        
+        $model = new ArticleModel();
+        $blog  = $model->blogData(input('id'));
+        $cate  = db('category')->field('id, catename')->where('pid != 0')->select();
+        $this->view->assign([
+            'blog' => $blog,
+            'cate' => $cate,
+        ]);
         return $this->view->fetch('blog');
     }
     

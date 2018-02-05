@@ -12,7 +12,11 @@ class Article extends Model
      */
     public function design()
     {
-        return $this->field('id, title, content')->where('cate', config('index_module.catedesign'))->limit(3)->order('order', 'desc')->select();
+        return $this->field('id, title, content')
+                    ->where('cate', config('index_module.catedesign'))
+                    ->limit(3)
+                    ->order('order', 'desc')
+                    ->select();
     }
     
     /**
@@ -20,7 +24,11 @@ class Article extends Model
      */
     public function features()
     {
-        return $this->field('id, title, content')->where('cate', config('index_module.catefeatures'))->limit(6)->order('order', 'desc')->select();
+        return $this->field('id, title, content')
+                    ->where('cate', config('index_module.catefeatures'))
+                    ->limit(6)
+                    ->order('order', 'desc')
+                    ->select();
     }
     
     /**
@@ -28,7 +36,10 @@ class Article extends Model
      */
     public function clients()
     {
-        return $this->field('id, title, content, thumb, desc, author')->where('cate', config('index_module.cateclients'))->order('order', 'desc')->select();
+        return $this->field('id, title, content, thumb, desc, author')
+                    ->where('cate', config('index_module.cateclients'))
+                    ->order('order', 'desc')
+                    ->select();
     }
     
     /**
@@ -36,7 +47,22 @@ class Article extends Model
      */
     public function footerPost()
     {
-        return $this->field('id, title, desc, thumb')->where('cate', config('index_module.cateblog'))->order('order', 'desc')->limit(2)->select();
+        return $this->field('id, title, desc, thumb')
+                    ->where('cate', config('index_module.cateblog'))
+                    ->order('order', 'desc')
+                    ->limit(2)
+                    ->select();
     }
+    
+    /**
+     * blog详细数据
+     * 排除字段的方式
+     */
+    public function blogData($id)
+    {
+        return $this->field('id, cate, order, keywords', true)
+                    ->find($id);
+    }
+    
     
 }
