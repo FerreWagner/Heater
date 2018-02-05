@@ -288,7 +288,7 @@
 
 			<!-- Contact Form -->
 			<div class="col-md-8 col-md-offset-2 contact-form fadeIn wow">
-				<form class="form-ajax" method="post">
+				<form class="form-ajax" method="post" action="{:url('index/feedback/add')}">
 
 					<input type="hidden" name="form" value="Contact">
 
@@ -312,7 +312,7 @@
 							<button type="submit" class="btn btn-theme"><i class="fa fa-fw fa-paper-plane-o"></i> Send Message</button>
 						</div>
 					</div>
-
+					{:token()}
 				</form>
 			</div>
 			<!-- /Contact Form -->
