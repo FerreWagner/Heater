@@ -9,11 +9,16 @@ class Article extends Base
      * TIP:存放除products外所有的文章分类
      */
     
-    public function design()
+    public function singlePage()
     {
-        $design = db('article')->field('id, title, content')->find(input('id'));
-        $this->view->assign('design', $design);
-        return $this->view->fetch('design');
+        $art = db('article')
+             ->field('a.id, a.title, a.content, b.catename')
+             ->alias('a')
+             ->join('heater_category b', 'a.cate=b.id')
+             ->find(input('id'));
+        $this->view->assign('art', $art);
+        
+        return $this->view->fetch('single-page');
     }
     
 }

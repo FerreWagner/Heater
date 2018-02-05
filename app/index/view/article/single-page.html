@@ -3,7 +3,7 @@
 <head>
 
     <!-- Page title -->
-    <title>Heater-Design</title>
+    <title>Heater-{$art.catename}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -30,7 +30,7 @@
 
             <!-- Page Title -->
             <div class="col-md-8">
-                <h1 class="title">Heater Design</h1>
+                <h1 class="title">Heater {$art.catename}</h1>
                 <div class="subtitle">There are many variations of passages </div>
             </div>
             <!-- /Page Title -->
@@ -39,7 +39,7 @@
             <div class="col-md-4">
                 <ul class="breadcrumb">
                     <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
-                    <li>DESIGN</li>
+                    <li>{$art.catename}</li>
                 </ul>
             </div>
             <!-- /Breadcrumbs -->
@@ -58,9 +58,9 @@
             <!-- Our History -->
             <div class="col-md-8">
 
-                <h3 class="title">{$design.title}</h3>
+                <h3 class="title">{$art.title}</h3>
                 <p class="text-justify">
-                    {$design.content}
+                    {$art.content}
                 </p>
 
             </div>
