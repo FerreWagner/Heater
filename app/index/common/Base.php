@@ -3,6 +3,8 @@ namespace app\index\common;
 
 use think\Controller;
 use app\admin\model\System;
+use app\index\model\Article as ArticleModel;
+
 
 class Base extends Controller
 {
@@ -12,13 +14,15 @@ class Base extends Controller
         $this->cate();
         
         //system数据
+        $art    = new ArticleModel();
         $system = new System();
         $sys    = $system->getSys();
+        $blog   = $art->footerPost();
         $tag    = explode(',', $sys['tag']);
         $this->view->assign([
-            'sys' => $sys,
+            'sys'    => $sys,
+            'blog'   => $blog,
             'tag'    => $tag,
-            
         ]);
     }
     

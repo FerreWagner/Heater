@@ -24,7 +24,8 @@ class Article extends Base
     
     public function blog()
     {
-        halt(input('id'));
+        
+        return $this->view->fetch('blog');
     }
     
 }

@@ -20,14 +20,11 @@ class Index extends Base
         $design = $art->design();
         $fea    = $art->features();
         $client = $art->clients();
-        $blog   = $art->footerPost();
-        
         
         $this->view->assign([
             'design' => $design,
             'fea'    => $fea,
             'client' => $client,
-            'blog'   => $blog,
         ]);
         
         return $this->view->fetch('index');
