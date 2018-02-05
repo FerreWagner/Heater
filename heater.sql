@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-01-30 10:57:28
+-- Generation Time: 2018-02-05 10:59:12
 -- 服务器版本： 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -43,7 +43,7 @@ CREATE TABLE `heater_admin` (
 --
 
 INSERT INTO `heater_admin` (`id`, `username`, `password`, `count`, `email`, `role`, `switch`, `update_time`, `create_time`) VALUES
-(1, 'ferre', '6226514790b1175cf90bca075f3887a6c54ef58e', 61, '1573646491@qq.com', 0, 'true', 1517279896, 1513926388),
+(1, 'ferre', '6226514790b1175cf90bca075f3887a6c54ef58e', 62, '1573646491@qq.com', 0, 'true', 1517381386, 1513926388),
 (3, 'root', '6226514790b1175cf90bca075f3887a6c54ef58e', 11, '1573646491@qq.com', 0, 'true', 1516847736, 1514172018);
 
 -- --------------------------------------------------------
@@ -160,7 +160,8 @@ INSERT INTO `heater_alog` (`id`, `type`, `name`, `ip`, `time`) VALUES
 (94, 1, 'root', '127.0.0.1', 1516847736),
 (95, 1, 'ferre', '127.0.0.1', 1517197202),
 (96, 1, 'ferre', '127.0.0.1', 1517278880),
-(97, 1, 'ferre', '127.0.0.1', 1517279895);
+(97, 1, 'ferre', '127.0.0.1', 1517279895),
+(98, 1, 'ferre', '127.0.0.1', 1517381385);
 
 -- --------------------------------------------------------
 
@@ -188,11 +189,31 @@ CREATE TABLE `heater_article` (
 --
 
 INSERT INTO `heater_article` (`id`, `author`, `title`, `cate`, `order`, `content`, `thumb`, `desc`, `keywords`, `tag`, `time`, `pic`) VALUES
-(1, 'Ferre', 'Alexa', '7', 6, '<p>1</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295326, ''),
-(2, 'Ferre', 'Alexa2', '7', 6, '<p>2</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295748, ''),
-(3, 'Ferre', 'Alexa3', '11', 6, '<p>3</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301107, ''),
-(4, 'Ferre', '这这这', '11', 6, '<p>4</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301127, ''),
-(5, 'Ferre', '文档中心', '3', 6, '<p>5</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301441, '');
+(1, 'Ferre', 'Alexa', '7', 6, '<p>1</p>', '/uploads/thumb/alexa15173848344b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295326, '/uploads/20180131\\846769c6006037f1deffc8a408770ce5.jpg'),
+(2, 'Ferre', 'Alexa2', '7', 6, '<p>2</p>', '/uploads/thumb/alexa15173848244b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295748, '/uploads/20180131\\bda00da3f7532be6707efdb0cd3c8015.jpg'),
+(3, 'Ferre', 'Alexa3', '11', 6, '<p>3</p>', '/uploads/thumb/alexa15173848164b84b15bff6ee5796152495a230e45e3d7e947d9.png', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301107, '/uploads/20180131\\38040534ae8df2c755a69d3170c5f078.png'),
+(4, 'Ferre', '这这这', '11', 6, '<p>4</p>', '/uploads/thumb/alexa15173848074b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301127, '/uploads/20180131\\8379b99b628d8363e5622d1cbbb4f619.jpg'),
+(5, 'Ferre', '文档中心', '3', 6, '<p>湘玉给你溜肥肠</p>', '/uploads/thumb/alexa15178182454b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301441, '/uploads/20180205\\e72ebcffddfe2446dd950b571d6af820.jpg'),
+(6, 'Ferre', 'Freeze', '11', 6, '<p>3</p>', '/uploads/thumb/alexa15173862534b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,可视化工具', 1517386253, '/uploads/20180131\\b81d19d0a1e2d3792859fbdf41f08e33.jpg'),
+(7, 'Ferre', 'Fake', '11', 6, '<p>2</p>', '/uploads/thumb/alexa15173862754b84b15bff6ee5796152495a230e45e3d7e947d9.png', 'About Alexa', 'Alexa,Ferre', 'Charts,图形化,可视化工具', 1517386275, '/uploads/20180131\\07dc777f2b8bdc883409d71e77d5db37.png'),
+(8, 'Ferre', 'this is design1', '9', 6, '<p>KuroKy，全名 Kuro &quot;KuroKy&quot; Salehi Takhasomi，拥有伊朗和德国双重国籍，KuroKy这个id是从他的真实名字演变而来KuroKy在urban英语字典里的意思是：看遍天下黄片的怪人。</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517797298, ''),
+(9, 'Ferre', 'this is design2', '9', 6, '<p>码工，目前国内具有响力的电商装修服务平台，我们是电商装修工具领域的领头羊！</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517797318, ''),
+(10, 'Ferre', 'this is design3', '9', 6, '<p>专注于开发简单实用的电商装修工具，致力于装修模块的不断推陈出新，降低操作使用门槛，不断拓展更广阔的电商应用平台，为广大电商设计师群体及中小卖家的店铺装修提供更多的便利。</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517797336, ''),
+(11, 'Ferre', 'fea1', '8', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and&nbsp;</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517800915, ''),
+(12, 'Ferre', 'fea2', '8', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and&nbsp;</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517800921, ''),
+(13, 'Ferre', 'fea3', '8', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and&nbsp;</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517800929, ''),
+(14, 'Ferre', 'fea4', '8', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and&nbsp;</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517800938, ''),
+(15, 'Ferre', 'fea5', '8', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and&nbsp;</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517800951, ''),
+(16, 'Ferre', 'fea6', '8', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and&nbsp;</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517800961, ''),
+(17, 'Ferre', 'clients1', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题<br/></p>', '/uploads/thumb/alexa15178116744b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811674, '/uploads/20180205\\8ea26b767d4a735a9fa5e89561651462.jpg'),
+(18, 'Ferre', 'clients2', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题</p>', '/uploads/thumb/alexa15178116844b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811684, '/uploads/20180205\\131c7968a30eea015ffa59ddd0264e16.jpg'),
+(19, 'Ferre', 'clients3', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题</p>', '/uploads/thumb/alexa15178116954b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811695, '/uploads/20180205\\4e6f6915f6a5428c1ef8b19675cc5514.jpg'),
+(20, 'Ferre', 'clients4', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811704, ''),
+(21, 'Ferre', 'clients5', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题</p>', '/uploads/thumb/alexa15178117154b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811715, '/uploads/20180205\\9a3f90d01e15f08593a9c28a6e235465.jpg'),
+(22, 'Ferre', 'clients6', '10', 6, '<p>It is a long established fact that a reader will be distracted by the readable contentof a page when looking at its layout.</p>', '/uploads/thumb/alexa15178117254b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811725, '/uploads/20180205\\26f0debd1faec2379182efb22687eb19.jpg'),
+(23, 'Ferre', 'Blog1', '3', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175514b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817551, '/uploads/20180205\\9479d58e6801f9cb6552980198470514.jpg'),
+(24, 'Ferre', 'Blog2', '2', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175654b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817565, '/uploads/20180205\\91662d8efefbdaf673a0932fcc30c3bb.jpg'),
+(25, 'Ferre', 'Blog3', '3', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175794b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817579, '/uploads/20180205\\82b97aece68c93d5d4f54a8d060c03c7.jpg');
 
 -- --------------------------------------------------------
 
@@ -268,6 +289,40 @@ INSERT INTO `heater_category` (`id`, `catename`, `sort`, `pid`) VALUES
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `heater_feedback`
+--
+
+CREATE TABLE `heater_feedback` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `message` text NOT NULL,
+  `ip` varchar(30) NOT NULL,
+  `time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `heater_feedback`
+--
+
+INSERT INTO `heater_feedback` (`id`, `name`, `email`, `message`, `ip`, `time`) VALUES
+(1, '123', '1573646491@qq.com', '', '', 0),
+(2, '123', '1573646491@qq.com', '', '', 0),
+(3, 'dsa', '18408229270@163.com', '', '', 0),
+(4, 'dsa', '1573646491@qq.com', '', '', 0),
+(5, 'sad', '1573646491@qq.com', '', '127.0.0.1', 1517815125),
+(6, 'asd', '1573646491@qq.com', 'ad', '127.0.0.1', 1517815521),
+(7, 'das', '110@qq.com', '你好', '127.0.0.1', 1517815615),
+(8, 'dsa', '18408229270@163.com', 'sda', '127.0.0.1', 1517815869),
+(9, 'fdas', '18408229270@163.com', '1', '127.0.0.1', 1517815908),
+(10, 'da', '18408229270@163.com', '1', '127.0.0.1', 1517815943),
+(11, '213', '1573646491@qq.com', '123', '127.0.0.1', 1517815961),
+(12, '1', '2@qq.com', '213', '127.0.0.1', 1517817477),
+(13, 'sad', '18408229270@163.com', '213', '127.0.0.1', 1517821521);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `heater_link`
 --
 
@@ -302,7 +357,7 @@ CREATE TABLE `heater_system` (
 --
 
 INSERT INTO `heater_system` (`id`, `is_close`, `title`, `keywords`, `desc`, `tag`, `is_mail`, `type`, `record`, `is_update`) VALUES
-(1, 0, 'Alexa 1', '萨法1', 'About Alexa', 'Alexa,Charts,图形化,可视化工具', 1, 0, '蜀ICP备17036283号-2', 0);
+(1, 0, 'Alexa-Heater', 'Heater,基于ECharts的图表制作,Excel图表生成,折线图生成,柱状图', 'Heater是一个基于Echarts的图表制作网站', 'Alexa,Charts,图形化,可视化工具', 1, 0, '蜀ICP备17036283号-2', 0);
 
 -- --------------------------------------------------------
 
@@ -357,6 +412,12 @@ ALTER TABLE `heater_category`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `heater_feedback`
+--
+ALTER TABLE `heater_feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `heater_link`
 --
 ALTER TABLE `heater_link`
@@ -387,12 +448,12 @@ ALTER TABLE `heater_admin`
 -- 使用表AUTO_INCREMENT `heater_alog`
 --
 ALTER TABLE `heater_alog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 --
 -- 使用表AUTO_INCREMENT `heater_article`
 --
 ALTER TABLE `heater_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- 使用表AUTO_INCREMENT `heater_artsee`
 --
@@ -408,6 +469,11 @@ ALTER TABLE `heater_banner`
 --
 ALTER TABLE `heater_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- 使用表AUTO_INCREMENT `heater_feedback`
+--
+ALTER TABLE `heater_feedback`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- 使用表AUTO_INCREMENT `heater_link`
 --
