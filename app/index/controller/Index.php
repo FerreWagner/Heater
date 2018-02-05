@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\index\common\Base;
 use app\index\model\Category as IndexCate;
+use app\index\model\Article as ArticleModel;
 
 class Index extends Base
 {
@@ -10,6 +11,14 @@ class Index extends Base
     {
         $this->banner();
         $this->product();
+        
+        $art = new ArticleModel();
+        $design = $art->design();
+        
+        
+        $this->view->assign([
+            'design' => $design,
+        ]);
         return $this->view->fetch('index');
     }
     
@@ -73,6 +82,7 @@ class Index extends Base
         
         $this->view->assign('product', $product);
     }
+    
     
     
 }
