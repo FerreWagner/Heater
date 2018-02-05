@@ -6,4 +6,6 @@ return [
     'productid'  => 2,
     'catedesign' => 9,      //design的cateid
     'catefeatures' => 8,    //features的cateid
+    'cateclients'  => 10    //clients的cateid
+    
 ];

@@ -23,4 +23,12 @@ class Article extends Model
         return $this->field('id, title, content')->where('cate', config('index_module.catefeatures'))->limit(6)->order('order', 'desc')->select();
     }
     
+    /**
+     * 首页的clients页面
+     */
+    public function clients()
+    {
+        return $this->field('id, title, content, thumb, desc, author')->where('cate', config('index_module.cateclients'))->order('order', 'desc')->select();
+    }
+    
 }

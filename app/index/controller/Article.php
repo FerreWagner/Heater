@@ -16,6 +16,7 @@ class Article extends Base
              ->alias('a')
              ->join('heater_category b', 'a.cate=b.id')
              ->find(input('id'));
+        
         $this->view->assign('art', $art);
         
         return $this->view->fetch('single-page');

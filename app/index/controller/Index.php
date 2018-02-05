@@ -13,13 +13,15 @@ class Index extends Base
         $this->product();
         
         $art    = new ArticleModel();
+        //单页面数据
         $design = $art->design();
         $fea    = $art->features();
-        
+        $client = $art->clients();
         
         $this->view->assign([
             'design' => $design,
             'fea'    => $fea,
+            'client' => $client,
         ]);
         
         return $this->view->fetch('index');

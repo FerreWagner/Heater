@@ -172,7 +172,7 @@
 			<div class="col-md-6 col-md-offset-3">
 				<header class="text-center">
 					<h2 class="section-title">Our <span class="text-theme"> Features</span></h2>
-					<p class="section-subtitle">It is a long established fact that a reader</p>
+					<p class="section-subtitle">我们的特点</p>
 				</header>
 			</div>
 		</div>
@@ -215,8 +215,8 @@
 
 			<div class="col-md-6">
 				<header>
-					<h2 class="section-title">TODO 服务对象(anyone) Our Clients <span class="text-theme">About Us</span></h2>
-					<p class="section-subtitle">It is a long established fact that a reader</p>
+					<h2 class="section-title">Our Clients <span class="text-theme">About Us</span></h2>
+					<p class="section-subtitle">我们服务的对象</p>
 				</header>
 			</div>
 
@@ -231,104 +231,31 @@
 				<div id="testimonials-carousel" class="testimonials-carousel owl-carousel owl-theme">
 
 					<!-- Testimonial -->
+					{volist name="client" id="cli"}
 					<div class="testimonial">
 
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<img src="__STATIC__/home/images/author-image-01.jpg" alt="">
+									<a href="{:url('index/article/singlepage', ['id' => $cli['id']])}" target="_blank"><img src="{$cli.thumb}" width=100 height=100 alt="{$cli.desc}"></a>
 								</div>
 								<div class="media-body media-middle">
 									<p class="text">
-										It is a long established fact that a reader will be distracted by the readable content
-										of a page when looking at its layout.
+										{$cli.content}
 									</p>
 								</div>
 							</div>
 						</div>
 
 						<div class="info">
-							<h4 class="author">Jeremy Scott</h4>
-							<span class="company">Company Name</span>
+							<h4 class="author">{$cli.title}</h4>
+							<span class="company">{$cli.author}</span>
 						</div>
 
 					</div>
+					{/volist}
 					<!-- /Testimonial -->
 
-					<!-- Testimonial -->
-					<div class="testimonial">
-
-						<div class="content">
-							<div class="media">
-								<div class="media-left">
-									<img src="__STATIC__/home/images/author-image-02.jpg" alt="">
-								</div>
-								<div class="media-body media-middle">
-									<p class="text">
-										It is a long established fact that a reader will be distracted by the readable content
-										of a page when looking at its layout.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="info">
-							<h4 class="author">Ann Harper</h4>
-							<span class="company">Company Name</span>
-						</div>
-
-					</div>
-					<!-- /Testimonial -->
-
-					<!-- Testimonial -->
-					<div class="testimonial">
-
-						<div class="content">
-							<div class="media">
-								<div class="media-left">
-									<img src="__STATIC__/home/images/author-image-03.jpg" alt="">
-								</div>
-								<div class="media-body media-middle">
-									<p class="text">
-										It is a long established fact that a reader will be distracted by the readable content
-										of a page when looking at its layout.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="info">
-							<h4 class="author">William Bell</h4>
-							<span class="company">Company Name</span>
-						</div>
-
-					</div>
-					<!-- /Testimonial -->
-
-					<!-- Testimonial -->
-					<div class="testimonial">
-
-						<div class="content">
-							<div class="media">
-								<div class="media-left">
-									<img src="__STATIC__/home/images/author-image-04.jpg" alt="">
-								</div>
-								<div class="media-body media-middle">
-									<p class="text">
-										It is a long established fact that a reader will be distracted by the readable content
-										of a page when looking at its layout.
-									</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="info">
-							<h4 class="author">Gerald Payne</h4>
-							<span class="company">Company Name</span>
-						</div>
-
-					</div>
-					<!-- /Testimonial -->
 
 				</div>
 				<!-- /Testimonials Carousel -->
