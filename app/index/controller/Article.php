@@ -44,13 +44,14 @@ class Article extends Base
                  ->paginate(config('index_module.propage'));
         }
         
+        $my_id = db('category')->field('id, pid')->find($id);
+        
         //catename
         $category = db('category')->field('id, catename')->find($id);
-        
         //只存在一篇或不存在文章 && 还没有子栏目,那么这就是单文章页面
         if (!is_object($art) && count($cate_id) < 2){
             $template = 'single-page';
-        }elseif ($id == config('index_module.productid')){
+        }elseif ($my_id['id'] == config('index_module.productid') || $my_id['pid'] == config('index_module.productid')){
             $template = 'multi-products';
         }else {
             $template = 'multi-blog';
