@@ -80,7 +80,7 @@
                         <li>{$blog.time}</li>
                         <li>by 
                         {volist name="$blog.tag" id="blogtag"}
-                        	<a href="#">{$blogtag}</a></li>
+                        	<a href="{:url('index/article/search', ['tag' => $blogtag])}">{$blogtag}</a></li>
                         	<li>
                         {/volist}
                     </ul>
@@ -103,7 +103,7 @@
                         <div class="col-sm-6">
                             <div class="tags">
                                 {volist name="$blog.keywords" id="blogkey"}
-                                	<a class="tag" href="#">{$blogkey}</a> <!-- TODO -->
+                                	<a class="tag" href="{:url('index/article/search', ['keywords' => $blogkey])}">{$blogkey}</a> <!-- TODO -->
                                 {/volist}
                             </div>
                         </div>
@@ -169,7 +169,7 @@
                     <h4 class="title">Categories</h4>
                     <ul class="sidebar-menu">
                     {volist name="cate" id="cate"}
-                        <li><a href="#">{$cate.catename}</a></li>
+                        <li><a href="{:url('index/index/catesearch', ['id' => $cate['id']])}" target="_blank">{$cate.catename}</a></li>
                     {/volist}
                     </ul>
 
@@ -181,9 +181,9 @@
 
                     <h4 class="title">Search</h4>
                     <div class="search">
-                        <form class="form-inline" method="post">
+                        <form class="form-inline" method="post" action="{:url('index/article/search')}">
                             <div class="form-group">
-                                <input type="email" required="" placeholder="Search Text...*" class="form-control">
+                                <input name="search" required="" placeholder="Search Text...*" class="form-control">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-theme" type="submit"><i class="fa fa-fw fa-search"></i></button>
@@ -273,8 +273,8 @@
 
                     <h4 class="title">Tags</h4>
                     <div class="tags">
-                    	{volist name="basetag" id="basetag1"}
-                        	<a href="#" class="tag">{$basetag1}</a>
+                    	{volist name="basetag" id="blogbasetag"}
+                        	<a href="{:url('index/article/search', ['tag' => $blogbasetag])}" class="tag">{$blogbasetag}</a>
                         {/volist}
                     </div>
 

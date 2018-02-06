@@ -3,7 +3,7 @@
 <head>
 
     <!-- Page title -->
-    <title>{$sys.title}-{$category.catename}</title>
+    <title>{$sys.title}-{if isset($category)}{$category.catename}{else /}Search{/if}</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -37,7 +37,7 @@
             <div class="col-md-4">
                 <ul class="breadcrumb">
                     <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
-                    <li><a href="{:url('index/index/catesearch', ['id' => $category['id']])}">{$category.catename}</a></li>
+                    <li><a href="{if isset($category)}{:url('index/index/catesearch', ['id' => $category['id']])}{else /}{/if}">{if isset($category)}{$category.catename}{else /}Search{/if}</a></li>
                 </ul>
             </div>
             <!-- /Breadcrumbs -->
@@ -58,101 +58,15 @@
 
                 <div class="projects-list">
 
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-01.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-01.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-02.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-02.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-03.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-03.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-04.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-04.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-05.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-05.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-06.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-06.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-07.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-07.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-08.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-08.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-09.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-09.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-10.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-10.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-11.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-11.jpg">
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-sm-3 col-xs-12 project-image">
-                        <a href="__STATIC__/home/images/project-12.jpg" class="image-popup">
-                            <div class="gallery-image">
-                                <img src="__STATIC__/home/images/project-12.jpg">
-                            </div>
-                        </a>
-                    </div>
+                    {volist name="art" id="art"}
+	                    <div class="col-sm-3 col-xs-12 project-image">
+	                        <a href="{:url('index/products/index')}" target="_blank">
+	                            <div class="gallery-image">
+	                                <img src="{$art.thumb}" width=262.5 height=148>
+	                            </div>
+	                        </a>
+	                    </div>
+                    {/volist}
 
                 </div>
 
