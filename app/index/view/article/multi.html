@@ -37,7 +37,7 @@
             <div class="col-md-4">
                 <ul class="breadcrumb">
                     <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
-                    <li><a href="{if isset($category)}{:url('index/index/catesearch', ['id' => $category['id']])}{else /}{/if}">{if isset($category)}{$category.catename}{else /}Search{/if}</a></li>
+                    <li><a href="{if isset($category)}{:url('index/article/catesearch', ['id' => $category['id']])}{else /}{/if}">{if isset($category)}{$category.catename}{else /}Search{/if}</a></li>
                 </ul>
             </div>
             <!-- /Breadcrumbs -->
