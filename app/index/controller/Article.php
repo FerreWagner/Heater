@@ -3,7 +3,7 @@ namespace app\index\controller;
 
 use app\index\common\Base;
 use app\index\model\Article as ArticleModel;
-use app\index\model\Category as IndexCate;
+use app\index\model\Category as CategoryModel;
 
 use think\Request;
 
@@ -23,30 +23,45 @@ class Article extends Base
         $id = input('id');
     
         //多页面和单页面
-        if (!in_array($id, config('index_module.singlepage'))){
-            $cate    = new IndexCate();
-            $cate_id = $cate->getCate($id);
-    
+        $cate    = new CategoryModel();
+        $cate_id = $cate->getCate($id);
+        
+        //没有子分类且文章为1或0
+        if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2){
             $art = db('article')
-                 ->field('a.id,a.thumb,a.desc,b.catename')
+                 ->field('a.*,b.catename')
+                 ->alias('a')
+                 ->join('heater_category b','a.cate=b.id')
+                 ->order('a.order desc')
+                 ->where('cate', $cate_id)->find();
+        }else {
+            $art = db('article')
+                 ->field('a.id,a.thumb,a.desc,a.cate,b.catename')
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
                  ->where('b.id', 'in', $cate_id)
                  ->paginate(config('index_module.propage'));
-        }else {
-            $art = db('article')->where('id', $id)->select();
         }
-    
+        
         //catename
         $category = db('category')->field('id, catename')->find($id);
-    
+        
+        //只存在一篇或不存在文章 && 还没有子栏目,那么这就是单文章页面
+        if (!is_object($art) && count($cate_id) < 2){
+            $template = 'single-page';
+        }elseif ($id == config('index_module.productid')){
+            $template = 'multi-products';
+        }else {
+            $template = 'multi-blog';
+        }
+        
+        
         $this->view->assign([
             'art'      => $art,
             'category' => $category,
         ]);
-    
-        $template = in_array($id, config('index_module.singlepage')) ? 'single' : 'multi';
+        
         return $this->view->fetch($template);
     }
 
@@ -84,8 +99,6 @@ class Article extends Base
     }
     
 
-
-
     /**
      * tag/keywords/desc/title 都可以作为搜索依据
      * @param Request $request
@@ -104,12 +117,12 @@ class Article extends Base
         //对tag/keywords title/desc的查询
         if (in_array(implode('', array_keys($request->param())), ['tag', 'keywords'])){
             $art = db('article')
-                   ->field('id,thumb,desc')
+                   ->field('id,thumb,desc,cate')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
                    ->select();
         }elseif (implode('', array_keys($request->param())) == 'search'){
             $art = db('article')
-                   ->field('id,thumb,desc')
+                   ->field('id,thumb,desc,cate')
                    ->where('title|desc', 'like', '%'.$map.'%')
                    ->select();
         }

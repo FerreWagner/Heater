@@ -37,11 +37,11 @@ class Index extends Base
         $pro_pid = $cate->findCateId();
     
         $product = db('article')
-        ->field('id, title, thumb, keywords, desc')
-        ->where('cate', 'in', $pro_pid)
-        ->order('order', 'desc')
-        ->limit(6)
-        ->select();
+                 ->field('id, title, thumb, keywords, desc')
+                 ->where('cate', 'in', $pro_pid)
+                 ->order('order', 'desc')
+                 ->limit(6)
+                 ->select();
     
         //TODO 1、七牛云图片显示处理 2、七牛云图片长宽处理
     
