@@ -44,18 +44,18 @@
 			<h3 class="title">Latest From <span class="text-theme">Blog</span></h3>
 
 			<!-- Footer Post -->
-				{volist name="blog" id="blog"}
+				{volist name="baseblog" id="baseblog"}
 					<div class="media post">
 						<div class="media-left">
 							<div class="image">
-								<img src="{$blog.thumb}" width=60 height=60 alt="{$blog.desc}">
+								<img src="{$baseblog.thumb}" width=60 height=60 alt="{$baseblog.desc}">
 							</div>
 						</div>
 						<div class="media-body">
 							<p class="text">
-								{$blog.title}
+								{$baseblog.title}
 							</p>
-							<a href="{:url('index/article/blog', ['id' => $blog.id])}" target="_blank">Read more</a>
+							<a href="{:url('index/article/blog', ['id' => $baseblog.id])}" target="_blank">Read more</a>
 						</div>
 					</div>
 				{/volist}
@@ -106,9 +106,9 @@
 
 			<!-- Footer Tags -->
 			<div class="tags">
-			{volist name="$tag" id="tag"}
-				<a href="#" class="tag">{$tag}</a>
-			{/volist}
+				{volist name="basetag" id="footerbasetag"}
+					<a href="#" class="tag">{$footerbasetag}</a>
+				{/volist}
 			</div>
 			<!-- /Footer Tags -->
 

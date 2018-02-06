@@ -32,6 +32,7 @@ class Article extends Base
             'blog' => $blog,
             'cate' => $cate,
         ]);
+        
         return $this->view->fetch('blog');
     }
     

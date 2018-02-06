@@ -8,6 +8,25 @@ class Article extends Model
 {
     
     /**
+     * 模型获取器
+     * @param unknown $time
+     */
+    protected function getTimeAttr($time)
+    {
+        return date('Y-m-d H:i:s', $time);
+    }
+    
+    protected function getTagAttr($tag)
+    {
+        return explode(',', $tag);
+    }
+    
+    protected function getKeywordsAttr($keywords)
+    {
+        return explode(',', $keywords);
+    }
+    
+    /**
      * 首页的design页面
      */
     public function design()
@@ -60,7 +79,7 @@ class Article extends Model
      */
     public function blogData($id)
     {
-        return $this->field('id, cate, order, keywords', true)
+        return $this->field('id, cate, order', true)
                     ->find($id);
     }
     

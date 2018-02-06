@@ -14,15 +14,15 @@ class Base extends Controller
         $this->cate();
         
         //system数据
-        $art    = new ArticleModel();
-        $system = new System();
-        $sys    = $system->getSys();
-        $blog   = $art->footerPost();
-        $tag    = explode(',', $sys['tag']);
+        $art        = new ArticleModel();
+        $system     = new System();
+        $sys        = $system->getSys();
+        $baseblog   = $art->footerPost();
+        $basetag    = explode(',', $sys['tag']);
         $this->view->assign([
-            'sys'    => $sys,
-            'blog'   => $blog,
-            'tag'    => $tag,
+            'sys'      => $sys,
+            'baseblog' => $baseblog,
+            'basetag'  => $basetag,
         ]);
     }
     
