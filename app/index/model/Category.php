@@ -33,10 +33,6 @@ class Category extends Model
         return $arr;
     }
     
-    public function getParId($pid)
-    {
-        return $this->field('id')->where('pid', $pid)->find();
-    }
     
     /**
      * 找到产品栏目的id及其下的子栏目
