@@ -48,6 +48,7 @@ class Article extends Base
         
         //catename
         $category = db('category')->field('id, catename')->find($id);
+        
         //只存在一篇或不存在文章 && 还没有子栏目,那么这就是单文章页面
         if (!is_object($art) && count($cate_id) < 2){
             $template = 'single-page';
@@ -56,7 +57,6 @@ class Article extends Base
         }else {
             $template = 'multi-blog';
         }
-        
         
         $this->view->assign([
             'art'      => $art,
@@ -67,21 +67,21 @@ class Article extends Base
     }
 
     
-    /**
-     * 单页面
-     */
-    public function singlePage()
-    {
-        $art = db('article')
-             ->field('a.id, a.title, a.content, b.catename')
-             ->alias('a')
-             ->join('heater_category b', 'a.cate=b.id')
-             ->find(input('id'));
+//     /**
+//      * 单页面
+//      */
+//     public function singlePage()
+//     {
+//         $art = db('article')
+//              ->field('a.id, a.title, a.content, b.catename')
+//              ->alias('a')
+//              ->join('heater_category b', 'a.cate=b.id')
+//              ->find(input('id'));
         
-        $this->view->assign('art', $art);
+//         $this->view->assign('art', $art);
         
-        return $this->view->fetch('single-page');
-    }
+//         return $this->view->fetch('single-page');
+//     }
     
     /**
      * normal文章数据显示
