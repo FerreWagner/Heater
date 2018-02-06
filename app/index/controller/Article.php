@@ -132,7 +132,7 @@ class Article extends Base
             'art' => $art,
         ]);
         
-        return $this->view->fetch('multi');
+        return $this->view->fetch('multi-blog');
     }
     
 
