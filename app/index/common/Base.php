@@ -18,11 +18,13 @@ class Base extends Controller
         $system     = new System();
         $sys        = $system->getSys();
         $baseblog   = $art->footerPost();
+        $link       = db('link')->field('name, url')->order('sort', 'desc')->select();
         $basetag    = explode(',', $sys['tag']);
         $this->view->assign([
             'sys'      => $sys,
             'baseblog' => $baseblog,
             'basetag'  => $basetag,
+            'link'     => $link,
         ]);
     }
     
