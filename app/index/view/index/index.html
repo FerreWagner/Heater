@@ -104,7 +104,7 @@
 					<p class="description">
 						{$de.content}
 					</p>
-					<a href="{:url('index/article/singlepage', ['id' => $de['id']])}" target="_blank" class="btn btn-theme">Read more</a>
+					<a href="{:url('index/article/blog', ['id' => $de['id']])}" target="_blank" class="btn btn-theme">Read more</a>
 				</div>
 				<!-- /Feature Block -->
 			{/volist}
@@ -189,7 +189,7 @@
 						<span class="{if $i == 1}icon_link_alt{elseif $i == 2 /}icon_easel{elseif $i == 3 /}icon_puzzle{elseif $i == 4 /}icon_download{elseif $i == 5 /}icon_heart_alt{elseif $i == 6 /}icon_cogs{/if} icon"></span>
 					</div>
 					<div class="media-body">
-						<h3 class="title"><a href="{:url('index/article/singlepage', ['id' => $fea.id])}" target="_blank">{$fea.title}</a></h3>
+						<h3 class="title"><a href="{:url('index/article/blog', ['id' => $fea.id])}" target="_blank">{$fea.title}</a></h3>
 						<p class="description">
 							{$fea.content}
 						</p>
@@ -237,7 +237,7 @@
 						<div class="content">
 							<div class="media">
 								<div class="media-left">
-									<a href="{:url('index/article/singlepage', ['id' => $cli['id']])}" target="_blank"><img src="{$cli.thumb}" width=100 height=100 alt="{$cli.desc}"></a>
+									<a href="{:url('index/article/blog', ['id' => $cli['id']])}" target="_blank"><img src="{$cli.thumb}" width=100 height=100 alt="{$cli.desc}"></a>
 								</div>
 								<div class="media-body media-middle">
 									<p class="text">

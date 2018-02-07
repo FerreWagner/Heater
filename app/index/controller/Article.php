@@ -93,7 +93,7 @@ class Article extends Base
         $blog   = $model->blogData(input('id'));
         
         $this->view->assign([
-            'blog'        => $blog,
+            'blog' => $blog,
         ]);
         
         return $this->view->fetch('blog');
