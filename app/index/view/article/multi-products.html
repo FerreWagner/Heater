@@ -58,11 +58,11 @@
 
                 <div class="projects-list">
 
-                    {volist name="art" id="art"}
+                    {volist name="arti" id="art"}
 	                    <div class="col-sm-3 col-xs-12 project-image">
 	                        <a href="{:url('index/products/index', ['id' => $art['id']])}" target="_blank">
 	                            <div class="gallery-image">
-	                                <img src="{$art.thumb}" width=262.5 height=148>
+	                                <img src="{$art.thumb}" width=262.5 height=148 alt="{$art.desc}">
 	                            </div>
 	                        </a>
 	                    </div>
@@ -74,14 +74,7 @@
                 <div class="col-md-12">
                     <ul class="pagination">
                         <li><span>Page 1 of 5</span></li>
-                        <li><a href="#">&laquo;</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">Next</a></li>
-                        <li><a href="#">&raquo;</a></li>
+                        {$arti->render()}
                     </ul>
                 </div>
                 <!-- /Pagination -->
@@ -120,7 +113,7 @@
 	                            </a>
 	                            <a href="#" class="info">
 	                                <h4 class="title">{$bot_pro.title}</h4>
-	                                <p class="description"># {$bot_pro.desc}</p>
+	                                <p class="description"># {$bot_pro.desc|substr=0,30}</p>
 	                            </a>
 	                        </div>
                         {/volist}

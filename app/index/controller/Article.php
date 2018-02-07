@@ -45,14 +45,14 @@ class Article extends Base
         
         //位process || 没有子分类且文章为1或0
         if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2){
-            $art = db('article')
+            $arti = db('article')
                  ->field('a.title, a.content, a.thumb, a.desc,b.catename')
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
                  ->where('cate', $cate_id)->find();
         }else {
-            $art = db('article')
+            $arti = db('article')
                  ->field('a.id,a.thumb,a.desc,a.title,a.tag,a.time,a.cate,a.content,b.catename')
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
@@ -69,7 +69,7 @@ class Article extends Base
         
         if ($id == config('index_module.cateprocess')){
             $template = 'process';
-        }elseif (!is_object($art) && count($cate_id) < 2){
+        }elseif (!is_object($arti) && count($cate_id) < 2){
             $template = 'single-page';
         }elseif (config('index_module.productid') == $my_id['id'] || config('index_module.productid') == $my_id['pid']){    //只存在一篇或不存在文章 && 还没有子栏目,那么这就是单文章页面
             $template = 'multi-products';
@@ -79,18 +79,20 @@ class Article extends Base
         
         //product页面时
         if ($template == 'multi-products'){
+            $cate_id = $cate->getCate(2);   //找到所有products的id和子id
             $bot_pro = db('article')
                      ->field('a.id,a.thumb,a.desc,a.title,a.tag,a.time,a.cate,a.content,b.catename')
                      ->alias('a')
                      ->join('heater_category b','a.cate=b.id')
-                     ->order('a.order desc')
+                     ->order('a.time desc')
                      ->where('b.id', 'in', $cate_id)
-                     ->paginate(8);
+                     ->limit(8)
+                     ->select();
             $this->view->assign('bot_pro', $bot_pro);
         }
         
         $this->view->assign([
-            'art'      => $art,
+            'arti'      => $arti,
             'category' => $category,
         ]);
         

@@ -14,7 +14,7 @@ class Category extends Model
      */
     public function getCate($id)
     {
-        static $arr = [];
+        $arr = [];
         
         //为子级栏目的处理
         $get = $this->field('id, pid')->find($id);
@@ -40,7 +40,7 @@ class Category extends Model
      */
     public function findCateId()
     {
-        static $cate_pid = [];
+        $cate_pid = [];
         
         $cateres = $this->field('id, pid')->select();
         foreach ($cateres as $k => $v){
