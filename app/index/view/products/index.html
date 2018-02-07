@@ -12,8 +12,10 @@
 
     <!-- Favicon -->
 	<link rel="shortcut icon" href="/favicon.ico">
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 
     <!-- Style -->
+	<script src="https://cdn.bootcss.com/echarts/4.0.2/echarts-en.common.js"></script>
 	<link rel="stylesheet" href="__STATIC__/home/css/theme.css">
 
 </head>
@@ -31,7 +33,7 @@
             <!-- Page Title -->
             <div class="col-md-8">
                 <h1 class="title">{$pro.catename} - {$pro.title}</h1>
-                <div class="subtitle">{$pro.desc}</div>
+                <div class="subtitle">{$pro.desc|substr=0,60}</div>
             </div>
             <!-- /Page Title -->
 
@@ -65,33 +67,9 @@
                     <div class="project-carousel owl-carousel owl-theme">
 
                         <div class="item">
-                            <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
+                            <a href="{$pro.thumb}" class="image-popup">
                                 <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/home-02.jpg">
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a href="__STATIC__/home/images/home.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/home.jpg">
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/home-02.jpg">
-                                </div>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a href="__STATIC__/home/images/home.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/home.jpg">
+                                    <img src="{$pro.thumb}" width=750 width=422 alt="{$pro.desc}">
                                 </div>
                             </a>
                         </div>
@@ -107,27 +85,30 @@
 
                     <h3 class="title">Project Description</h3>
                     <p>
-                        It is a long established fact that a reader will be distracted by the readable content of a page
-                        when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                        distribution of letters, as opposed to using 'Content here, content here', making it look like
-                        readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their
-                        default model text.
+                        {$pro.desc}
                     </p>
 
                     <h3 class="title">Project Details</h3>
                     <ul class="details">
-                        <li><span>Client: </span> John Joseph Doe</li>
-                        <li><span>Date: </span> March 28, 2016</li>
-                        <li><span>Tags: </span> Photography, Illustration</li>
+                        <li><span>Author: </span> {$pro.author}</li>
+                        <li><span>Date: </span> {$pro.time|date="Y-M-d H:i:s", ###}</li>
+                        <li><span>Tags: </span> {$pro.tag}</li>
                     </ul>
 
 
                     <ul class="social-share">
-                        <li><a href="#"><i class="fa fa-fw fa-facebook"></i> 3</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-twitter"></i> 2</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-google-plus"></i> 4</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-dribbble"></i> 8</a></li>
-                        <li><a href="#"><i class="fa fa-fw fa-pinterest"></i> 19</a></li>
+						<!-- JiaThis Button BEGIN -->
+						<div class="jiathis_style_24x24" style="margin-top: -8px;">
+							<a class="jiathis_button_qzone"></a>
+							<a class="jiathis_button_tsina"></a>
+							<a class="jiathis_button_tqq"></a>
+							<a class="jiathis_button_weixin"></a>
+							<a class="jiathis_button_renren"></a>
+							<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+							<a class="jiathis_counter_style"></a>
+						</div>
+						<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+						<!-- JiaThis Button END -->
                     </ul>
 
                 </div>
@@ -138,6 +119,21 @@
 
         </div>
     </section>
+	<section style="background: #fbfbfb;border-bottom: solid 2px #996de9">
+        <div class="container">
+
+            <!-- Project -->
+            <div class="row">
+
+                <!-- Project Images -->
+                <div class="col-md-8">
+                {$pro.content}
+                
+                </div>
+               </div>
+              </div>
+              </section>
+
 
     <section class="section-small mt bg-light-gray">
         <div class="container">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-02-05 10:59:12
+-- Generation Time: 2018-02-07 10:41:56
 -- 服务器版本： 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -44,7 +44,7 @@ CREATE TABLE `heater_admin` (
 
 INSERT INTO `heater_admin` (`id`, `username`, `password`, `count`, `email`, `role`, `switch`, `update_time`, `create_time`) VALUES
 (1, 'ferre', '6226514790b1175cf90bca075f3887a6c54ef58e', 62, '1573646491@qq.com', 0, 'true', 1517381386, 1513926388),
-(3, 'root', '6226514790b1175cf90bca075f3887a6c54ef58e', 11, '1573646491@qq.com', 0, 'true', 1516847736, 1514172018);
+(3, 'root', '6226514790b1175cf90bca075f3887a6c54ef58e', 12, '1573646491@qq.com', 0, 'true', 1517970064, 1514172018);
 
 -- --------------------------------------------------------
 
@@ -161,7 +161,9 @@ INSERT INTO `heater_alog` (`id`, `type`, `name`, `ip`, `time`) VALUES
 (95, 1, 'ferre', '127.0.0.1', 1517197202),
 (96, 1, 'ferre', '127.0.0.1', 1517278880),
 (97, 1, 'ferre', '127.0.0.1', 1517279895),
-(98, 1, 'ferre', '127.0.0.1', 1517381385);
+(98, 1, 'ferre', '127.0.0.1', 1517381385),
+(99, 0, 'root', '127.0.0.1', 1517970059),
+(100, 1, 'root', '127.0.0.1', 1517970064);
 
 -- --------------------------------------------------------
 
@@ -189,7 +191,7 @@ CREATE TABLE `heater_article` (
 --
 
 INSERT INTO `heater_article` (`id`, `author`, `title`, `cate`, `order`, `content`, `thumb`, `desc`, `keywords`, `tag`, `time`, `pic`) VALUES
-(1, 'Ferre', 'Alexa', '7', 6, '<p>1</p>', '/uploads/thumb/alexa15173848344b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295326, '/uploads/20180131\\846769c6006037f1deffc8a408770ce5.jpg'),
+(1, 'Ferre', 'Alexa', '7', 6, '<p>1</p>', '/uploads/thumb/alexa15173848344b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', '在文本框中输入文字，会自动统计字数。算字数时1个汉字（包括韩文、日文）算为2个英文字节，换行算1个英文字符。本计算字数可用于统计中文汉字、韩文、日文、法文、英语字符、阿拉伯数字、标点符号以及各种特殊符号的字符数，即时显示打字个数。你在写短信、文章、小说、论文、报告、作文时，都可以使用本计算器测字数，不用自己一个字一个字的数字数。', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295326, '/uploads/20180131\\846769c6006037f1deffc8a408770ce5.jpg'),
 (2, 'Ferre', 'Alexa2', '7', 6, '<p>2</p>', '/uploads/thumb/alexa15173848244b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517295748, '/uploads/20180131\\bda00da3f7532be6707efdb0cd3c8015.jpg'),
 (3, 'Ferre', 'Alexa3', '11', 6, '<p>3</p>', '/uploads/thumb/alexa15173848164b84b15bff6ee5796152495a230e45e3d7e947d9.png', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301107, '/uploads/20180131\\38040534ae8df2c755a69d3170c5f078.png'),
 (4, 'Ferre', '这这这', '11', 6, '<p>4</p>', '/uploads/thumb/alexa15173848074b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517301127, '/uploads/20180131\\8379b99b628d8363e5622d1cbbb4f619.jpg'),
@@ -211,9 +213,17 @@ INSERT INTO `heater_article` (`id`, `author`, `title`, `cate`, `order`, `content
 (20, 'Ferre', 'clients4', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811704, ''),
 (21, 'Ferre', 'clients5', '10', 6, '<p>今天早上，成都高新区天府新谷有人跳楼。我只想说快过年了，你都不能让家人安心过年，一点都不负责任啊，现在法治社会，要学会遇事靠法，拿起法律武器解决问题</p>', '/uploads/thumb/alexa15178117154b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811715, '/uploads/20180205\\9a3f90d01e15f08593a9c28a6e235465.jpg'),
 (22, 'Ferre', 'clients6', '10', 6, '<p>It is a long established fact that a reader will be distracted by the readable contentof a page when looking at its layout.</p>', '/uploads/thumb/alexa15178117254b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517811725, '/uploads/20180205\\26f0debd1faec2379182efb22687eb19.jpg'),
-(23, 'Ferre', 'Blog1', '3', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175514b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817551, '/uploads/20180205\\9479d58e6801f9cb6552980198470514.jpg'),
+(23, 'Ferre', 'Blog1', '3', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175514b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', '图形化,可视化工具', 1517817551, '/uploads/20180205\\9479d58e6801f9cb6552980198470514.jpg'),
 (24, 'Ferre', 'Blog2', '2', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175654b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817565, '/uploads/20180205\\91662d8efefbdaf673a0932fcc30c3bb.jpg'),
-(25, 'Ferre', 'Blog3', '3', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175794b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817579, '/uploads/20180205\\82b97aece68c93d5d4f54a8d060c03c7.jpg');
+(25, 'Ferre', 'Blog3', '3', 6, '<p>Instantly translate your text from one language to another with Bing Translator. Powered by Microsoft Translator, the site provides free translation to and</p>', '/uploads/thumb/alexa15178175794b84b15bff6ee5796152495a230e45e3d7e947d9.jpg', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517817579, '/uploads/20180205\\82b97aece68c93d5d4f54a8d060c03c7.jpg'),
+(26, 'Ferre', 'contact', '5', 6, '<p>asd</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517905589, ''),
+(27, 'Ferre', '服务内容', '6', 5, '<p>dsa</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517905601, ''),
+(28, 'Ferre', '​2018-02-07', '12', 6, '<p>基本完成除三方登录和产品外的所有功能</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517985167, ''),
+(29, 'Ferre', '2018-01-17', '12', 4, '<p>开始Heater的需求分析</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517985363, ''),
+(30, 'Ferre', '2018-01-10', '12', 2, '<p>分析Heater面临的问题</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517985414, ''),
+(31, 'Ferre', '2018-01-15', '12', 3, '<p>业余时间对Heater编码</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517985476, ''),
+(32, 'Ferre', '2017-12-20', '12', 1, '<p>对Heater项目的定义和规划</p>', '', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517985547, ''),
+(33, 'Ferre', 'Freke', '7', 12, '<style>.upload{\r\n    padding: 4px 10px;\r\n    height: 20px;\r\n    line-height: 20px;\r\n    position: relative;\r\n    border: 1px solid #999;\r\n    text-decoration: none;\r\n    color: #fff;\r\n	background: #996de9;\r\n	border-radius: 5px;\r\n}\r\n.change{\r\n    position: absolute;\r\n    overflow: hidden;\r\n    right: 0;\r\n    top: 0;\r\n    opacity: 0;\r\n}\r\n.upload:hover{background: #fff;color: #996de9;border-color: #996de9;}</style><form action=\"\" method=\"post\" enctype=\"multipart/form-data\"><a href=\"javascript:;\" class=\"upload\">选择文件<input class=\"change button\" type=\"file\" name=\"heater\"/></a><br/><button type=\"submit\" class=\"btn btn-theme\" style=\"margin-top: 20px;margin-bottom: 50px;\"><em class=\"fa fa-fw fa-paper-plane-o\"></em>解析文件</button></form>', '/uploads/thumb/alexa15179915914b84b15bff6ee5796152495a230e45e3d7e947d9.png', 'About Alexa', 'Alexa,Ferre', 'Alexa,Charts,图形化,可视化工具', 1517991546, '/uploads/20180207\\0d33ac343eb0f8e82bf2f6e2e5469288.png');
 
 -- --------------------------------------------------------
 
@@ -284,7 +294,8 @@ INSERT INTO `heater_category` (`id`, `catename`, `sort`, `pid`) VALUES
 (8, 'FEATURES', 0, 4),
 (9, 'DESIGN', 0, 4),
 (10, 'CLIENTS', 0, 4),
-(11, '折线图', 0, 2);
+(11, '折线图', 0, 2),
+(12, '进程', 12, 4);
 
 -- --------------------------------------------------------
 
@@ -318,7 +329,8 @@ INSERT INTO `heater_feedback` (`id`, `name`, `email`, `message`, `ip`, `time`) V
 (10, 'da', '18408229270@163.com', '1', '127.0.0.1', 1517815943),
 (11, '213', '1573646491@qq.com', '123', '127.0.0.1', 1517815961),
 (12, '1', '2@qq.com', '213', '127.0.0.1', 1517817477),
-(13, 'sad', '18408229270@163.com', '213', '127.0.0.1', 1517821521);
+(13, 'sad', '18408229270@163.com', '213', '127.0.0.1', 1517821521),
+(14, 'sad', '1573646491@qq.com', '打', '127.0.0.1', 1517990535);
 
 -- --------------------------------------------------------
 
@@ -332,6 +344,16 @@ CREATE TABLE `heater_link` (
   `url` text NOT NULL,
   `sort` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
+--
+-- 转存表中的数据 `heater_link`
+--
+
+INSERT INTO `heater_link` (`id`, `name`, `url`, `sort`) VALUES
+(1, 'Alexa', 'http://alexa.ferre.top/', '3'),
+(2, 'Alexa-Admin', 'http://admin.ferre.top/admin', '2'),
+(3, '百度', 'https://www.baidu.com', '6'),
+(4, '谷歌', 'https://www.google.com.hk/', '8');
 
 -- --------------------------------------------------------
 
@@ -448,12 +470,12 @@ ALTER TABLE `heater_admin`
 -- 使用表AUTO_INCREMENT `heater_alog`
 --
 ALTER TABLE `heater_alog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 --
 -- 使用表AUTO_INCREMENT `heater_article`
 --
 ALTER TABLE `heater_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- 使用表AUTO_INCREMENT `heater_artsee`
 --
@@ -468,17 +490,17 @@ ALTER TABLE `heater_banner`
 -- 使用表AUTO_INCREMENT `heater_category`
 --
 ALTER TABLE `heater_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- 使用表AUTO_INCREMENT `heater_feedback`
 --
 ALTER TABLE `heater_feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- 使用表AUTO_INCREMENT `heater_link`
 --
 ALTER TABLE `heater_link`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- 使用表AUTO_INCREMENT `heater_system`
 --
