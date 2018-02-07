@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page title -->
+    <title>{$sys.title}</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.png">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="__STATIC__/home/css/theme.css">
+
+</head>
+<body>
+
+<!-- Header -->
+{include file="header/header" /}
+<!-- /Header -->
+
+<!-- Main -->
+<main class="main-container">
+
+<!-- Section: Best Features -->
+<section id="beast-features" class="section">
+	<div class="container">
+
+		<!-- Section Header -->
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<header class="text-center">
+					<h2 class="section-title"><span class="text-theme">Ferre</span> 最好的时光 in <span class="text-theme">Heater</span></h2>
+					<p class="section-subtitle">Thank you for your reading</p>
+				</header>
+			</div>
+		</div>
+		<!-- /Section Header -->
+
+		<!-- Section Content -->
+		<div class="row section-content">
+
+
+			<div class="col-md-6">
+
+				<h3>The time line of the <span class="text-theme">Heater</span></h3>
+
+				<ul class="list">
+					{volist name="art" id="art"}
+						<li>
+							<h4 class="title bounceInUp wow" data-wow-duration="1.3s" data-wow-delay="{$i*0.2}s">{$art.title}</h4>
+							<p class="description fadeIn wow" data-wow-duration="1.3s" data-wow-delay="{$i*0.2}s">
+								{$art.content}
+							</p>
+						</li>
+					{/volist}
+				</ul>
+
+			</div>
+
+			<!-- Section Image -->
+			<div class="col-md-6 hidden-sm hidden-xs bounceInRight wow" data-wow-duration="1.3s">
+				<img src="__STATIC__/home/images/devices.png" class="img-responsive" alt="">
+			</div>
+			<!-- /Section Image -->
+
+		</div>
+		<!-- /Section Content -->
+
+	</div>
+</section>
+<!-- /Section: Best Features -->
+
+</main>
+<!-- /Main -->
+
+<!-- Footer -->
+{include file="footer/footer" /}
+<!-- /Footer -->
+
+<!-- Scroll To Top -->
+<div id="scroll-to-top" class="scroll-to-top">
+    <i class="icon fa fa-angle-up"></i>
+</div>
+<!-- /Scroll To Top -->
+
+<!-- Modal: Result Message -->
+<!-- /Modal: Result Message -->
+
+<!-- SCRIPTS -->
+{include file="public/base-js" /}
+<!-- /SCRIPTS -->
+
+<!-- TODO: Remove this block, Demo-version only -->
+<!-- Styleswitcher -->
+<!-- /Styleswitcher -->
+</body>
+</html>

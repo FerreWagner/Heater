@@ -43,10 +43,10 @@ class Article extends Base
         $cate    = new CategoryModel();
         $cate_id = $cate->getCate($id);
         
-        //没有子分类且文章为1或0
+        //位process || 没有子分类且文章为1或0
         if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2){
             $art = db('article')
-                 ->field('a.*,b.catename')
+                 ->field('a.title, a.content, a.thumb, a.desc,b.catename')
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
@@ -66,14 +66,17 @@ class Article extends Base
         //catename
         $category = db('category')->field('id, catename')->find($id);
         
-        //只存在一篇或不存在文章 && 还没有子栏目,那么这就是单文章页面
-        if (!is_object($art) && count($cate_id) < 2){
+        
+        if ($id == config('index_module.cateprocess')){
+            $template = 'process';
+        }elseif (!is_object($art) && count($cate_id) < 2){
             $template = 'single-page';
-        }elseif ($my_id['id'] == config('index_module.productid') || $my_id['pid'] == config('index_module.productid')){
+        }elseif (config('index_module.productid') == $my_id['id'] || config('index_module.productid') == $my_id['pid']){    //只存在一篇或不存在文章 && 还没有子栏目,那么这就是单文章页面
             $template = 'multi-products';
         }else {
             $template = 'multi-blog';
         }
+        
         
         $this->view->assign([
             'art'      => $art,
