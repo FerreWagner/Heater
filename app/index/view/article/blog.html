@@ -201,21 +201,23 @@
                     <ul class="latest-posts">
 
                         <!-- Post -->
+                        {volist name="right_posts" id="rp"}
                         <li>
                             <div class="media post">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-01.jpg">
+                                        <img src="{$rp.thumb}" width=60 height=60 alt="{$rp.desc}">
                                     </div>
                                 </div>
                                 <div class="media-body">
                                     <p class="text">
-                                        It is a long established fact that a reader will be distracted.
+                                        <?php echo strlen($rp['content']) > 63 ? substr($rp['content'], 0, 60) : $rp['content']?>
                                     </p>
-                                    <a href="#">Read more <i class="fa fa-angle-double-right"></i></a>
+                                    <a href="{:url('index/article/blog', ['id' => $rp.id])}" target="_blank">Read more <i class="fa fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                         </li>
+                        {/volist}
                         <!-- /Post -->
 
                         <!-- Post -->

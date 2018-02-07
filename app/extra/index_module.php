@@ -7,4 +7,5 @@ return [
     'catefeatures' => 8,
     'cateclients'  => 10,
     'cateblog'     => 3,
+    'searchpage'       => 6,
 ];

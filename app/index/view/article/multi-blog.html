@@ -67,9 +67,9 @@
                         <!-- Post Image -->
                         {if $i == 1}
 	                        <div class="image">
-	                            <a href="__STATIC__/home/images/home-02.jpg" class="image-popup">
+	                            <a href="{:url('index/article/blog', ['id' => $art['id']])}" target="_blank">
 	                                <div class="gallery-image">
-	                                    <img src="__STATIC__/home/images/home-02.jpg">
+	                                    <img src="{$art.thumb}" alt="{$art.desc}" width=847.5 height=477>
 	                                </div>
 	                            </a>
 	                        </div>
@@ -77,33 +77,32 @@
                         <!-- /Post Image -->
 
                         <!-- Post Title -->
-                        <h2 class="title">Single Post With Image</h2>
+                        <h2 class="title">{$art.title}</h2>
                         <!-- /Post Title -->
 
                         <!-- Post Metadata -->
                         <ul class="list-inline meta">
-                            <li>January, 17, 2016</li>
-                            <li>by <a href="#">profart</a></li>
-                            <li><a href="#">Photography</a>, <a href="#">Illustration</a></li>
-                            <li><a href="#">12 Comments</a></li>
+                            <li>{$art.time|date="Y-m-d H:i:s", ###}</li>
+                            	<?php $art['tag'] = explode(',',$art['tag']);?>
+	                            <li>by 
+	                            {volist name="$art.tag" id="arttag"}
+	                            	<a href="{:url('index/article/search', ['tag' => $arttag])}">{$arttag}</a></li><li>
+	                            {/volist}
+	                            </li>
                         </ul>
                         <!-- /Post Metadata -->
-
+                        
                         <!-- Post Content -->
                         <div class="content">
                             <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a
-                                page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                                here', making it look like readable English. Many desktop publishing packages and web page
-                                editors now use Lorem Ipsum as their default model text.
+                                <?php echo strlen($art['content']) > 328 ? substr($art['content'], 0, 328) : $art['content'];?>
                             </p>
                         </div>
                         <!-- /Post Content -->
 
                         <!-- Read More Button -->
                         <div>
-                            <a href="{:url('index/article/blog', ['id' => $art['id']])}" class="btn btn-theme">Read More <i class="fa fa-fw fa-angle-double-right"></i></a>
+                            <a href="{:url('index/article/blog', ['id' => $art['id']])}" target="_blank" class="btn btn-theme">Read More <i class="fa fa-fw fa-angle-double-right"></i></a>
                         </div>
                         <!-- /Read More Button -->
 
@@ -140,11 +139,9 @@
 
                     <h4 class="title">Categories</h4>
                     <ul class="sidebar-menu">
-                        <li><a href="#">Photography</a></li>
-                        <li><a href="#">Illustration</a></li>
-                        <li><a href="#">Web-Design</a></li>
-                        <li><a href="#">Art</a></li>
-                        <li><a href="#">Coding</a></li>
+                    {volist name="cate" id="cate"}
+                        <li><a href="{:url('index/article/catesearch', ['id' => $cate['id']])}" target="_blank">{$cate.catename}</a></li>
+                    {/volist}
                     </ul>
 
                 </div>
@@ -155,9 +152,9 @@
 
                     <h4 class="title">Search</h4>
                     <div class="search">
-                        <form class="form-inline" method="post">
+                        <form class="form-inline" method="post" action="{:url('index/article/search')}">
                             <div class="form-group">
-                                <input type="email" required="" placeholder="Search Text...*" class="form-control">
+                                <input name="search" required="" placeholder="Search Text...*" class="form-control">
                             </div>
                             <div class="form-group">
                                 <button class="btn btn-theme" type="submit"><i class="fa fa-fw fa-search"></i></button>
@@ -175,58 +172,25 @@
                     <ul class="latest-posts">
 
                         <!-- Post -->
+                        {volist name="right_posts" id="rp"}
                         <li>
                             <div class="media post">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-01.jpg">
+                                        <img src="{$rp.thumb}" width=60 height=60 alt="{$rp.desc}">
                                     </div>
                                 </div>
                                 <div class="media-body">
                                     <p class="text">
-                                        It is a long established fact that a reader will be distracted.
+                                        <?php echo strlen($rp['content']) > 63 ? substr($rp['content'], 0, 60) : $rp['content']?>
                                     </p>
-                                    <a href="#">Read more <i class="fa fa-angle-double-right"></i></a>
+                                    <a href="{:url('index/article/blog', ['id' => $rp.id])}" target="_blank">Read more <i class="fa fa-angle-double-right"></i></a>
                                 </div>
                             </div>
                         </li>
+                        {/volist}
                         <!-- /Post -->
 
-                        <!-- Post -->
-                        <li>
-                            <div class="media post">
-                                <div class="media-left">
-                                    <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-02.jpg">
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <p class="text">
-                                        It is a long established fact that a reader will be distracted.
-                                    </p>
-                                    <a href="#">Read more <i class="fa fa-angle-double-right"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- /Post -->
-
-                        <!-- Post -->
-                        <li>
-                            <div class="media post">
-                                <div class="media-left">
-                                    <div class="image">
-                                        <img src="__STATIC__/home/images/last-post-03.jpg">
-                                    </div>
-                                </div>
-                                <div class="media-body">
-                                    <p class="text">
-                                        It is a long established fact that a reader will be distracted.
-                                    </p>
-                                    <a href="#">Read more <i class="fa fa-angle-double-right"></i></a>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- /Post -->
 
                     </ul>
                 </div>
@@ -247,13 +211,9 @@
 
                     <h4 class="title">Tags</h4>
                     <div class="tags">
-                        <a href="#" class="tag">web</a>
-                        <a href="#" class="tag">design</a>
-                        <a href="#" class="tag">clean</a>
-                        <a href="#" class="tag">minimal</a>
-                        <a href="#" class="tag">pixel perfect</a>
-                        <a href="#" class="tag">blog</a>
-                        <a href="#" class="tag">gallery</a>
+		   				{volist name="basetag" id="righttag"}
+							<a href="{:url('index/article/search', ['tag' => $righttag])}" target="_blank" class="tag">{$righttag}</a>
+						{/volist}
                     </div>
 
                 </div>
@@ -321,144 +281,7 @@
 <!-- /Main -->
 
 <!-- Footer -->
-<footer class="footer section-small">
-    <div class="container">
-        <div class="row">
-
-            <!-- Footer Column -->
-            <div class="col-md-3 col-xs-6 footer-col">
-
-                <!-- Footer Logo -->
-                <div class="logo">
-                    <img src="__STATIC__/home/images/logo.png">
-                </div>
-                <!-- /Footer Logo -->
-
-                <!-- Footer Text -->
-                <p class="text">
-                    It is a long established fact that a reader will be distracted by the readable.
-                </p>
-                <!-- /Footer Text -->
-
-                <hr>
-
-                <!-- Copyright -->
-                <p class="copyright">
-                    Copyright &copy; 2015-2016 <strong>Valery Timofeev</strong>
-                </p>
-                <!-- /Copyright -->
-
-                <!-- Footer Social -->
-                <ul class="social-inline">
-                    <li><a href="#" class="fa fa-fw fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-fw fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-fw fa-google-plus"></a></li>
-                    <li><a href="#" class="fa fa-fw fa-dribbble"></a></li>
-                    <li><a href="#" class="fa fa-fw fa-pinterest"></a></li>
-                </ul>
-                <!-- /Footer Social -->
-
-            </div>
-            <!-- /Footer Column -->
-
-            <!-- Footer Column -->
-            <div class="col-md-3 col-xs-6 footer-col">
-
-                <h3 class="title">Latest From <span class="text-theme">Blog</span></h3>
-
-                <!-- Footer Post -->
-                <div class="media post">
-                    <div class="media-left">
-                        <div class="image">
-                            <img src="__STATIC__/home/images/last-post-01.jpg">
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <p class="text">
-                            It is a long established fact that a reader will be distracted.
-                        </p>
-                        <a href="#">Read more</a>
-                    </div>
-                </div>
-                <!-- /Footer Post -->
-
-                <!-- Footer Post -->
-                <div class="media post">
-                    <div class="media-left">
-                        <div class="image">
-                            <img src="__STATIC__/home/images/last-post-02.jpg">
-                        </div>
-                    </div>
-                    <div class="media-body">
-                        <p class="text">
-                            It is a long established fact that a reader will be distracted.
-                        </p>
-                        <a href="#">Read more</a>
-                    </div>
-                </div>
-                <!-- /Footer Post -->
-
-            </div>
-            <!-- /Footer Column -->
-
-            <!-- Footer Column -->
-            <div class="col-md-2 col-xs-6 footer-col">
-
-                <h3 class="title">Site Menu</h3>
-
-                <!-- Footer Menu -->
-                <ul class="menu">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Features</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <!-- /Footer Menu -->
-
-            </div>
-            <!-- /Footer Column -->
-
-            <!-- Footer Column -->
-            <div class="col-md-4 col-xs-6 footer-col">
-
-                <h3 class="title">Signup to <span class="text-theme">Newsletter</span></h3>
-
-                <!-- Footer Signup Form -->
-                <div class="signup-form">
-                    <form method="post" class="form-inline">
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your E-mail...*" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-theme"><i class="fa fa-fw fa-envelope"></i></button>
-                        </div>
-                    </form>
-
-                </div>
-                <!-- /Footer Signup Form -->
-
-                <hr>
-
-                <!-- Footer Tags -->
-                <div class="tags">
-                    <a href="#" class="tag">web</a>
-                    <a href="#" class="tag">design</a>
-                    <a href="#" class="tag">clean</a>
-                    <a href="#" class="tag">minimal</a>
-                    <a href="#" class="tag">pixel perfect</a>
-                    <a href="#" class="tag">blog</a>
-                    <a href="#" class="tag">gallery</a>
-                </div>
-                <!-- /Footer Tags -->
-
-            </div>
-            <!-- /Footer Column -->
-
-        </div>
-    </div>
-</footer>
+<{include file="footer/footer" /}
 <!-- /Footer -->
 
 <!-- Scroll To Top -->

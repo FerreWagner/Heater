@@ -13,6 +13,23 @@ class Article extends Base
      * TIP:存放除products外所有的文章分类
      */
     
+    public function _initialize()
+    {
+        parent::_initialize();
+        //右侧cate显示
+        $cate        = db('category')->field('id, catename')->where('pid != 0')->select();
+        
+        $art_model   = new ArticleModel();
+        $right_posts = $art_model->field('id, thumb, content, desc')
+                                 ->where('cate', '<>', config('index_module.productid'))
+                                 ->order('time', 'desc')
+                                 ->limit(3)
+                                 ->select();
+        $this->view->assign([
+            'cate'        => $cate,
+            'right_posts' => $right_posts,
+        ]);
+    }
     
     /**
      * cate搜索页
@@ -36,7 +53,7 @@ class Article extends Base
                  ->where('cate', $cate_id)->find();
         }else {
             $art = db('article')
-                 ->field('a.id,a.thumb,a.desc,a.cate,b.catename')
+                 ->field('a.id,a.thumb,a.desc,a.title,a.tag,a.time,a.cate,a.content,b.catename')
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
@@ -44,8 +61,8 @@ class Article extends Base
                  ->paginate(config('index_module.propage'));
         }
         
-        $my_id = db('category')->field('id, pid')->find($id);
-        
+        //当前分类的id和pid
+        $my_id    = db('category')->field('id, pid')->find($id);
         //catename
         $category = db('category')->field('id, catename')->find($id);
         
@@ -67,33 +84,16 @@ class Article extends Base
     }
 
     
-//     /**
-//      * 单页面
-//      */
-//     public function singlePage()
-//     {
-//         $art = db('article')
-//              ->field('a.id, a.title, a.content, b.catename')
-//              ->alias('a')
-//              ->join('heater_category b', 'a.cate=b.id')
-//              ->find(input('id'));
-        
-//         $this->view->assign('art', $art);
-        
-//         return $this->view->fetch('single-page');
-//     }
-    
     /**
      * normal文章数据显示
      */
     public function blog()
     {
-        $model = new ArticleModel();
-        $blog  = $model->blogData(input('id'));
-        $cate  = db('category')->field('id, catename')->where('pid != 0')->select();
+        $model  = new ArticleModel();
+        $blog   = $model->blogData(input('id'));
+        
         $this->view->assign([
-            'blog' => $blog,
-            'cate' => $cate,
+            'blog'        => $blog,
         ]);
         
         return $this->view->fetch('blog');
@@ -118,18 +118,18 @@ class Article extends Base
         //对tag/keywords title/desc的查询
         if (in_array(implode('', array_keys($request->param())), ['tag', 'keywords'])){
             $art = db('article')
-                   ->field('id,thumb,desc,cate')
+                   ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
-                   ->select();
+                   ->paginate(config('index_module.searchpage'));
         }elseif (implode('', array_keys($request->param())) == 'search'){
             $art = db('article')
-                   ->field('id,thumb,desc,cate')
+                   ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
-                   ->select();
+                   ->paginate(config('index_module.searchpage'));
         }
         
         $this->view->assign([
-            'art' => $art,
+            'art'  => $art,
         ]);
         
         return $this->view->fetch('multi-blog');
