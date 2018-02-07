@@ -60,7 +60,7 @@
 
                     {volist name="art" id="art"}
 	                    <div class="col-sm-3 col-xs-12 project-image">
-	                        <a href="{:url('index/products/index')}" target="_blank">
+	                        <a href="{:url('index/products/index', ['id' => $art['id']])}" target="_blank">
 	                            <div class="gallery-image">
 	                                <img src="{$art.thumb}" width=262.5 height=148>
 	                            </div>
@@ -111,65 +111,20 @@
                 <div class="col-md-12">
                     <div class="projects-carousel owl-carousel owl-theme">
 
-                        <div class="item recent-project">
-                            <a href="__STATIC__/home/images/project-01.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/project-01.jpg">
-                                </div>
-                            </a>
-                            <a href="#" class="info">
-                                <h4 class="title">Buildings</h4>
-                                <p class="description"># web-design</p>
-                            </a>
-                        </div>
+                        {volist name="bot_pro" id="bot_pro"}
+	                        <div class="item recent-project">
+	                            <a href="{:url('index/products/index', ['id' => $bot_pro['id']])}" target="_blank">
+	                                <div class="gallery-image">
+	                                    <img src="{$bot_pro.thumb}" width=275 height=155>
+	                                </div>
+	                            </a>
+	                            <a href="#" class="info">
+	                                <h4 class="title">{$bot_pro.title}</h4>
+	                                <p class="description"># {$bot_pro.desc}</p>
+	                            </a>
+	                        </div>
+                        {/volist}
 
-                        <div class="item recent-project">
-                            <a href="__STATIC__/home/images/project-02.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/project-02.jpg">
-                                </div>
-                            </a>
-                            <a href="#" class="info">
-                                <h4 class="title">Nautical Nonsense</h4>
-                                <p class="description"># illustration</p>
-                            </a>
-                        </div>
-
-                        <div class="item recent-project">
-                            <a href="__STATIC__/home/images/project-03.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/project-03.jpg">
-                                </div>
-                            </a>
-                            <a href="#" class="info">
-                                <h4 class="title">Coffee</h4>
-                                <p class="description"># creative</p>
-                            </a>
-                        </div>
-
-                        <div class="item recent-project">
-                            <a href="__STATIC__/home/images/project-04.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/project-04.jpg">
-                                </div>
-                            </a>
-                            <a href="#" class="info">
-                                <h4 class="title">New York City</h4>
-                                <p class="description"># web-design</p>
-                            </a>
-                        </div>
-
-                        <div class="item recent-project">
-                            <a href="__STATIC__/home/images/project-05.jpg" class="image-popup">
-                                <div class="gallery-image">
-                                    <img src="__STATIC__/home/images/project-05.jpg">
-                                </div>
-                            </a>
-                            <a href="#" class="info">
-                                <h4 class="title">The Writer's Collection</h4>
-                                <p class="description"># creative</p>
-                            </a>
-                        </div>
 
                     </div>
                 </div>

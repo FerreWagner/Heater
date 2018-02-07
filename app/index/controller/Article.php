@@ -77,6 +77,17 @@ class Article extends Base
             $template = 'multi-blog';
         }
         
+        //product页面时
+        if ($template == 'multi-products'){
+            $bot_pro = db('article')
+                     ->field('a.id,a.thumb,a.desc,a.title,a.tag,a.time,a.cate,a.content,b.catename')
+                     ->alias('a')
+                     ->join('heater_category b','a.cate=b.id')
+                     ->order('a.order desc')
+                     ->where('b.id', 'in', $cate_id)
+                     ->paginate(8);
+            $this->view->assign('bot_pro', $bot_pro);
+        }
         
         $this->view->assign([
             'art'      => $art,
