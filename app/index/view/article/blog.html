@@ -211,7 +211,7 @@
                                 </div>
                                 <div class="media-body">
                                     <p class="text">
-                                        <?php echo strlen($rp['content']) > 63 ? substr($rp['content'], 0, 60) : $rp['content']?>
+                                        {$rp.title}
                                     </p>
                                     <a href="{:url('index/article/blog', ['id' => $rp.id])}" target="_blank">Read more <i class="fa fa-angle-double-right"></i></a>
                                 </div>

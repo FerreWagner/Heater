@@ -20,7 +20,7 @@ class Article extends Base
         $cate        = db('category')->field('id, catename')->where('pid != 0')->select();
         
         $art_model   = new ArticleModel();
-        $right_posts = $art_model->field('id, thumb, content, desc')
+        $right_posts = $art_model->field('id, thumb, title, desc')
                                  ->where('cate', '<>', config('index_module.productid'))
                                  ->order('time', 'desc')
                                  ->limit(3)
@@ -145,7 +145,7 @@ class Article extends Base
         }
         
         $this->view->assign([
-            'art'  => $art,
+            'arti'  => $art,
         ]);
         
         return $this->view->fetch('multi-blog');
