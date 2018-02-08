@@ -9,7 +9,8 @@
 		}
 	],
   "require" : {
-    "php" : ">=5.4.0"
+    "php" : ">=5.4.0",
+    "phpoffice/phpexcel": "^1.8"
   },
   "keywords" : [ "FerreWagner", "alexa-admin", "admin system"],
   "type" : "project"

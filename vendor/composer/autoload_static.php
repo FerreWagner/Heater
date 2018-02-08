@@ -16,10 +16,6 @@ class ComposerStaticInit28e2e705673cb243a32176ec44cda99e
             'think\\composer\\' => 15,
             'think\\' => 6,
         ),
-        'a' => 
-        array (
-            'app\\' => 4,
-        ),
         'Q' => 
         array (
             'Qiniu\\' => 6,
@@ -39,10 +35,6 @@ class ComposerStaticInit28e2e705673cb243a32176ec44cda99e
         array (
             0 => __DIR__ . '/../..' . '/thinkphp/library/think',
         ),
-        'app\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/application',
-        ),
         'Qiniu\\' => 
         array (
             0 => __DIR__ . '/..' . '/qiniu/php-sdk/src/Qiniu',
@@ -53,11 +45,22 @@ class ComposerStaticInit28e2e705673cb243a32176ec44cda99e
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit28e2e705673cb243a32176ec44cda99e::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit28e2e705673cb243a32176ec44cda99e::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit28e2e705673cb243a32176ec44cda99e::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }
