@@ -31,7 +31,7 @@ class Products extends Base
             $get_arr = $this->getArr($request);
 //             halt($get_arr);
 //             Url::build($url_detail, ['data' => $get_arr]);
-            $this->redirect($url_detail, $get_arr);
+            $this->redirect($url_detail);
         }
         return $this->view->fetch();
     }
@@ -104,7 +104,7 @@ class Products extends Base
             //这里得到的rowData都是一行的数据，得到数据后自行处理，我们这里只打出来看看效果
             $res_data[] = $rowData;
         }
-        
-        return array_values($res_data);
+        cookie('excel_data', array_values($res_data), 10);
+//         return array_values($res_data);
     }
 }
