@@ -9,7 +9,7 @@ class Line extends Base
 {
     public function line1(Request $request)
     {
-        halt($request);
+        halt(input());
         $res_data = [];
 //         http://fheater.com/index/products/index/id/index/heater.line/bar1
     }

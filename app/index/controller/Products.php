@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\index\common\Base;
 use think\Request;
+use think\Url;
 
 class Products extends Base
 {
@@ -28,7 +29,9 @@ class Products extends Base
 //             $method     = strtolower($pro['catename']);
 //             $da = $this->$method($request);
             $get_arr = $this->getArr($request);
-            $this->redirect($url_detail, ['data' => $get_arr]);
+//             halt($get_arr);
+//             Url::build($url_detail, ['data' => $get_arr]);
+            $this->redirect($url_detail, $get_arr);
         }
         return $this->view->fetch();
     }
@@ -103,7 +106,5 @@ class Products extends Base
         }
         
         return array_values($res_data);
-//         halt(array_values($res_data));
-    
     }
 }
