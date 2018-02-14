@@ -210,19 +210,9 @@
 
 				 <canvas width="300" height="300" id="myCanvas" style="background:#2a2b2d;font:13px/1.3 'Microsoft Yahei','宋体';color:#999;">
 				  <ul>
-				   <li><a href="http://sc.chinaz.com/" target="_blank">Google</a></li>
-				   <li><a href="http://sc.chinaz.com/">Fish</a></li>
-				   <li><a href="http://sc.chinaz.com/">Chips</a></li>
-				   <li><a href="http://sc.chinaz.com/">Salt</a></li>
-				   <li><a href="http://sc.chinaz.com/">Vinegar</a></li>
-				   <li><a href="http://sc.chinaz.com/">Fish</a></li>
-				   <li><a href="http://sc.chinaz.com/">Chips</a></li>
-				   <li><a href="http://sc.chinaz.com/">Salt</a></li>
-				   <li><a href="http://sc.chinaz.com/">Vinegar</a></li>
-				   <li><a href="http://sc.chinaz.com/">Fish</a></li>
-				   <li><a href="http://sc.chinaz.com/">Chips</a></li>
-				   <li><a href="http://sc.chinaz.com/">Salt</a></li>
-				   <li><a href="http://sc.chinaz.com/">Vinegar</a></li>
+                      {volist name="link" id="midlink"}
+                      <a href="{$midlink.url}" target="_blank" class="tag">{$midlink.name}</a>
+                      {/volist}
 				  </ul>
 				 </canvas>
 				 
