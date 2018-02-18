@@ -31,10 +31,9 @@ class Line extends Base
     public function line1()
     {
         $pic_view = Cookie::get('excel_data');
+
 //        halt($pic_view);
         $this->view->assign('pic_view', $pic_view);
         return $this->view->fetch('products/index');
-
-//         http://fheater.com/index/products/index/id/index/heater.line/bar1
     }
 }
