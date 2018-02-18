@@ -23,15 +23,15 @@ class Products extends Base
         
         //拼接跳转url
         if ($request->isPost()){
-            
             $url_detail = 'index/heater.'.$pro['catename'].'/'.explode('.', $pro['desc'])[0];
-            
+//            halt($url_detail);
+
 //             $method     = strtolower($pro['catename']);
 //             $da = $this->$method($request);
             $get_arr = $this->getArr($request);
 //             halt($get_arr);
 //             Url::build($url_detail, ['data' => $get_arr]);
-            $this->redirect($url_detail);
+            $this->redirect($url_detail, ['id' => input('id')]);
         }
         return $this->view->fetch();
     }

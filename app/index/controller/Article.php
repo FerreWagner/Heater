@@ -18,7 +18,7 @@ class Article extends Base
         parent::_initialize();
         //右侧cate显示
         $cate        = db('category')->field('id, catename')->where('pid != 0')->select();
-        
+
         $art_model   = new ArticleModel();
         $right_posts = $art_model->field('id, thumb, title, desc')
                                  ->where('cate', '<>', config('index_module.productid'))
@@ -38,7 +38,7 @@ class Article extends Base
     public function cateSearch()
     {
         $id = input('id');
-    
+
         //多页面和单页面
         $cate    = new CategoryModel();
         $cate_id = $cate->getCate($id);
@@ -93,7 +93,7 @@ class Article extends Base
         
         $this->view->assign([
             'arti'      => $arti,
-            'category' => $category,
+            'category'  => $category,
         ]);
         
         return $this->view->fetch($template);
