@@ -107,11 +107,11 @@ class Article extends Base
     {
         $model  = new ArticleModel();
         $blog   = $model->blogData(input('id'));
-        
+
         $this->view->assign([
             'blog' => $blog,
         ]);
-        
+
         return $this->view->fetch('blog');
     }
     

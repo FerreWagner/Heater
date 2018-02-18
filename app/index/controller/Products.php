@@ -18,9 +18,18 @@ class Products extends Base
              ->alias('a')
              ->join('heater_category b', 'a.cate=b.id')
              ->find(input('id'));
-        
-        $this->view->assign('pro', $pro);
-        
+
+        $bot_pro1 = db('article')
+                  ->field('id,thumb,desc,title')
+                  ->order('time desc')
+                  ->limit(4)
+                  ->select();
+
+        $this->view->assign([
+            'pro'      => $pro,
+            'bot_pro1' => $bot_pro1,
+        ]);
+
         //拼接跳转url
         if ($request->isPost()){
             $url_detail = 'index/heater.'.$pro['catename'].'/'.explode('.', $pro['desc'])[0];
