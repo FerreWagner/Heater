@@ -9,4 +9,5 @@ return [
     'cateblog'     => 3,
     'searchpage'   => 6,
     'cateprocess'  => 12,
+    'cookie_time'  => 120,
 ];
