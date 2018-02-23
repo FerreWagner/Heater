@@ -41,8 +41,9 @@ class Banner extends Model
                     $uploadMgr = new UploadManager();
                     //调用uploadmanager的putfile方法进行文件的上传
                     list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-                    $_data['thumb']    = config('qiniu.domain').'/'.$ret['key'];
+
                     $err ? $_data['thumb'] = '图片上传失败' : $_data['thumb'] = config('qiniu.domain').'/'.$ret['key'];
+                    $_data['thumb']    = 'http://'.$_data['thumb'];
             }elseif (self::getSystem()['type'] == config('website.oss')){
                 //TODO 阿里云OSS上传功能
             }
@@ -94,7 +95,8 @@ class Banner extends Model
                 list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
                 
                 $err ? $_data['thumb'] = '图片上传失败' : $_data['thumb'] = config('qiniu.domain').'/'.$ret['key'];
-                
+                $_data['thumb']    = 'http://'.$_data['thumb'];
+
             }
                 
         });
