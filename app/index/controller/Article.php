@@ -142,6 +142,11 @@ class Article extends Base
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
                    ->paginate(config('index_module.searchpage'));
+        }else {
+            //兼容search的BUG
+            $art = db('article')
+                   ->field('id,thumb,desc,title,tag,time,cate,content')
+                   ->paginate(config('index_module.searchpage'));
         }
         
         $this->view->assign([
