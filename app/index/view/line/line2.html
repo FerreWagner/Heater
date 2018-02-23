@@ -11,11 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-	<link rel="shortcut icon" href="/favicon.ico">
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 
     <!-- Style -->
-	<link rel="stylesheet" href="__STATIC__/home/css/theme.css">
+    <link rel="stylesheet" href="__STATIC__/home/css/theme.css">
 
 </head>
 <body>
@@ -96,18 +96,18 @@
 
 
                     <ul class="social-share">
-						<!-- JiaThis Button BEGIN -->
-						<div class="jiathis_style_24x24" style="margin-top: -8px;">
-							<a class="jiathis_button_qzone"></a>
-							<a class="jiathis_button_tsina"></a>
-							<a class="jiathis_button_tqq"></a>
-							<a class="jiathis_button_weixin"></a>
-							<a class="jiathis_button_renren"></a>
-							<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-							<a class="jiathis_counter_style"></a>
-						</div>
-						<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-						<!-- JiaThis Button END -->
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style_24x24" style="margin-top: -8px;">
+                            <a class="jiathis_button_qzone"></a>
+                            <a class="jiathis_button_tsina"></a>
+                            <a class="jiathis_button_tqq"></a>
+                            <a class="jiathis_button_weixin"></a>
+                            <a class="jiathis_button_renren"></a>
+                            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                            <a class="jiathis_counter_style"></a>
+                        </div>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
                     </ul>
 
                 </div>
@@ -118,7 +118,7 @@
 
         </div>
     </section>
-	<section style="background: #fbfbfb;border-bottom: solid 2px #996de9;border-top: solid 2px #996de9;">
+    <section style="background: #fbfbfb;border-bottom: solid 2px #996de9;border-top: solid 2px #996de9;">
         <div class="container">
 
             <!-- Project -->
@@ -150,9 +150,11 @@
                     </style>
 
                     <form action="" method="post" enctype="multipart/form-data">
-                        <a href="javascript:;" style="margin-left: 10px;" class="upload">选择文件<input class="change button" type="file" name="heater"/></a><br/>
+                        <a href="javascript:;" style="margin-left: 10px;" class="upload">选择文件<input class="change button" type="file" name="heater"/></a><span style="margin-left: 10px;">（Tip:右键点击保存图片）</span><br/>
                         <button type="submit" class="btn btn-theme" style="margin-top: 20px;margin-bottom: 50px;"><em class="fa fa-fw fa-paper-plane-o"></em>解析文件</button>
+                        <!--<input type="button" style="margin-top: 20px;margin-bottom: 50px;" class="btn btn-theme" onclick="Click()" value="Download" />-->
                     </form>
+
 
                     <script src="https://cdn.bootcss.com/echarts/4.0.2/echarts-en.common.js"></script>
 
@@ -161,6 +163,7 @@
                         option = {
                             xAxis: {
                                 type: 'category',
+                                boundaryGap: false,
                                 data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
                             },
                             yAxis: {
@@ -168,18 +171,20 @@
                             },
                             series: [{
                                 data: [820, 932, 901, 934, 1290, 1330, 1320],
-                                type: 'line'
+                                type: 'line',
+                                areaStyle: {}
                             }]
                         };
+
                         myChart.setOption(option);
 
                     </script>
 
 
                 </div>
-               </div>
-              </div>
-              </section>
+            </div>
+        </div>
+    </section>
 
 
     <section class="section-small mt bg-light-gray">
@@ -202,17 +207,17 @@
                     <div class="projects-carousel owl-carousel owl-theme">
 
                         {volist name="bot_pro1" id="bot_pro1"}
-                            <div class="item recent-project">
-                                <a href="{:url('index/products/index', ['id' => $bot_pro1['id']])}" target="_blank">
-                                    <div class="gallery-image">
-                                        <img src="{$bot_pro1.thumb}" width=275 height=155>
-                                    </div>
-                                </a>
-                                <a href="#" class="info">
-                                    <h4 class="title">{$bot_pro1.title}</h4>
-                                    <p class="description"># {$bot_pro1.desc|substr=0,30}</p>
-                                </a>
-                            </div>
+                        <div class="item recent-project">
+                            <a href="{:url('index/products/index', ['id' => $bot_pro1['id']])}" target="_blank">
+                                <div class="gallery-image">
+                                    <img src="{$bot_pro1.thumb}" width=275 height=155>
+                                </div>
+                            </a>
+                            <a href="#" class="info">
+                                <h4 class="title">{$bot_pro1.title}</h4>
+                                <p class="description"># {$bot_pro1.desc|substr=0,30}</p>
+                            </a>
+                        </div>
                         {/volist}
 
 
