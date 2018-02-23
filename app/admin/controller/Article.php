@@ -129,7 +129,8 @@ class Article extends Base
             $save=$article->update($data);
             
             if($save){
-                $this->success('修改文章成功！',url('admin/article/index'));
+                $this->redirect('admin/article/index');
+//                 $this->success('修改文章成功！',url('admin/article/index'));
             }else{
                 $this->error('修改文章失败！');
             }
