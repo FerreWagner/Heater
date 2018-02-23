@@ -27,6 +27,7 @@ class Banner extends Model
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
                 
                     $file = request()->file('thumb');
+                    if (empty($file)) return true;  //七牛上传为空时防止报错
                     //本地路径
                     $filePath = $file->getRealPath();
                     //获取后缀
@@ -69,6 +70,15 @@ class Banner extends Model
                     }
                 }
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
+                //上传图片
+                $file = request()->file('thumb');
+                
+                //当数据库中不存在且又不需要新增图片时说明这篇文章不打算添加图片,返回空
+                if (empty($file) && !empty($_arts['thumb'])){
+                    return true;
+                }elseif (empty($file) && empty($_arts['thumb'])){
+                    return true;
+                }
                 //首先删除图片
                 //构建鉴权对象
                 $auth      = new Auth(config('qiniu.ak'), config('qiniu.sk'));
@@ -80,7 +90,7 @@ class Banner extends Model
                 
                 
                 //上传图片
-                $file = request()->file('thumb');
+//                 $file = request()->file('thumb');
                 //本地路径
                 $filePath = $file->getRealPath();
                 //获取后缀
