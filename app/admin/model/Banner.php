@@ -74,7 +74,7 @@ class Banner extends Model
                 $auth      = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                 $config    = new Config();
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
+                $key       = explode('/', $_arts['thumb'])[3];
                 $bucketMgr->delete(config('qiniu.bucket'), $key);   //删除图片
                 
                 
@@ -116,7 +116,7 @@ class Banner extends Model
                 $config    = new Config();
                 
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
+                $key       = explode('/', $_arts['thumb'])[3];
                 $err       = $bucketMgr->delete(config('qiniu.bucket'), $key);
 //                 if ($err) {
 //                     halt($err);

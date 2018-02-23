@@ -85,10 +85,19 @@ class Article extends Model
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
                 //首先删除图片
                 //构建鉴权对象
+//                 $file = request()->file('thumb');
+//                 //本地路径
+//                 $filePath = $file->getRealPath();
+//                 //获取后缀
+//                 $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
+//                 //上传到七牛后保存的文件名(加盐)
+//                 $key = config('qiniu.salt').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+                
                 $auth      = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                 $config    = new Config();
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
+//                 halt(explode('/', $_arts['thumb'])[3]);
+                $key       = explode('/', $_arts['thumb'])[3];
                 $bucketMgr->delete(config('qiniu.bucket'), $key);   //删除图片
                 
                 
@@ -132,7 +141,7 @@ class Article extends Model
                 $config    = new Config();
                 
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
+                $key       = explode('/', $_arts['thumb'])[3];
                 $err       = $bucketMgr->delete(config('qiniu.bucket'), $key);
 //                 if ($err) {
 //                     halt($err);
