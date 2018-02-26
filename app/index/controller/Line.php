@@ -36,7 +36,6 @@ class Line extends Products
         }
 
         $this->view->assign([
-            'pic_view' => $pic_view,
             'x_arr'    => $x_arr,
             'y_arr'    => $y_arr,
         ]);
@@ -51,9 +50,9 @@ class Line extends Products
         
         $common = new Common();
         $common->checkExcel();      //数据验证
-        $common->getForm($request); //数据提取
+        $common->getForm($request); //数据表单提取
         
-        $pic_view = Cookie::get('excel_data');  //拿到数据
+        $pic_view = Cookie::get('excel_data');  //提取cookie
         
         foreach ($pic_view as $k => $v){
             $x_arr[] .= $v[0];
@@ -62,11 +61,36 @@ class Line extends Products
         }
 
         $this->view->assign([
-            'pic_view' => $pic_view,
             'x_arr'    => $x_arr,
             'y_arr'    => $y_arr,
         ]);
 
         return $this->view->fetch(request()->action());
     }
+    
+    public function line3(Request $request)
+    {
+        $y_arr = [];
+        $x_arr = [];
+        
+        $common = new Common();
+        $common->checkExcel();      //数据验证
+        $common->getForm($request); //数据表单提取
+        
+        $pic_view = Cookie::get('excel_data');  //提取cookie
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+        
+        }
+        
+        $this->view->assign([
+            'x_arr'    => $x_arr,
+            'y_arr'    => $y_arr,
+        ]);
+        
+        return $this->view->fetch(request()->action());
+    }
+    
 }

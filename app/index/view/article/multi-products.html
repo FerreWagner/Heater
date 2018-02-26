@@ -59,7 +59,7 @@
                 <div class="projects-list">
 
                     {volist name="arti" id="art"}
-	                    <div class="col-sm-3 col-xs-12 project-image">
+	                    <div class="col-sm-3 col-xs-12 project-image" title="{$art.title}">
 	                        <a href="{:url('index/products/index', ['id' => $art['id']])}" target="_blank">
 	                            <div class="gallery-image">
 	                                <img src="{$art.thumb}" width=262.5 height=148 alt="{$art.desc}">
