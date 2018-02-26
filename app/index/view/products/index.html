@@ -184,7 +184,7 @@
                             <div class="item recent-project">
                                 <a href="{:url('index/products/index', ['id' => $bot_pro1['id']])}" target="_blank">
                                     <div class="gallery-image">
-                                        <img src="{$bot_pro1.thumb}" width=275 height=155>
+                                        <img src="{$bot_pro1.thumb|default="http://image.fsociaty.com/heater_default_blog.png"}" width=275 height=155>
                                     </div>
                                 </a>
                                 <a href="#" class="info">

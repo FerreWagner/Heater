@@ -12,9 +12,10 @@ class Common extends Controller
      */
     public function fileName(Request $request)
     {
-        return ROOT_PATH . 'public' . DS . $request->controller() . DS . $request->action() . DS . $request->ip();
+//         return ROOT_PATH . 'public' . DS . $request->controller() . DS . $request->action() . DS . $request->ip();
+        return ROOT_PATH . 'public' . DS . 'Products';
     }
-
+    
     public function fileUpload(Request $request)
     {
         if ($request->isPost()){
@@ -25,6 +26,7 @@ class Common extends Controller
             if ($file){
                 $info = $file->validate(['ext'=>'XLS,XLSX,xls,xlsx'])->move($path);
                 if ($info){
+                    cookie('heater_file_name', $info->getRealPath(), config('index_module.cookie_time'));
                     return $info->getRealPath();
                 }else{
                     //上传失败获取错误信息
@@ -76,6 +78,9 @@ class Common extends Controller
             $res_data[] = $rowData;
         }
         cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
+        if (file_exists(Cookie::get('heater_file_name'))){
+            @unlink(Cookie::get('heater_file_name'));
+        }
 //         return array_values($res_data);
     }
     
