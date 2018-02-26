@@ -93,4 +93,32 @@ class Line extends Products
         return $this->view->fetch(request()->action());
     }
     
+    public function line4(Request $request)
+    {
+//         $y_arr = [];
+//         $x_arr = [];
+    
+        $common = new Common();
+        $common->checkExcel();      //数据验证
+        $common->getForm($request); //数据表单提取
+    
+        $pic_view   = Cookie::get('excel_data');  //提取cookie
+        $sheet_name = Cookie::get('sheet_name')[0];
+        
+        halt($pic_view);
+        
+//         foreach ($pic_view as $k => $v){
+//             $x_arr[] .= $v[0];
+//             $y_arr[] .= $v[1];
+    
+//         }
+    
+//         $this->view->assign([
+//             'x_arr'    => $x_arr,
+//             'y_arr'    => $y_arr,
+//         ]);
+    
+        return $this->view->fetch(request()->action());
+    }
+    
 }

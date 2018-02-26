@@ -46,6 +46,13 @@ class Common extends Controller
             $inputFileType = \PHPExcel_IOFactory::identify($inputFileName);
             $objReader     = \PHPExcel_IOFactory::createReader($inputFileType);
             $objPHPExcel   = $objReader->load($inputFileName);
+            
+            //获取所有表的表名
+            $sheet_name = [];
+            foreach($objPHPExcel->getSheetNames() as $name){//循环获取到的工作表名称
+                $sheet_name[] = $name;
+            }
+            
         } catch(\Exception $e) {
             $this->error('加载文件发生错误："'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
         }
@@ -54,11 +61,15 @@ class Common extends Controller
         $sheet         = $objPHPExcel->getSheet(0);     // 读取第一个工作表
         $highestRow    = $sheet->getHighestRow();       // 取得总行数
         $highestColumn = $sheet->getHighestColumn();    // 取得总列数
-
+        
+        //表名写入cookie
+        cookie('sheet_name', array_values($sheet_name), config('index_module.cookie_time'));
+        
         return [
             'highestRow'    => $highestRow,
             'sheet'         => $sheet,
-            'highestColumn' => $highestColumn
+            'highestColumn' => $highestColumn,
+            'sheet_name'    => $sheet_name,
         ];
     }
 
@@ -69,15 +80,17 @@ class Common extends Controller
 
         $excel = $this->excelPrepare($request);
 
-        // 获取第2行的数据
-        for ($row = 2; $row <= $excel['highestRow']; $row ++){
+        // 获取第1行的数据
+        for ($row = 1; $row <= $excel['highestRow']; $row ++){
             // Read a row of data into an array
             $rowData = $excel['sheet']->rangeToArray('A' . $row . ':' . $excel['highestColumn'] . $row, NULL, TRUE, FALSE);
             $rowData = current($rowData);
-            //这里得到的rowData都是一行的数据，得到数据后自行处理，我们这里只打出来看看效果
+            //生成数列
             $res_data[] = $rowData;
         }
+        
         cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
+        
         if (file_exists(Cookie::get('heater_file_name'))){
             @unlink(Cookie::get('heater_file_name'));
         }
