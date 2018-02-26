@@ -3,6 +3,7 @@ namespace app\index\common;
 
 use think\Controller;
 use think\Request;
+use think\Cookie;
 
 class Common extends Controller
 {
@@ -77,4 +78,30 @@ class Common extends Controller
         cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
 //         return array_values($res_data);
     }
+    
+    
+    
+
+    /**
+     * 判断读取Excel数据
+     */
+    public function checkExcel()
+    {
+        if (is_null(Cookie::get('excel_data'))){
+            $this->error('请重复导入Excel数据');
+        }
+    }
+    
+    /**
+     * 表单数据的提取
+     * @param Request $request
+     */
+    public function getForm(Request $request)
+    {
+        //未选择文件的处理
+        if ($request->file('heater')){
+            $this->getArr($request);
+        }
+    }
+    
 }

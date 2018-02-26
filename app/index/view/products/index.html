@@ -126,7 +126,7 @@
 
                 <!-- Project Images -->
                 <div class="col-md-8">
-                    <div id="linenew" style="width: 100%;height:500px;"></div>
+                    <!-- <div id="linenew" style="width: 100%;height:500px;"></div> -->
                     <style>
                         .upload{
                             padding: 4px 10px;
@@ -149,31 +149,10 @@
                         .upload:hover{background: #fff;color: #996de9;border-color: #996de9;}
                     </style>
 
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <a href="javascript:;" style="margin-left: 10px;" class="upload">选择文件<input class="change button" type="file" name="heater"/></a><br/>
+                    <form action="" method="post" enctype="multipart/form-data" style="margin-top: 24px;">
+                        <a href="javascript:;" style="margin-left: 10px;" class="upload">选择文件<input class="change button" type="file" name="heater"/></a>&nbsp （请导入Excel文件）<br/>
                         <button type="submit" class="btn btn-theme" style="margin-top: 20px;margin-bottom: 50px;"><em class="fa fa-fw fa-paper-plane-o"></em>解析文件</button>
                     </form>
-
-                    <script src="https://cdn.bootcss.com/echarts/4.0.2/echarts-en.common.js"></script>
-
-                    <script>
-                        var myChart = echarts.init(document.getElementById('linenew'));
-                        option = {
-                            xAxis: {
-                                type: 'category',
-                                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                            },
-                            yAxis: {
-                                type: 'value'
-                            },
-                            series: [{
-                                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                                type: 'line'
-                            }]
-                        };
-                        myChart.setOption(option);
-
-                    </script>
 
 
                 </div>

@@ -1,6 +1,8 @@
 <?php
 namespace app\admin;
 
+use think\Cookie;
+
 //公共和稀有方法类
 class Common
 {
@@ -16,4 +18,5 @@ class Common
         return 'ROOT您好,用户'.session('user_name').'在'.date('Y-m-d H:i:s').'操作了'.$action.'方法';
         
     }
+
 }
