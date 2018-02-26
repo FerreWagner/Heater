@@ -69,7 +69,6 @@ class Common extends Controller
             'highestRow'    => $highestRow,
             'sheet'         => $sheet,
             'highestColumn' => $highestColumn,
-            'sheet_name'    => $sheet_name,
         ];
     }
 
