@@ -140,17 +140,17 @@ class Article extends Base
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
-                   ->paginate(config('index_module.searchpage'), false, ['query' => request()->param()]);
+                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
-                   ->paginate(config('index_module.searchpage'), false, ['query' => request()->param()]);
+                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }else {
             //兼容search的BUG
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
-                   ->paginate(config('index_module.searchpage'), false, ['query' => request()->param()]);
+                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
         $this->view->assign([
