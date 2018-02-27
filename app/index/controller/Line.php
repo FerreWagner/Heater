@@ -111,7 +111,29 @@ class Line extends Products
             'x_arr'      => $x_arr,
             'y_arr'      => $y_arr,
         ]);
-//         halt($y_arr);
+        
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function line5(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();      //数据验证
+        $common->getForm($request); //数据表单提取
+    
+        $pic_view   = Cookie::get('excel_data');    //提取cookie
+        $sheet_name = Cookie::get('sheet_name')[0]; //sheet表名
+        $sheet_cate = $common->deleteEmpty(array_shift($pic_view));  //去空元素后的分类
+        $x_arr      = $common->deleteEmpty(array_shift($pic_view));  //去空元素后的横坐标
+        $y_arr      = array_slice($pic_view, 0, count($pic_view));
+    
+        $this->view->assign([
+            'sheet_name' => $sheet_name,
+            'sheet_cate' => $sheet_cate,
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+        ]);
+    
         return $this->view->fetch(request()->action());
     }
     
