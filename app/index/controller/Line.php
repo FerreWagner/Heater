@@ -152,4 +152,33 @@ class Line extends Products
         return $this->view->fetch(request()->action());
     }
     
+//     preg_match('/[0-9]/', $str)
+
+    public function line7(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();      //数据验证
+        $common->getForm($request); //数据表单提取
+    
+        $pic_view   = Cookie::get('excel_data');    //提取cookie
+        $sheet_name = Cookie::get('sheet_name')[0]; //sheet表名
+        $sheet_num  = $common->deleteEmpty(array_shift($pic_view));  //去空元素后的分类
+        $x_arr      = $pic_view[0];
+        
+        $real_num   = [];
+        foreach ($sheet_num as $v){ //获取纯数字
+            if (preg_match('/[0-9]/', $v, $match)){
+                $real_num[] = $match[0];
+            }
+        }
+        
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'sheet_num'  => $sheet_num,
+            'sheet_name' => $sheet_name,
+            'real_num'   => $real_num,
+        ]);
+    
+        return $this->view->fetch(request()->action());
+    }
 }
