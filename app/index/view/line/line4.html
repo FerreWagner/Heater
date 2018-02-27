@@ -78,7 +78,7 @@
 
                 </div>
                 <!-- /Project Images -->
-
+				
                 <!-- Project Information -->
                 <div class="col-md-4 project-information">
 
@@ -161,20 +161,58 @@
                     <script>
                         var myChart = echarts.init(document.getElementById('linenew'));
                         option = {
-                        	    xAxis: {
-                        	        type: 'category',
-                        	        boundaryGap: false,
-                        	        data: [{volist name="x_arr" id="x_arr"}{$x_arr},{/volist}]
+                        	    title: {
+                        	        text: '{$sheet_name}'
                         	    },
-                        	    yAxis: {
-                        	        type: 'value'
+                        	    tooltip : {
+                        	        trigger: 'axis',
+                        	        axisPointer: {
+                        	            type: 'cross',
+                        	            label: {
+                        	                backgroundColor: '#6a7985'
+                        	            }
+                        	        }
                         	    },
-                        	    series: [{
-                        	        data: [{volist name="y_arr" id="y_arr"}{$y_arr},{/volist}],
-                        	        type: 'line',
-                        	        areaStyle: {}
-                        	    }]
+                        	    legend: {
+                        	        data:[{volist name="sheet_cate" id="cate_sheet"}'{$cate_sheet}',{/volist}]
+                        	    },
+                        	    toolbox: {
+                        	        feature: {
+                        	            saveAsImage: {}
+                        	        }
+                        	    },
+                        	    grid: {
+                        	        left: '3%',
+                        	        right: '4%',
+                        	        bottom: '3%',
+                        	        containLabel: true
+                        	    },
+                        	    xAxis : [
+                        	        {
+                        	            type : 'category',
+                        	            boundaryGap : false,
+                        	            data : [{volist name="x_arr" id="x_arr"}'{$x_arr}',{/volist}]
+                        	        }
+                        	    ],
+                        	    yAxis : [
+                        	        {
+                        	            type : 'value'
+                        	        }
+                        	    ],
+                        	    series : [
+                       	            {volist name="sheet_cate" id="tongji"}
+	                        	        {
+	                        	            name:'{$tongji}',
+	                        	            type:'line',
+	                        	            stack: '总量',
+	                        	            areaStyle: {normal: {}},
+	                        	            data:[{foreach $y_arr[$i - 1] as $each}{$each},{/foreach}]
+	                        	        },
+                       	        	{/volist}
+                        	    ]
                         	};
+
+
 
                         myChart.setOption(option);
 
@@ -186,24 +224,7 @@
         </div>
     </section>
 
-    <!-- 来必力City版安装代码 -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc0NC8xMDI5OA==" style="width: 80%;margin-left:10%;margin-top:30px;">
-        <script type="text/javascript">
-            (function(d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
 
-                if (typeof LivereTower === 'function') { return; }
-
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
-    <!-- City版安装代码已完成 -->
     <section class="section-small mt bg-light-gray">
         <div class="container">
 

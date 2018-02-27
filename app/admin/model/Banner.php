@@ -27,6 +27,7 @@ class Banner extends Model
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
                 
                     $file = request()->file('thumb');
+                    if (empty($file)) return true;  //七牛上传为空时防止报错
                     //本地路径
                     $filePath = $file->getRealPath();
                     //获取后缀
@@ -69,18 +70,27 @@ class Banner extends Model
                     }
                 }
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
+                //上传图片
+                $file = request()->file('thumb');
+                
+                //当数据库中不存在且又不需要新增图片时说明这篇文章不打算添加图片,返回空
+                if (empty($file) && !empty($_arts['thumb'])){
+                    return true;
+                }elseif (empty($file) && empty($_arts['thumb'])){
+                    return true;
+                }
                 //首先删除图片
                 //构建鉴权对象
                 $auth      = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                 $config    = new Config();
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
+                $key       = explode('/', $_arts['thumb'])[3];
                 $bucketMgr->delete(config('qiniu.bucket'), $key);   //删除图片
                 
                 
                 
                 //上传图片
-                $file = request()->file('thumb');
+//                 $file = request()->file('thumb');
                 //本地路径
                 $filePath = $file->getRealPath();
                 //获取后缀
@@ -116,7 +126,7 @@ class Banner extends Model
                 $config    = new Config();
                 
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
+                $key       = explode('/', $_arts['thumb'])[3];
                 $err       = $bucketMgr->delete(config('qiniu.bucket'), $key);
 //                 if ($err) {
 //                     halt($err);

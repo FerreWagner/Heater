@@ -43,7 +43,7 @@ class Article extends Base
         $cate    = new CategoryModel();
         $cate_id = $cate->getCate($id);
         
-        //位process || 没有子分类且文章为1或0
+        //为process || 没有子分类且文章为1或0
         if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2){
             $arti = db('article')
                  ->field('a.title, a.content, a.thumb, a.desc,b.catename')
@@ -123,25 +123,34 @@ class Article extends Base
     public function search(Request $request)
     {
         //对恶意的多个参数查询处理
-        if (count($request->param()) > 1){
-            $this->redirect('index/index/index');
-        }
+//         if (count($request->param()) > 1){
+//             $this->redirect('index/index/index');
+//         }
     
         //参数值处理成字符串
         $arr = $request->param();
-        $map = implode('', array_values($arr));
+        if (!empty($arr['search'])){
+            $map = $arr['search'];
+        }else {
+            $map = implode('', array_values($arr));
+        }
         
         //对tag/keywords title/desc的查询
         if (in_array(implode('', array_keys($request->param())), ['tag', 'keywords'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
-                   ->paginate(config('index_module.searchpage'));
-        }elseif (implode('', array_keys($request->param())) == 'search'){
+                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
+        }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
-                   ->paginate(config('index_module.searchpage'));
+                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
+        }else {
+            //兼容search的BUG
+            $art = db('article')
+                   ->field('id,thumb,desc,title,tag,time,cate,content')
+                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
         $this->view->assign([

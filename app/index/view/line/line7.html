@@ -78,7 +78,7 @@
 
                 </div>
                 <!-- /Project Images -->
-
+				
                 <!-- Project Information -->
                 <div class="col-md-4 project-information">
 
@@ -161,20 +161,45 @@
                     <script>
                         var myChart = echarts.init(document.getElementById('linenew'));
                         option = {
+                        	    title: {
+                        	        text: '{$sheet_name}',
+                        	        left: 'center'
+                        	    },
+                        	    tooltip: {
+                        	        trigger: 'item',
+                        	        formatter: '{a} <br/>{b} : {c}'
+                        	    },
+                        	    legend: {
+                        	        left: 'left',
+                        	        data: [{volist name="sheet_num" id="num_sheet"}'{$num_sheet}',{/volist}]
+                        	    },
                         	    xAxis: {
                         	        type: 'category',
-                        	        boundaryGap: false,
-                        	        data: [{volist name="x_arr" id="x_arr"}{$x_arr},{/volist}]
+                        	        name: 'x',
+                        	        splitLine: {show: false},
+                        	        data: [{volist name="x_arr" id="x_zuobiao"}'{$x_zuobiao}',{/volist}]
+                        	    },
+                        	    grid: {
+                        	        left: '3%',
+                        	        right: '4%',
+                        	        bottom: '3%',
+                        	        containLabel: true
                         	    },
                         	    yAxis: {
-                        	        type: 'value'
+                        	        type: 'log',
+                        	        name: 'y'
                         	    },
-                        	    series: [{
-                        	        data: [{volist name="y_arr" id="y_arr"}{$y_arr},{/volist}],
-                        	        type: 'line',
-                        	        areaStyle: {}
-                        	    }]
+                        	    series: [
+                       	            {volist name="sheet_num" id="sheet_number" key="k"}
+                        	        {
+                        	            name: '{$sheet_number}',
+                        	            type: 'line',
+                        	            data: [{volist name="x_arr" id="x_jishu"}{:pow($real_num[$k-1],$i)},{/volist}]
+                        	        },
+                        	        {/volist}
+                        	    ]
                         	};
+
 
                         myChart.setOption(option);
 
@@ -186,24 +211,7 @@
         </div>
     </section>
 
-    <!-- 来必力City版安装代码 -->
-    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc0NC8xMDI5OA==" style="width: 80%;margin-left:10%;margin-top:30px;">
-        <script type="text/javascript">
-            (function(d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
 
-                if (typeof LivereTower === 'function') { return; }
-
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
-    <!-- City版安装代码已完成 -->
     <section class="section-small mt bg-light-gray">
         <div class="container">
 

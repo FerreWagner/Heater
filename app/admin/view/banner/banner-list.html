@@ -39,7 +39,7 @@
                             {$ba.id}
                         </td>
                         <td>
-                            <img src="{if !empty($ba['thumb']) && substr($ba['thumb'], 1, 6) != 'banner'}http://{/if}{$ba.thumb}" width="60" alt="">点击图片试试
+                            <img src="{if !empty($ba['thumb']) && substr($ba['thumb'], 1, 6) != 'banner'}{/if}{$ba.thumb}" width="60" alt="">点击图片试试
                         </td>
                         <td >
                             <a href="{$ba.link}" target="_blank">{$ba.link}</a>

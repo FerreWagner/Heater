@@ -129,7 +129,8 @@ class Article extends Base
             $save=$article->update($data);
             
             if($save){
-                $this->success('修改文章成功！',url('admin/article/index'));
+                $this->redirect('admin/article/index');
+//                 $this->success('修改文章成功！',url('admin/article/index'));
             }else{
                 $this->error('修改文章失败！');
             }
@@ -145,9 +146,15 @@ class Article extends Base
         $art_tag = explode(',', $article['tag']);//文章tag
         
         //七牛图片处理
+<<<<<<< HEAD
 //        if (!empty($article['thumb']) && substr($article['thumb'], 1, 7) != 'uploads') {
 //            $article['thumb'] = 'http://'.$article['thumb'];
 //        }
+=======
+//         if (!empty($article['thumb']) && substr($article['thumb'], 1, 7) != 'uploads') {
+//             $article['thumb'] = 'http://'.$article['thumb'];
+//         }
+>>>>>>> d263b9cc49bdebed23090bd766299499280644c8
         
         $this->assign([
             'cate'    => $cate,
