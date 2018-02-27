@@ -32,8 +32,9 @@ class Article extends Model
                     }
                 }
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
-                
+                    
                     $file = request()->file('thumb');
+                    if (empty($file)) return true;  //七牛上传为空时防止报错
                     //本地路径
                     $filePath = $file->getRealPath();
                     //获取后缀
@@ -50,6 +51,7 @@ class Article extends Model
                     list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
                     $_data['pic']    = config('qiniu.domain').'/'.$ret['key'];
                     $err ? $_data['thumb'] = '图片上传失败' : $_data['thumb'] = config('qiniu.domain').'/'.$ret['key'];
+                    $_data['thumb']  = 'http://'.$_data['thumb'];
             }elseif (self::getSystem()['type'] == config('website.oss')){
                 //TODO 阿里云OSS上传功能
             }
@@ -82,18 +84,37 @@ class Article extends Model
                     }
                 }
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
+                //上传图片
+                $file = request()->file('thumb');
+                
+                //当数据库中不存在且又不需要新增图片时说明这篇文章不打算添加图片,返回空
+                if (empty($file) && !empty($_arts['thumb'])){
+                    return true;
+                }elseif (empty($file) && empty($_arts['thumb'])){
+                    return true;
+                }
+                
                 //首先删除图片
                 //构建鉴权对象
+//                 $file = request()->file('thumb');
+//                 //本地路径
+//                 $filePath = $file->getRealPath();
+//                 //获取后缀
+//                 $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
+//                 //上传到七牛后保存的文件名(加盐)
+//                 $key = config('qiniu.salt').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+//                 if (empty($_arts['thumb'])) return true;
                 $auth      = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                 $config    = new Config();
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
-                $bucketMgr->delete(config('qiniu.bucket'), $key);   //删除图片
+                
+                if (!empty(explode('/', $_arts['thumb'])[3])){
+                    $key       = explode('/', $_arts['thumb'])[3];
+                    $bucketMgr->delete(config('qiniu.bucket'), $key);   //删除图片
+                }
                 
                 
-                
-                //上传图片
-                $file = request()->file('thumb');
+
                 //本地路径
                 $filePath = $file->getRealPath();
                 //获取后缀
@@ -106,9 +127,11 @@ class Article extends Model
                 $uploadMgr = new UploadManager();
                 //调用uploadmanager的putfile方法进行文件的上传
                 list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-                
+
+
+
                 $err ? $_data['thumb'] = '图片上传失败' : $_data['thumb'] = config('qiniu.domain').'/'.$ret['key'];
-                
+                $_data['thumb']  = 'http://'.$_data['thumb'];
             }
                 
         });
@@ -124,19 +147,23 @@ class Article extends Model
                     @unlink($_SERVER['DOCUMENT_ROOT'].$_arts['pic']);
                 }
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
+                if (empty($_arts['thumb'])) return true;
+                
                 $auth      = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                 
                 $config    = new Config();
                 
                 $bucketMgr = new BucketManager($auth, $config);
-                $key       = explode('/', $_arts['thumb'])[1];
-                $err       = $bucketMgr->delete(config('qiniu.bucket'), $key);
+                
+                if (!empty(explode('/', $_arts['thumb'])[3])){
+                    $key       = explode('/', $_arts['thumb'])[3];
+                    $bucketMgr->delete(config('qiniu.bucket'), $key);   //删除图片
+                }
 //                 if ($err) {
-//                     halt($err);
+//                     $this->error($err);
 //                 }else {
 //                     return true;
 //                 }
-                
                    
             }
 

@@ -3,6 +3,7 @@ namespace app\index\common;
 
 use think\Controller;
 use think\Request;
+use think\Cookie;
 
 class Common extends Controller
 {
@@ -11,9 +12,10 @@ class Common extends Controller
      */
     public function fileName(Request $request)
     {
-        return ROOT_PATH . 'public' . DS . $request->controller() . DS . $request->action() . DS . $request->ip();
+//         return ROOT_PATH . 'public' . DS . $request->controller() . DS . $request->action() . DS . $request->ip();
+        return ROOT_PATH . 'public' . DS . 'Products';
     }
-
+    
     public function fileUpload(Request $request)
     {
         if ($request->isPost()){
@@ -24,6 +26,7 @@ class Common extends Controller
             if ($file){
                 $info = $file->validate(['ext'=>'XLS,XLSX,xls,xlsx'])->move($path);
                 if ($info){
+                    cookie('heater_file_name', $info->getRealPath(), config('index_module.cookie_time'));
                     return $info->getRealPath();
                 }else{
                     //上传失败获取错误信息
@@ -43,6 +46,13 @@ class Common extends Controller
             $inputFileType = \PHPExcel_IOFactory::identify($inputFileName);
             $objReader     = \PHPExcel_IOFactory::createReader($inputFileType);
             $objPHPExcel   = $objReader->load($inputFileName);
+            
+            //获取所有表的表名
+            $sheet_name = [];
+            foreach($objPHPExcel->getSheetNames() as $name){//循环获取到的工作表名称
+                $sheet_name[] = $name;
+            }
+            
         } catch(\Exception $e) {
             $this->error('加载文件发生错误："'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
         }
@@ -51,11 +61,14 @@ class Common extends Controller
         $sheet         = $objPHPExcel->getSheet(0);     // 读取第一个工作表
         $highestRow    = $sheet->getHighestRow();       // 取得总行数
         $highestColumn = $sheet->getHighestColumn();    // 取得总列数
-
+        
+        //表名写入cookie
+        cookie('sheet_name', array_values($sheet_name), config('index_module.cookie_time'));
+        
         return [
             'highestRow'    => $highestRow,
             'sheet'         => $sheet,
-            'highestColumn' => $highestColumn
+            'highestColumn' => $highestColumn,
         ];
     }
 
@@ -66,15 +79,55 @@ class Common extends Controller
 
         $excel = $this->excelPrepare($request);
 
-        // 获取第2行的数据
-        for ($row = 2; $row <= $excel['highestRow']; $row ++){
+        // 获取第1行的数据
+        for ($row = 1; $row <= $excel['highestRow']; $row ++){
             // Read a row of data into an array
             $rowData = $excel['sheet']->rangeToArray('A' . $row . ':' . $excel['highestColumn'] . $row, NULL, TRUE, FALSE);
             $rowData = current($rowData);
-            //这里得到的rowData都是一行的数据，得到数据后自行处理，我们这里只打出来看看效果
+            //生成数列
             $res_data[] = $rowData;
         }
+        
         cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
+        
+        if (file_exists(Cookie::get('heater_file_name'))){
+            @unlink(Cookie::get('heater_file_name'));
+        }
 //         return array_values($res_data);
     }
+    
+    
+    
+
+    /**
+     * 判断读取Excel数据
+     */
+    public function checkExcel()
+    {
+        if (is_null(Cookie::get('excel_data'))){
+            $this->error('请重复导入Excel数据');
+        }
+    }
+    
+    /**
+     * 表单数据的提取
+     * @param Request $request
+     */
+    public function getForm(Request $request)
+    {
+        //未选择文件的处理
+        if ($request->file('heater')){
+            $this->getArr($request);
+        }
+    }
+    
+    /**
+     * 去除数组中的空元素
+     * @param unknown $arr
+     */
+    public function deleteEmpty($arr)
+    {
+        return array_filter($arr, create_function('$v', 'return !empty($v);'));
+    }
+    
 }

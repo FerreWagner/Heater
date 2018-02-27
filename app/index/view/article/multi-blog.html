@@ -19,20 +19,20 @@
 	<script src="__STATIC__/home/tag/js/jquery.tagcanvas.js" type="text/javascript"></script>
 
 	<!-- tag -->
-<script type="text/javascript">
- $(document).ready(function() {
-   if(!$('#myCanvas').tagcanvas({
-     textColour : '#ffffff',
-     outlineThickness : 1,
-     maxSpeed : 0.03,
-     depth : 0.75
-   })) {
-     // TagCanvas failed to load
-     $('#myCanvasContainer').hide();
-   }
-   // your other jQuery stuff here...
- });
- </script>
+	<script type="text/javascript">
+	 $(document).ready(function() {
+	   if(!$('#myCanvas').tagcanvas({
+	     textColour : '#ffffff',
+	     outlineThickness : 1,
+	     maxSpeed : 0.03,
+	     depth : 0.75
+	   })) {
+	     // TagCanvas failed to load
+	     $('#myCanvasContainer').hide();
+	   }
+	   // your other jQuery stuff here...
+	 });
+	 </script>
 </head>
 <body>
 
@@ -86,7 +86,7 @@
 	                        <div class="image">
 	                            <a href="{:url('index/article/blog', ['id' => $art['id']])}" target="_blank">
 	                                <div class="gallery-image">
-	                                    <img src="{$art.thumb}" alt="{$art.desc}" width=847.5 height=477>
+	                                    <img src="{$art.thumb|default="http://image.fsociaty.com/heater_default_blog.png"}" alt="{$art.desc}" width=847.5 height=477>
 	                                </div>
 	                            </a>
 	                        </div>
@@ -162,7 +162,7 @@
 
                     <h4 class="title">Search</h4>
                     <div class="search">
-                        <form class="form-inline" method="post" action="{:url('index/article/search')}">
+                        <form class="form-inline" method="get" action="{:url('index/article/search')}">
                             <div class="form-group">
                                 <input name="search" required="" placeholder="Search Text...*" class="form-control">
                             </div>
@@ -187,7 +187,7 @@
                             <div class="media post">
                                 <div class="media-left">
                                     <div class="image">
-                                        <img src="{$rp.thumb}" width=60 height=60 alt="{$rp.desc}">
+                                        <img src="{$rp.thumb|default="http://image.fsociaty.com/heater_default_blog.png"}" width=60 height=60 alt="{$rp.desc}">
                                     </div>
                                 </div>
                                 <div class="media-body">

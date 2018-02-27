@@ -161,20 +161,20 @@
                     <script>
                         var myChart = echarts.init(document.getElementById('linenew'));
                         option = {
-                            xAxis: {
-                                type: 'category',
-                                boundaryGap: false,
-                                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                            },
-                            yAxis: {
-                                type: 'value'
-                            },
-                            series: [{
-                                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                                type: 'line',
-                                areaStyle: {}
-                            }]
-                        };
+                        	    xAxis: {
+                        	        type: 'category',
+                        	        boundaryGap: false,
+                        	        data: [{volist name="x_arr" id="x_arr"}{$x_arr},{/volist}]
+                        	    },
+                        	    yAxis: {
+                        	        type: 'value'
+                        	    },
+                        	    series: [{
+                        	        data: [{volist name="y_arr" id="y_arr"}{$y_arr},{/volist}],
+                        	        type: 'line',
+                        	        areaStyle: {}
+                        	    }]
+                        	};
 
                         myChart.setOption(option);
 
