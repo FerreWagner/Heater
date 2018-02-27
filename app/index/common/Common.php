@@ -69,10 +69,6 @@ class Common extends Controller
             'highestRow'    => $highestRow,
             'sheet'         => $sheet,
             'highestColumn' => $highestColumn,
-<<<<<<< HEAD
-            'filename'      => $inputFileName,
-=======
->>>>>>> d263b9cc49bdebed23090bd766299499280644c8
         ];
     }
 
@@ -91,15 +87,6 @@ class Common extends Controller
             //生成数列
             $res_data[] = $rowData;
         }
-<<<<<<< HEAD
-
-//        halt($excel['filename']);
-        if(file_exists($excel['filename'])){
-            @unlink($excel['filename']);
-        }
-        cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
-//        return
-=======
         
         cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
         
@@ -107,7 +94,6 @@ class Common extends Controller
             @unlink(Cookie::get('heater_file_name'));
         }
 //         return array_values($res_data);
->>>>>>> d263b9cc49bdebed23090bd766299499280644c8
     }
     
     

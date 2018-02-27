@@ -4,6 +4,7 @@ namespace app\index\controller;
 use app\index\common\Base;
 use app\index\common\Common;
 use think\Request;
+use think\Url;
 
 class Products extends Base
 {
