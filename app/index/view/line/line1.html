@@ -163,13 +163,13 @@
                         option = {
                             xAxis: {
                                 type: 'category',
-                                data: [{volist name="x_arr" id="x_arr"}{$x_arr},{/volist}]
+                                data: [{volist name="x_arr" id="x_arr"}'{$x_arr}',{/volist}]
                             },
                             yAxis: {
                                 type: 'value'
                             },
                             series: [{
-                                data: [{volist name="y_arr" id="y_arr"}{$y_arr},{/volist}],
+                                data: [{volist name="y_arr" id="y_arr"}'{$y_arr}',{/volist}],
                                 type: 'line'
                             }]
                         };

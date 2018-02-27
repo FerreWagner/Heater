@@ -3,10 +3,10 @@
  * 七牛云配置
  */
 return [
-    'salt'   => 'heater_',  //七牛云上传图片标识,可设置为空
+    'salt'   => 'heater_article_',  //七牛云上传图片标识,可设置为空
     'banner' => 'heater_banner',  //轮播盐
-    'ak'     => '',
-    'sk'     => '',
-    'bucket' => '',
-    'domain' => '',
+    'ak'     => 'c24_seGXi0gLn6ojvCetQX0CmtT6HCRuDPo9sfbr',
+    'sk'     => 'fE6B8ncYJAZnFFeKy71Ci6KcDtnd5xphRVlkbliw',
+    'bucket' => 'fsociaty',
+    'domain' => 'image.fsociaty.com',
 ];
