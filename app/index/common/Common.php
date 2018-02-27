@@ -55,7 +55,8 @@ class Common extends Controller
         return [
             'highestRow'    => $highestRow,
             'sheet'         => $sheet,
-            'highestColumn' => $highestColumn
+            'highestColumn' => $highestColumn,
+            'filename'      => $inputFileName,
         ];
     }
 
@@ -74,7 +75,12 @@ class Common extends Controller
             //这里得到的rowData都是一行的数据，得到数据后自行处理，我们这里只打出来看看效果
             $res_data[] = $rowData;
         }
+
+//        halt($excel['filename']);
+        if(file_exists($excel['filename'])){
+            @unlink($excel['filename']);
+        }
         cookie('excel_data', array_values($res_data), config('index_module.cookie_time'));
-//         return array_values($res_data);
+//        return
     }
 }

@@ -27,6 +27,7 @@ class Line extends Products
         }
 
         $pic_view = Cookie::get('excel_data');
+
         foreach ($pic_view as $k => $v){
             $x_arr[] .= $v[0];
             $y_arr[] .= $v[1];
@@ -40,5 +41,12 @@ class Line extends Products
         ]);
 
         return $this->view->fetch(request()->action());
+    }
+
+    public function line2()
+    {
+        if (is_null(Cookie::get('excel_data'))){
+            $this->error('请再次导入Excel数据');
+        }
     }
 }

@@ -72,7 +72,7 @@ class Article extends Base
             //处理tag
             $data['tag']  = implode(',', $data['tag']);
             $data['time'] = time();
-            
+            $data['thumb']  = 'http://'.$data['thumb'];
             $validate = Loader::validate('Article');
             
             if(!$validate->scene('add')->check($data)){
@@ -124,7 +124,7 @@ class Article extends Base
             if(!$validate->scene('edit')->check($data)){
                 $this->error($validate->getError());
             }
-            
+
             $article = new ArticleModel;
             $save=$article->update($data);
             
@@ -145,9 +145,9 @@ class Article extends Base
         $art_tag = explode(',', $article['tag']);//文章tag
         
         //七牛图片处理
-        if (!empty($article['thumb']) && substr($article['thumb'], 1, 7) != 'uploads') {
-            $article['thumb'] = 'http://'.$article['thumb'];
-        }
+//        if (!empty($article['thumb']) && substr($article['thumb'], 1, 7) != 'uploads') {
+//            $article['thumb'] = 'http://'.$article['thumb'];
+//        }
         
         $this->assign([
             'cate'    => $cate,

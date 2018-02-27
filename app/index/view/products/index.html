@@ -122,11 +122,11 @@
         <div class="container">
 
             <!-- Project -->
+            {$pro.content}
             <div class="row">
 
                 <!-- Project Images -->
                 <div class="col-md-8">
-                    <div id="linenew" style="width: 100%;height:500px;"></div>
                     <style>
                         .upload{
                             padding: 4px 10px;
@@ -149,38 +149,38 @@
                         .upload:hover{background: #fff;color: #996de9;border-color: #996de9;}
                     </style>
 
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data" style="margin-top: 20px;">
                         <a href="javascript:;" style="margin-left: 10px;" class="upload">选择文件<input class="change button" type="file" name="heater"/></a><br/>
                         <button type="submit" class="btn btn-theme" style="margin-top: 20px;margin-bottom: 50px;"><em class="fa fa-fw fa-paper-plane-o"></em>解析文件</button>
                     </form>
 
                     <script src="https://cdn.bootcss.com/echarts/4.0.2/echarts-en.common.js"></script>
 
-                    <script>
-                        var myChart = echarts.init(document.getElementById('linenew'));
-                        option = {
-                            xAxis: {
-                                type: 'category',
-                                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                            },
-                            yAxis: {
-                                type: 'value'
-                            },
-                            series: [{
-                                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                                type: 'line'
-                            }]
-                        };
-                        myChart.setOption(option);
 
-                    </script>
 
 
                 </div>
                </div>
               </div>
               </section>
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzc0NC8xMDI5OA==" style="width: 80%;margin-left:10%;margin-top:30px;">
+        <script type="text/javascript">
+            (function(d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
 
+                if (typeof LivereTower === 'function') { return; }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
 
     <section class="section-small mt bg-light-gray">
         <div class="container">
