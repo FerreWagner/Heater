@@ -137,4 +137,19 @@ class Line extends Products
         return $this->view->fetch(request()->action());
     }
     
+    public function line6(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();      //数据验证
+        $common->getForm($request); //数据表单提取
+        
+        $pic_view = Cookie::get('excel_data');  //提取cookie
+        
+        $this->view->assign([
+            'pic_view'    => $pic_view,
+        ]);
+    
+        return $this->view->fetch(request()->action());
+    }
+    
 }
