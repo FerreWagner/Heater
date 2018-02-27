@@ -121,4 +121,13 @@ class Common extends Controller
         }
     }
     
+    /**
+     * 去除数组中的空元素
+     * @param unknown $arr
+     */
+    public function deleteEmpty($arr)
+    {
+        return array_filter($arr, create_function('$v', 'return !empty($v);'));
+    }
+    
 }
