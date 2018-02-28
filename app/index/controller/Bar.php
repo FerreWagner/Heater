@@ -29,7 +29,7 @@ class Bar extends Products
         
         }
         
-        halt($x_arr);
+        
         $this->view->assign([
             'x_arr'    => $x_arr,
             'y_arr'    => $y_arr,
