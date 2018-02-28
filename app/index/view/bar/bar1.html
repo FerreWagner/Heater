@@ -161,18 +161,19 @@
                     <script>
                         var myChart = echarts.init(document.getElementById('linenew'));
                         option = {
-                            xAxis: {
-                                type: 'category',
-                                data: [{volist name="x_arr" id="x_arr"}'{$x_arr}',{/volist}]
-                            },
-                            yAxis: {
-                                type: 'value'
-                            },
-                            series: [{
-                                data: [{volist name="y_arr" id="y_arr"}'{$y_arr}',{/volist}],
-                                type: 'line'
-                            }]
-                        };
+                        	    xAxis: {
+                        	        type: 'category',
+                        	        data: [{volist name="x_arr" id="x_arr"}'{$x_arr}',{/volist}]
+                        	    },
+                        	    yAxis: {
+                        	        type: 'value'
+                        	    },
+                        	    series: [{
+                        	        data: [{volist name="y_arr" id="y_arr"}'{$y_arr}',{/volist}],
+                        	        type: 'bar'
+                        	    }]
+                        	};
+
                         myChart.setOption(option);
 
                     </script>

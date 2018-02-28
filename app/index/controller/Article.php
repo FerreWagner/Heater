@@ -20,8 +20,10 @@ class Article extends Base
         $cate        = db('category')->field('id, catename')->where('pid != 0')->select();
 
         $art_model   = new ArticleModel();
+        $cate_model  = new CategoryModel();
+        $product_id  = $cate_model->findCateId();
         $right_posts = $art_model->field('id, thumb, title, desc')
-                                 ->where('cate', '<>', config('index_module.productid'))
+                                 ->where('cate', 'not in', $product_id)
                                  ->order('time', 'desc')
                                  ->limit(3)
                                  ->select();
@@ -103,11 +105,14 @@ class Article extends Base
     /**
      * normal文章数据显示
      */
-    public function blog()
+    public function blog(Request $request)
     {
-        $model  = new ArticleModel();
-        $blog   = $model->blogData(input('id'));
-
+        $model      = new ArticleModel();
+        $blog       = $model->blogData(input('id'));
+        
+        //处理浏览数据
+        $this->artSee($request, input('id'));
+        
         $this->view->assign([
             'blog' => $blog,
         ]);
@@ -131,25 +136,27 @@ class Article extends Base
         $arr = $request->param();
         if (!empty($arr['search'])){
             $map = $arr['search'];
-        }else {
-            $map = implode('', array_values($arr));
+        }elseif (!empty($arr['keywords'])) {
+            $map = $arr['keywords'];
+        }elseif (!empty($arr['tag'])){
+            $map = $arr['tag'];
         }
         
+        $category   = new CategoryModel();
+        $pro_cateid = $category->findCateId();
+        
         //对tag/keywords title/desc的查询
-        if (in_array(implode('', array_keys($request->param())), ['tag', 'keywords'])){
+        if (!empty($arr['keywords']) || !empty($arr['tag'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
+                   ->whereNotIn('cate', $pro_cateid)
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
-                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
-        }else {
-            //兼容search的BUG
-            $art = db('article')
-                   ->field('id,thumb,desc,title,tag,time,cate,content')
+                   ->whereNotIn('cate', $pro_cateid)
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
@@ -161,5 +168,42 @@ class Article extends Base
     }
     
 
+    public function artSee(Request $request, $rid)
+    {
+        $see_time  = db('artsee')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
+        if ((time() - $see_time['time']) > 30 || is_null($see_time)){
+            
+            //sina地理位置接口
+            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip={$request->ip()}");
+            $arr_data  = json_decode($area, true);
+            $error     = json_last_error();
+            
+            //json是否存在错误
+            if (!empty($error)) {
+                $see = [
+                    'type'     => $this->getBrowser(),
+                    'rid'      => $rid,
+                    'ip'       => $request->ip(),
+                    'country'  => '',
+                    'province' => '',
+                    'city'     => '',
+                    'time'     => time(),
+                ];
+            }else {
+                $see = [
+                    'type'     => $this->getBrowser(),
+                    'rid'      => $rid,
+                    'ip'       => $request->ip(),
+                    'country'  => $arr_data['country'],
+                    'province' => $arr_data['province'],
+                    'city'     => $arr_data['city'],
+                    'time'     => time(),
+                ];
+            }
+            db('artsee')->insert($see);
+        }
+        
+    }
+    
     
 }

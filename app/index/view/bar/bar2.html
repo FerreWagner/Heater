@@ -161,18 +161,43 @@
                     <script>
                         var myChart = echarts.init(document.getElementById('linenew'));
                         option = {
-                            xAxis: {
-                                type: 'category',
-                                data: [{volist name="x_arr" id="x_arr"}'{$x_arr}',{/volist}]
-                            },
-                            yAxis: {
-                                type: 'value'
-                            },
-                            series: [{
-                                data: [{volist name="y_arr" id="y_arr"}'{$y_arr}',{/volist}],
-                                type: 'line'
-                            }]
-                        };
+                        	    color: ['{$color}'],
+                        	    tooltip : {
+                        	        trigger: 'axis',
+                        	        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                        	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                        	        }
+                        	    },
+                        	    grid: {
+                        	        left: '3%',
+                        	        right: '4%',
+                        	        bottom: '3%',
+                        	        containLabel: true
+                        	    },
+                        	    xAxis : [
+                        	        {
+                        	            type : 'category',
+                        	            data : [{volist name="x_arr" id="x_arr"}'{$x_arr}',{/volist}],
+                        	            axisTick: {
+                        	                alignWithLabel: true
+                        	            }
+                        	        }
+                        	    ],
+                        	    yAxis : [
+                        	        {
+                        	            type : 'value'
+                        	        }
+                        	    ],
+                        	    series : [
+                        	        {
+                        	            name:'data-format',
+                        	            type:'bar',
+                        	            barWidth: '60%',
+                        	            data:[{volist name="y_arr" id="y_arr"}'{$y_arr}',{/volist}]
+                        	        }
+                        	    ]
+                        	};
+
                         myChart.setOption(option);
 
                     </script>
