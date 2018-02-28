@@ -11,7 +11,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="/favicon.ico">
+<!-- 	<link rel="shortcut icon" href="/favicon.ico">
+ -->		<link rel="shortcut icon" href="http://image.fsociaty.com/heater_index.png">
 	
 	<!-- Style -->
 	<link rel="stylesheet" href="__STATIC__/home/css/theme.css">
@@ -59,7 +60,7 @@
 			<div class="col-md-4 col-sm-6 fadeIn wow" data-wow-duration="1.3s" {if $i == 1}{else /}data-wow-delay="{$i*0.2-0.2}s"{/if}>
 				<a href="{:url('index/products/index', ['id' => $pro['id']])}" target="_blank" class="project-item">
 					<div class="gallery-image">
-						<img src="{$pro.thumb}" alt="{$pro.keywords}" width=360 height=202>
+						<img src="{$pro.thumb}" alt="{:implode(',',$pro.keywords)}" width=360 height=202>
 					</div>
 					<div class="info">
 						<div class="h4 title">{$pro.title}</div>
@@ -128,7 +129,7 @@
 			<!-- Statistic Block -->
 			<div class="col-sm-3 col-xs-6 stat">
 				<span class="icon_pens icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="180"></div>
+				<div class="number animate-number h2" data-value="{$pro_count}"></div>
 				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Finished Projects</h4>
 			</div>
 			<!-- /Statistic Block -->
@@ -136,8 +137,8 @@
 			<!-- Statistic Block -->
 			<div class="col-sm-3 col-xs-6 stat">
 				<span class="icon_group icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="1806"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Happy Customers(产品浏览量)</h4>
+				<div class="number animate-number h2" data-value="{$count_artsee}"></div>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Products View</h4>
 			</div>
 			<!-- /Statistic Block -->
 
@@ -152,8 +153,8 @@
 			<!-- Statistic Block -->
 			<div class="col-sm-3 col-xs-6 stat">
 				<span class="icon_building icon zoomIn wow" data-wow-duration="0.7s"></span>
-				<div class="number animate-number h2" data-value="3485"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Days at Work(该站工作了多久)</h4>
+				<div class="number animate-number h2" data-value="{$day_work}"></div>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Days at Work</h4>
 			</div>
 			<!-- /Statistic Block -->
 

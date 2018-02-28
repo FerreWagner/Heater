@@ -3,70 +3,62 @@ namespace app\index\controller;
 
 use app\index\common\Base;
 use app\index\model\Article as ArticleModel;
-use app\admin\model\System;
-use app\index\model\Category as IndexCate;
 
 class Index extends Base
 {
     public function index()
     {
         $this->banner();
-        $this->product();
-        $this->countProduct();
+        $this->countSee();
         
-        $art    = new ArticleModel();
-        $system = new System();
+        $art       = new ArticleModel();
         
-        //单页面数据
-        $design = $art->design();
-        $fea    = $art->features();
-        $client = $art->clients();
+        //首页article部分数据
+        $product   = $art->product();
+        $design    = $art->design();
+        $fea       = $art->features();
+        $client    = $art->clients();
+        $pro_count = $art->countProduct();
         
         $this->view->assign([
-            'design' => $design,
-            'fea'    => $fea,
-            'client' => $client,
+            'product'      => $product,
+            'design'       => $design,
+            'fea'          => $fea,
+            'client'       => $client,
+            'pro_count'    => $pro_count,
+            'banner'       => $this->banner(),
+            'count_artsee' => $this->countSee(),
+            'day_work'     => $this->dayWork(),
         ]);
         
         return $this->view->fetch('index');
     }
-    
 
-    public function product()
-    {
-        $cate    = new IndexCate();
-        $pro_pid = $cate->findCateId();
-    
-        $product = db('article')
-                 ->field('id, title, thumb, keywords, desc')
-                 ->where('cate', 'in', $pro_pid)
-                 ->order('order', 'desc')
-                 ->limit(6)
-                 ->select();
-    
-        //TODO 1、七牛云图片显示处理 2、七牛云图片长宽处理
-    
-        $this->view->assign('product', $product);
-    }
-    
+
+    /**
+     * 首页banner
+     */
     public function banner()
     {
-        $banner = db('banner')->field('title,desc,thumb,link,sort')->select();
-        $this->view->assign('banner', $banner);
+        return db('banner')->field('title,desc,thumb,link,sort')->select();
+    }
+    
+    
+    /**
+     * 统计浏览量
+     */
+    public function countSee()
+    {
+        return db('artsee')->field('id')->count();
     }
     
     /**
-     * 统计产品量
+     * 网站工作多久,从2018/2/1开始计算
      */
-    public function countProduct()
+    public function dayWork()
     {
-        $cate    = new IndexCate();
-        $cate_id = $cate->findCateId();
-        $count = db('article')->where('cate', 'in', $cate_id)->count();
-        $this->view->assign('pro_count', $count);
+        return round((time() - 1517414400)/86400, 4);
     }
-    
-
     
     
     

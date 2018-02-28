@@ -27,6 +27,24 @@ class Article extends Model
     }
     
     /**
+     * 首页product数据
+     * @return unknown
+     */
+    public function product()
+    {
+        $cate    = new Category();
+        $pro_pid = $cate->findCateId();
+    
+        return $this->field('id, title, thumb, keywords, desc')
+                    ->where('cate', 'in', $pro_pid)
+                    ->order('order', 'desc')
+                    ->limit(6)
+                    ->select();
+    
+        //TODO 1、七牛云图片显示处理 2、七牛云图片长宽处理
+    }
+    
+    /**
      * 首页的design页面
      */
     public function design()
@@ -83,5 +101,16 @@ class Article extends Model
                     ->find($id);
     }
     
+    /**
+     * 统计产品量
+     */
+    public function countProduct()
+    {
+        $cate    = new Category();
+        $cate_id = $cate->findCateId();
+        return $this->where('cate', 'in', $cate_id)
+                      ->count() - 1;
+    }
     
+
 }
