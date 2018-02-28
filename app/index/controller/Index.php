@@ -12,6 +12,7 @@ class Index extends Base
     {
         $this->banner();
         $this->product();
+        $this->countProduct();
         
         $art    = new ArticleModel();
         $system = new System();
@@ -52,6 +53,17 @@ class Index extends Base
     {
         $banner = db('banner')->field('title,desc,thumb,link,sort')->select();
         $this->view->assign('banner', $banner);
+    }
+    
+    /**
+     * 统计产品量
+     */
+    public function countProduct()
+    {
+        $cate    = new IndexCate();
+        $cate_id = $cate->findCateId();
+        $count = db('article')->where('cate', 'in', $cate_id)->count();
+        $this->view->assign('pro_count', $count);
     }
     
 

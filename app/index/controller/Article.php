@@ -131,25 +131,27 @@ class Article extends Base
         $arr = $request->param();
         if (!empty($arr['search'])){
             $map = $arr['search'];
-        }else {
-            $map = implode('', array_values($arr));
+        }elseif (!empty($arr['keywords'])) {
+            $map = $arr['keywords'];
+        }elseif (!empty($arr['tag'])){
+            $map = $arr['tag'];
         }
         
+        $category   = new CategoryModel();
+        $pro_cateid = $category->findCateId();
+        
         //对tag/keywords title/desc的查询
-        if (in_array(implode('', array_keys($request->param())), ['tag', 'keywords'])){
+        if (!empty($arr['keywords']) || !empty($arr['tag'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
+                   ->whereNotIn('cate', $pro_cateid)
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
-                   ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
-        }else {
-            //兼容search的BUG
-            $art = db('article')
-                   ->field('id,thumb,desc,title,tag,time,cate,content')
+                   ->whereNotIn('cate', $pro_cateid)
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
