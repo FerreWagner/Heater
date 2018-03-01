@@ -40,7 +40,7 @@ class Index extends Base
      */
     public function banner()
     {
-        return db('banner')->field('title,desc,thumb,link,sort')->select();
+        return db('banner')->field('title,desc,thumb,link,sort')->order('sort', 'desc')->select();
     }
     
     
