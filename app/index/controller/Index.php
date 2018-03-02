@@ -8,11 +8,13 @@ class Index extends Base
 {
     public function index()
     {
+        //游客记录
+        $this->tourist();
+        
         $this->banner();
         $this->countSee();
         
         $art       = new ArticleModel();
-        
         //首页article部分数据
         $product   = $art->product();
         $design    = $art->design();
@@ -35,6 +37,17 @@ class Index extends Base
     }
 
 
+    /**
+     * 游客记录
+     */
+    public function tourist()
+    {
+        $time = db('tourist')->field('time')->where('ip', request()->ip())->order('time', 'desc')->find();
+        if (empty($time)){
+            $res = db('tourist')->insert(['ip' =>request()->ip(), 'time' => time()]);
+            return $res ? true : false;
+        }
+    }
     /**
      * 首页banner
      */

@@ -17,13 +17,14 @@ class Article extends Base
     {
         parent::_initialize();
         //右侧cate显示
-        $cate        = db('category')->field('id, catename')->where('pid != 0')->select();
+        $cate        = db('category')->field('id, catename')->where('pid != 0')->cache(config('index_module.cache'))->select();
 
         $art_model   = new ArticleModel();
         $cate_model  = new CategoryModel();
         $product_id  = $cate_model->findCateId();
         $right_posts = $art_model->field('id, thumb, title, desc')
                                  ->where('cate', 'not in', $product_id)
+                                 ->cache(config('index_module.cache'))
                                  ->order('time', 'desc')
                                  ->limit(3)
                                  ->select();
@@ -52,6 +53,7 @@ class Article extends Base
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
+                 ->cache(config('index_module.cache'))
                  ->where('cate', $cate_id)->find();
         }else {
             $arti = db('article')
@@ -60,13 +62,14 @@ class Article extends Base
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
                  ->where('b.id', 'in', $cate_id)
+                 ->cache(config('index_module.cache'))
                  ->paginate(config('index_module.propage'));
         }
         
         //当前分类的id和pid
-        $my_id    = db('category')->field('id, pid')->find($id);
+        $my_id    = db('category')->field('id, pid')->cache(config('index_module.cache'))->find($id);
         //catename
-        $category = db('category')->field('id, catename')->find($id);
+        $category = db('category')->field('id, catename')->cache(config('index_module.cache'))->find($id);
         
         
         if ($id == config('index_module.cateprocess')){
@@ -88,6 +91,7 @@ class Article extends Base
                      ->join('heater_category b','a.cate=b.id')
                      ->order('a.time desc')
                      ->where('b.id', 'in', $cate_id)
+                     ->cache(config('index_module.cache'))
                      ->limit(8)
                      ->select();
             $this->view->assign('bot_pro', $bot_pro);
@@ -151,12 +155,14 @@ class Article extends Base
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
                    ->whereNotIn('cate', $pro_cateid)
+                   ->cache(config('index_module.cache'))
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
                    ->whereNotIn('cate', $pro_cateid)
+                   ->cache(config('index_module.cache'))
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
@@ -171,7 +177,7 @@ class Article extends Base
     public function artSee(Request $request, $rid)
     {
         $see_time  = db('artsee')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
-        if ((time() - $see_time['time']) > 30 || is_null($see_time)){
+        if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
             
             //sina地理位置接口
             $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip={$request->ip()}");
