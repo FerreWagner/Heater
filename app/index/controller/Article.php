@@ -71,7 +71,6 @@ class Article extends Base
         //catename
         $category = db('category')->field('id, catename')->cache(config('index_module.cache'))->find($id);
         
-        
         if ($id == config('index_module.cateprocess')){
             $template = 'process';
         }elseif (!is_object($arti) && count($cate_id) < 2){
