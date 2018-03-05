@@ -69,7 +69,7 @@ class Article extends Base
         //当前分类的id和pid
         $my_id    = db('category')->field('id, pid')->cache(config('index_module.cache'))->find($id);
         //catename
-        $category = db('category')->field('id, catename')->cache(config('index_module.cache'))->find($id);
+        $category = db('category')->field('id, catename')->find($id);
         
         if ($id == config('index_module.cateprocess')){
             $template = 'process';

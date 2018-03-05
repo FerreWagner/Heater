@@ -10,5 +10,5 @@ return [
     'searchpage'   => 6,
     'cateprocess'  => 12,
     'cookie_time'  => 120,
-    'cache'        => 1296000,
+    'cache'        => 1296000,    //1296000
 ];
