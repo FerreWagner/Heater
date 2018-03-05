@@ -24,7 +24,7 @@ class Article extends Base
         $product_id  = $cate_model->findCateId();
         $right_posts = $art_model->field('id, thumb, title, desc')
                                  ->where('cate', 'not in', $product_id)
-                                 ->cache(config('index_module.cache'))
+//                                  ->cache(config('index_module.cache'))
                                  ->order('time', 'desc')
                                  ->limit(3)
                                  ->select();
@@ -53,7 +53,7 @@ class Article extends Base
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
-                 ->cache(config('index_module.cache'))
+//                  ->cache(config('index_module.cache'))
                  ->where('cate', $cate_id)->find();
         }else {
             $arti = db('article')
@@ -62,7 +62,7 @@ class Article extends Base
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
                  ->where('b.id', 'in', $cate_id)
-                 ->cache(config('index_module.cache'))
+//                  ->cache(config('index_module.cache'))
                  ->paginate(config('index_module.propage'));
         }
         
@@ -90,7 +90,7 @@ class Article extends Base
                      ->join('heater_category b','a.cate=b.id')
                      ->order('a.time desc')
                      ->where('b.id', 'in', $cate_id)
-                     ->cache(config('index_module.cache'))
+//                      ->cache(config('index_module.cache'))
                      ->limit(8)
                      ->select();
             $this->view->assign('bot_pro', $bot_pro);
@@ -154,14 +154,14 @@ class Article extends Base
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
                    ->whereNotIn('cate', $pro_cateid)
-                   ->cache(config('index_module.cache'))
+//                    ->cache(config('index_module.cache'))
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
                    ->whereNotIn('cate', $pro_cateid)
-                   ->cache(config('index_module.cache'))
+//                    ->cache(config('index_module.cache'))
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
