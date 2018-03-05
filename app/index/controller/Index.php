@@ -3,13 +3,14 @@ namespace app\index\controller;
 
 use app\index\common\Base;
 use app\index\model\Article as ArticleModel;
+use think\Request;
 
 class Index extends Base
 {
-    public function index()
+    public function index(Request $request)
     {
         //游客记录
-        $this->tourist();
+        $this->tourist($request);
         
         $this->banner();
         $this->countSee();
@@ -40,12 +41,37 @@ class Index extends Base
     /**
      * 游客记录
      */
-    public function tourist()
+    public function tourist(Request $request)
     {
-        $time = db('tourist')->field('time')->where('ip', request()->ip())->order('time', 'desc')->find();
-        if (empty($time)){
-            $res = db('tourist')->insert(['ip' =>request()->ip(), 'time' => time()]);
-            return $res ? true : false;
+        $see_time  = db('tourist')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
+        if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
+            
+            //sina地理位置接口
+            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip={$request->ip()}");
+            $arr_data  = json_decode($area, true);
+            $error     = json_last_error();
+            
+            //json是否存在错误
+            if (!empty($error)) {
+                $see = [
+                    'type'     => $this->getBrowser(),
+                    'ip'       => $request->ip(),
+                    'country'  => '',
+                    'province' => '',
+                    'city'     => '',
+                    'time'     => time(),
+                ];
+            }else {
+                $see = [
+                    'type'     => $this->getBrowser(),
+                    'ip'       => $request->ip(),
+                    'country'  => $arr_data['country'],
+                    'province' => $arr_data['province'],
+                    'city'     => $arr_data['city'],
+                    'time'     => time(),
+                ];
+            }
+            db('tourist')->insert($see);
         }
     }
     /**
