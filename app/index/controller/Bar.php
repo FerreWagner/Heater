@@ -88,4 +88,27 @@ class Bar extends Products
         return $this->view->fetch(request()->action());
     }
     
+    public function bar4(Request $request)
+    {
+        $x_arr = [];
+    
+        $common = new Common();
+        $common->checkExcel();
+    
+        $common->getForm($request);
+    
+        $pic_view   = Cookie::get('excel_data');
+        $sheet_cate = $common->deleteEmpty(array_shift($pic_view));
+        $x_arr      = $common->deleteEmpty(array_shift($pic_view));
+    
+    
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'sheet_cate' => $sheet_cate,
+            'sheet_data' => $pic_view,
+        ]);
+    
+        return $this->view->fetch(request()->action());
+    }
+    
 }
