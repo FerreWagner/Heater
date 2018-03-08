@@ -17,7 +17,7 @@ class Article extends Base
     {
         parent::_initialize();
         //右侧cate显示
-        $cate        = db('category')->field('id, catename')->where('pid != 0')->cache(config('index_module.cache'))->select();
+        $cate        = db('category')->field('id, catename')->where('pid != 0')->select();  //->cache(config('index_module.cache'))
 
         $art_model   = new ArticleModel();
         $cate_model  = new CategoryModel();
@@ -67,7 +67,7 @@ class Article extends Base
         }
         
         //当前分类的id和pid
-        $my_id    = db('category')->field('id, pid')->cache(config('index_module.cache'))->find($id);
+        $my_id    = db('category')->field('id, pid')->find($id);    //->cache(config('index_module.cache'))
         //catename
         $category = db('category')->field('id, catename')->find($id);
         
