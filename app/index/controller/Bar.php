@@ -111,4 +111,34 @@ class Bar extends Products
         return $this->view->fetch(request()->action());
     }
     
+    public function bar5(Request $request)
+    {
+//         $y_arr = [];
+        $x_arr = [];
+    
+        $common = new Common();
+        $common->checkExcel();
+        
+        $common->getForm($request);
+        
+        $pic_view  = Cookie::get('excel_data');
+        $title     = implode('', $common->deleteEmpty(array_pop($pic_view)));    //最后一行剔除并转化为字符串
+        $sub_title = implode('', $common->deleteEmpty(array_pop($pic_view)));    //最后一行剔除并转化为字符串
+        
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+//             $y_arr[] .= $v[1];
+        }
+        
+        $this->view->assign([
+            'title'    => $title,
+            'sub'      => $sub_title,
+            'x_arr'    => $x_arr,
+            'pic_view' => $pic_view,
+        ]);
+        
+        return $this->view->fetch(request()->action());
+    }
+    
 }
