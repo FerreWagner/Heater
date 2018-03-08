@@ -19,14 +19,14 @@ class Products extends Base
             ->field('a.*, b.catename')
             ->alias('a')
             ->join('heater_category b', 'a.cate=b.id')
-            ->cache(config('index_module.cache'))
+//             ->cache(config('index_module.cache'))
             ->find(input('id'));
 
         $bot_pro1 = db('article')
             ->field('id,thumb,desc,title')
             ->order('time desc')
             ->limit(4)
-            ->cache(config('index_module.cache'))
+//             ->cache(config('index_module.cache'))
             ->select();
 
         $this->view->assign([
