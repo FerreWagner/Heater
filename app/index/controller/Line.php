@@ -203,4 +203,36 @@ class Line extends Products
     
         return $this->view->fetch(request()->action());
     }
+    
+    public function line9(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+        
+        $y_arr = [];
+        $x_arr = [];
+        
+        $common->getForm($request);
+        
+        $pic_view   = Cookie::get('excel_data');
+        $line_color = $common->deleteEmpty(array_pop($pic_view));
+        $bdr_color  = $common->deleteEmpty(array_pop($pic_view));
+        $poit_color = $common->deleteEmpty(array_pop($pic_view));
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+
+        }
+        
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+            'bdr_color'  => $bdr_color[0],
+            'line_color' => $line_color[0],
+            'poit_color' => $poit_color[0],
+        ]);
+        return $this->view->fetch(request()->action());
+    }
+    
 }
