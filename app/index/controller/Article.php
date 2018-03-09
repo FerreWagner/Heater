@@ -176,7 +176,7 @@ class Article extends Base
 
     public function artSee(Request $request, $rid)
     {
-        $see_time  = db('artsee')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
+        $see_time  = db('artsee')->field('time')->where('ip', $request->ip())->where('rid', $rid)->order('time', 'desc')->find();
         if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
             
             //sina地理位置接口
