@@ -46,8 +46,13 @@ class Article extends Base
         $cate    = new CategoryModel();
         $cate_id = $cate->getCate($id);
         
+        //当前分类的id和pid
+        $my_id    = db('category')->field('id, pid')->find($id);    //->cache(config('index_module.cache'))
+        //catename
+        $category = db('category')->field('id, catename')->find($id);
+        
         //为process || 没有子分类且文章为1或0
-        if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2){
+        if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2 && config('index_module.productid') != $my_id['pid']){
             $arti = db('article')
                  ->field('a.title, a.content, a.thumb, a.desc,b.catename')
                  ->alias('a')
@@ -66,10 +71,6 @@ class Article extends Base
                  ->paginate(config('index_module.propage'));
         }
         
-        //当前分类的id和pid
-        $my_id    = db('category')->field('id, pid')->find($id);    //->cache(config('index_module.cache'))
-        //catename
-        $category = db('category')->field('id, catename')->find($id);
         
         if ($id == config('index_module.cateprocess')){
             $template = 'process';
