@@ -187,7 +187,7 @@
                                 repeat: 'repeat'
                             },
                             title: {
-                                text: '饼图纹理',
+                                text: '{$bar_title}',
                                 textStyle: {
                                     color: '#235894'
                                 }
@@ -215,11 +215,9 @@
                                     }
                                 },
                                 data:[
-                                    {value:335, name:'直接访问'},
-                                    {value:310, name:'邮件营销'},
-                                    {value:234, name:'联盟广告'},
-                                    {value:135, name:'视频广告'},
-                                    {value:1548, name:'搜索引擎'}
+                                    {volist name="pic_view" id="view_pic"}
+                                    	{value:'{$view_pic[1]}', name:'{$view_pic[0]}'},
+                                    {/volist}
                                 ],
                                 itemStyle: itemStyle
                             }]
