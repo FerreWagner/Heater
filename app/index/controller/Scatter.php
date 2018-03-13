@@ -30,4 +30,22 @@ class Scatter extends Products
         return $this->view->fetch(request()->action());
     }
     
+    public function sca2(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+        
+        $common->getForm($request);
+        $pic_view  = Cookie::get('excel_data');
+        $title     = $common->deleteEmpty(array_pop($pic_view));  //去空元素后的分类
+        
+        
+        $this->view->assign([
+            'pic_view'    => $pic_view,
+            'sca_title'   => $title,
+        ]);
+    
+        return $this->view->fetch(request()->action());
+    }
+    
 }
