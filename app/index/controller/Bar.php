@@ -14,8 +14,7 @@ class Bar extends Products
     
     public function bar1(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
         $common = new Common();
         $common->checkExcel();
@@ -39,8 +38,7 @@ class Bar extends Products
     
     public function bar2(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
     
         $common = new Common();
         $common->checkExcel();
@@ -113,7 +111,6 @@ class Bar extends Products
     
     public function bar5(Request $request)
     {
-//         $y_arr = [];
         $x_arr = [];
     
         $common = new Common();
@@ -128,7 +125,6 @@ class Bar extends Products
         
         foreach ($pic_view as $k => $v){
             $x_arr[] .= $v[0];
-//             $y_arr[] .= $v[1];
         }
         
         $this->view->assign([
@@ -143,7 +139,6 @@ class Bar extends Products
     
     public function bar6(Request $request)
     {
-        //         $y_arr = [];
         $x_arr = [];
     
         $common = new Common();
@@ -155,7 +150,6 @@ class Bar extends Products
     
         foreach ($pic_view as $k => $v){
             $x_arr[] .= $v[0];
-            //             $y_arr[] .= $v[1];
         }
     
         $this->view->assign([
@@ -188,8 +182,7 @@ class Bar extends Products
     
     public function bar8(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
         $common = new Common();
         $common->checkExcel();
@@ -215,8 +208,7 @@ class Bar extends Products
     
     public function bar9(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
         $common = new Common();
         $common->checkExcel();
@@ -240,8 +232,7 @@ class Bar extends Products
     
     public function bar10(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
     
         $common = new Common();
         $common->checkExcel();
@@ -260,6 +251,32 @@ class Bar extends Products
             'x_arr'     => $x_arr,
             'y_arr'     => $y_arr,
             'bar_title' => $title,
+        ]);
+    
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function bar11(Request $request)
+    {
+        $arr = [];
+    
+        $common = new Common();
+        $common->checkExcel();
+    
+        $common->getForm($request);
+    
+        $pic_view  = Cookie::get('excel_data');
+        $bar_year  = $common->deleteEmpty(array_shift($pic_view));    //第一行剔除
+        $bar_cate  = $common->deleteEmpty(array_shift($pic_view));    //第一行剔除
+        
+        foreach ($pic_view as $_k => $_v){
+            $arr[] = $common->deleteEmpty($_v);
+        }
+        
+        $this->view->assign([
+            'bar_cate'  => $bar_cate,
+            'bar_year'  => $bar_year,
+            'arr_data'  => $arr,
         ]);
     
         return $this->view->fetch(request()->action());
