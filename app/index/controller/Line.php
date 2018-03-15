@@ -19,8 +19,7 @@ class Line extends Products
         $common = new Common();
         $common->checkExcel();
         
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
 //         //未选择文件的处理
 //         if ($request->file('heater')){
@@ -70,8 +69,7 @@ class Line extends Products
     
     public function line3(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
         $common = new Common();
         $common->checkExcel();      //数据验证
@@ -209,8 +207,7 @@ class Line extends Products
         $common = new Common();
         $common->checkExcel();
         
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
         $common->getForm($request);
         
@@ -231,6 +228,31 @@ class Line extends Products
             'bdr_color'  => $bdr_color[0],
             'line_color' => $line_color[0],
             'poit_color' => $poit_color[0],
+        ]);
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function line10(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+    
+        $x_arr = $y_arr = [];
+    
+        $common->getForm($request);
+    
+        $pic_view   = Cookie::get('excel_data');
+        $sheet_name = Cookie::get('sheet_name')[0]; //sheet表名
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+        }
+    
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+            'sheet_name' => $sheet_name,
         ]);
         return $this->view->fetch(request()->action());
     }
