@@ -23,6 +23,7 @@ class Index extends Base
         $client    = $art->clients();
         $pro_count = $art->countProduct();
         
+        
         $this->view->assign([
             'product'      => $product,
             'design'       => $design,
@@ -32,6 +33,7 @@ class Index extends Base
             'banner'       => $this->banner(),
             'count_artsee' => $this->countSee(),
             'day_work'     => $this->dayWork(),
+            'count_art'    => $this->countArtSee($product), //首页产品的artsee数据
         ]);
         
         return $this->view->fetch('index');
@@ -99,6 +101,20 @@ class Index extends Base
         return round((time() - 1517414400)/86400, 4);
     }
     
+    /**
+     * 首页artsee数据
+     * @param unknown $art_data
+     * @return number[]|string[]
+     */
+    public function countArtSee($art_data)
+    {
+        $count = [];
+        foreach ($art_data as $k => $v){
+            $count[] .= db('artsee')->where('rid', $v->id)->count();
+        }
+        
+        return $count;
+    }
     
     
 }

@@ -174,42 +174,7 @@ class Article extends Base
     }
     
 
-    public function artSee(Request $request, $rid)
-    {
-        $see_time  = db('artsee')->field('time')->where('ip', $request->ip())->where('rid', $rid)->order('time', 'desc')->find();
-        if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
-            
-            //sina地理位置接口
-            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip={$request->ip()}");
-            $arr_data  = json_decode($area, true);
-            $error     = json_last_error();
-            
-            //json是否存在错误
-            if (!empty($error)) {
-                $see = [
-                    'type'     => $this->getBrowser(),
-                    'rid'      => $rid,
-                    'ip'       => $request->ip(),
-                    'country'  => '',
-                    'province' => '',
-                    'city'     => '',
-                    'time'     => time(),
-                ];
-            }else {
-                $see = [
-                    'type'     => $this->getBrowser(),
-                    'rid'      => $rid,
-                    'ip'       => $request->ip(),
-                    'country'  => $arr_data['country'],
-                    'province' => $arr_data['province'],
-                    'city'     => $arr_data['city'],
-                    'time'     => time(),
-                ];
-            }
-            db('artsee')->insert($see);
-        }
-        
-    }
+
     
     
 }

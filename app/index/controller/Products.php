@@ -44,6 +44,7 @@ class Products extends Base
 
     public function index(Request $request)
     {
+        $this->artSee($request, input('id'));
         //拼接跳转url
         if ($request->isPost()){
 //            $url_detail = 'index/heater.'.$pro['catename'].'/'.explode('.', $pro['desc'])[0];
