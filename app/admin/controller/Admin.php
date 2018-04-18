@@ -60,7 +60,8 @@ class Admin extends Base
         $admin = AdminModel::find(request()->input($id));
         
         if ($request->isPost()){
-            $update = $request->param();
+//             $update = $request->param();
+            $update = request()->post();
             $update['password']    = empty($update['password']) ? $admin['password'] : sha1($update['password'].config('salt.password_salt'));
             $update['update_time'] = time();
             
