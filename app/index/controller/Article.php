@@ -17,13 +17,14 @@ class Article extends Base
     {
         parent::_initialize();
         //右侧cate显示
-        $cate        = db('category')->field('id, catename')->where('pid != 0')->select();
+        $cate        = db('category')->field('id, catename')->where('pid != 0')->select();  //->cache(config('index_module.cache'))
 
         $art_model   = new ArticleModel();
         $cate_model  = new CategoryModel();
         $product_id  = $cate_model->findCateId();
         $right_posts = $art_model->field('id, thumb, title, desc')
                                  ->where('cate', 'not in', $product_id)
+//                                  ->cache(config('index_module.cache'))
                                  ->order('time', 'desc')
                                  ->limit(3)
                                  ->select();
@@ -45,13 +46,19 @@ class Article extends Base
         $cate    = new CategoryModel();
         $cate_id = $cate->getCate($id);
         
+        //当前分类的id和pid
+        $my_id    = db('category')->field('id, pid')->find($id);    //->cache(config('index_module.cache'))
+        //catename
+        $category = db('category')->field('id, catename')->find($id);
+        
         //为process || 没有子分类且文章为1或0
-        if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2){
+        if (count($cate_id) < 2 && count(db('article')->where('cate', $cate_id)->select()) < 2 && config('index_module.productid') != $my_id['pid']){
             $arti = db('article')
                  ->field('a.title, a.content, a.thumb, a.desc,b.catename')
                  ->alias('a')
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
+//                  ->cache(config('index_module.cache'))
                  ->where('cate', $cate_id)->find();
         }else {
             $arti = db('article')
@@ -60,13 +67,9 @@ class Article extends Base
                  ->join('heater_category b','a.cate=b.id')
                  ->order('a.order desc')
                  ->where('b.id', 'in', $cate_id)
+//                  ->cache(config('index_module.cache'))
                  ->paginate(config('index_module.propage'));
         }
-        
-        //当前分类的id和pid
-        $my_id    = db('category')->field('id, pid')->find($id);
-        //catename
-        $category = db('category')->field('id, catename')->find($id);
         
         
         if ($id == config('index_module.cateprocess')){
@@ -88,6 +91,7 @@ class Article extends Base
                      ->join('heater_category b','a.cate=b.id')
                      ->order('a.time desc')
                      ->where('b.id', 'in', $cate_id)
+//                      ->cache(config('index_module.cache'))
                      ->limit(8)
                      ->select();
             $this->view->assign('bot_pro', $bot_pro);
@@ -151,12 +155,14 @@ class Article extends Base
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('tag|keywords', 'like', '%'.$map.'%')
                    ->whereNotIn('cate', $pro_cateid)
+//                    ->cache(config('index_module.cache'))
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }elseif (!empty($arr['search'])){
             $art = db('article')
                    ->field('id,thumb,desc,title,tag,time,cate,content')
                    ->where('title|desc', 'like', '%'.$map.'%')
                    ->whereNotIn('cate', $pro_cateid)
+//                    ->cache(config('index_module.cache'))
                    ->paginate(config('index_module.searchpage'), false, ['query' => $request->param()]);
         }
         
@@ -168,42 +174,7 @@ class Article extends Base
     }
     
 
-    public function artSee(Request $request, $rid)
-    {
-        $see_time  = db('artsee')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
-        if ((time() - $see_time['time']) > 30 || is_null($see_time)){
-            
-            //sina地理位置接口
-            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip={$request->ip()}");
-            $arr_data  = json_decode($area, true);
-            $error     = json_last_error();
-            
-            //json是否存在错误
-            if (!empty($error)) {
-                $see = [
-                    'type'     => $this->getBrowser(),
-                    'rid'      => $rid,
-                    'ip'       => $request->ip(),
-                    'country'  => '',
-                    'province' => '',
-                    'city'     => '',
-                    'time'     => time(),
-                ];
-            }else {
-                $see = [
-                    'type'     => $this->getBrowser(),
-                    'rid'      => $rid,
-                    'ip'       => $request->ip(),
-                    'country'  => $arr_data['country'],
-                    'province' => $arr_data['province'],
-                    'city'     => $arr_data['city'],
-                    'time'     => time(),
-                ];
-            }
-            db('artsee')->insert($see);
-        }
-        
-    }
+
     
     
 }

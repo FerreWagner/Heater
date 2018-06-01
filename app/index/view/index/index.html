@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-
+<meta name="msvalidate.01" content="972ADC37FEAAE933BEECC81251F93213" />
 	<!-- Page title -->
 	<title>{$sys.title}</title>
 	
@@ -9,7 +9,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+	<meta name="description" content="{$sys.desc}" />
+	<meta name="keywords" content="{$sys.keywords}" />
 	<!-- Favicon -->
 	<!-- 	<link rel="shortcut icon" href="/favicon.ico">-->		    
 	{include file="public/icon" /}
@@ -64,10 +65,10 @@
 					</div>
 					<div class="info">
 						<div class="h4 title">{$pro.title}</div>
-						<p class="description"># {$pro.desc|substr=0,30}</p>
+						<p class="description"># {$pro.desc}</p>
 						<div class="social">
-							<i class="fa fa-fw fa-heart-o"></i> 17
-							<i class="fa fa-fw fa-share-square-o"></i> 3
+							<i class="fa fa-fw fa-heart-o"></i> {$count_art[$i - 1]}
+							<!-- <i class="fa fa-fw fa-share-square-o"></i> 3 -->
 						</div>
 					</div>
 				</a>
@@ -146,7 +147,7 @@
 			<div class="col-sm-3 col-xs-6 stat">
 				<span class="icon_mug icon zoomIn wow" data-wow-duration="0.7s"></span>
 				<div class="number animate-number h2" data-value="238"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Coffee</h4>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Send Me The Coffee</h4>
 			</div>
 			<!-- /Statistic Block -->
 
@@ -154,7 +155,7 @@
 			<div class="col-sm-3 col-xs-6 stat">
 				<span class="icon_building icon zoomIn wow" data-wow-duration="0.7s"></span>
 				<div class="number animate-number h2" data-value="{$day_work}"></div>
-				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Days at Work</h4>
+				<h4 class="title bounceInUp wow" data-wow-duration="0.7s">Days At Work</h4>
 			</div>
 			<!-- /Statistic Block -->
 

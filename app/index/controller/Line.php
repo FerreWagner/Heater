@@ -19,8 +19,7 @@ class Line extends Products
         $common = new Common();
         $common->checkExcel();
         
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
 //         //未选择文件的处理
 //         if ($request->file('heater')){
@@ -70,8 +69,7 @@ class Line extends Products
     
     public function line3(Request $request)
     {
-        $y_arr = [];
-        $x_arr = [];
+        $x_arr = $y_arr = [];
         
         $common = new Common();
         $common->checkExcel();      //数据验证
@@ -181,4 +179,109 @@ class Line extends Products
     
         return $this->view->fetch(request()->action());
     }
+    
+    public function line8(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();      //数据验证
+        $common->getForm($request); //数据表单提取
+        
+        $pic_view   = Cookie::get('excel_data');    //提取cookie
+        $sheet_name = Cookie::get('sheet_name')[0]; //sheet表名
+        $sheet_cate = $common->deleteEmpty(array_shift($pic_view));  //去空元素后的分类
+        $x_arr      = $common->deleteEmpty(array_shift($pic_view));  //去空元素后的横坐标
+        $y_arr      = array_slice($pic_view, 0, count($pic_view));
+        
+        $this->view->assign([
+            'sheet_name' => $sheet_name,
+            'sheet_cate' => $sheet_cate,
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+        ]);
+    
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function line9(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+        
+        $x_arr = $y_arr = [];
+        
+        $common->getForm($request);
+        
+        $pic_view   = Cookie::get('excel_data');
+        $line_color = $common->deleteEmpty(array_pop($pic_view));
+        $bdr_color  = $common->deleteEmpty(array_pop($pic_view));
+        $poit_color = $common->deleteEmpty(array_pop($pic_view));
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+
+        }
+        
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+            'bdr_color'  => $bdr_color[0],
+            'line_color' => $line_color[0],
+            'poit_color' => $poit_color[0],
+        ]);
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function line10(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+    
+        $x_arr = $y_arr = [];
+    
+        $common->getForm($request);
+    
+        $pic_view    = Cookie::get('excel_data');
+        $sheet_name  = Cookie::get('sheet_name')[0]; //sheet表名
+        $data_format = $common->deleteEmpty(array_pop($pic_view));   //最后一条为数据格式
+        $data_danwei = $common->deleteEmpty(array_pop($pic_view));   //倒数第二条为x/y轴的单位
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+        }
+        
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+            'sheet_name' => $sheet_name,
+        ]);
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function line11(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+        
+        $x_arr = $y_arr = [];
+        
+        $common->getForm($request);
+        
+        $pic_view   = Cookie::get('excel_data');
+        $sheet_name = Cookie::get('sheet_name')[0]; //sheet表名
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+        }
+        
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+            'sheet_name' => $sheet_name,
+        ]);
+        return $this->view->fetch(request()->action());
+    }
+    
 }

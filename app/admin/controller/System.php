@@ -79,7 +79,7 @@ class System extends Base
     public function linkUpdate(Request $request)
     {
         if ($request->isPost()){
-            $link_update = $request->param();
+            $link_update = request()->post();
             //验证表单
             $validate = Loader::validate('Syetem');
             if (!$validate->scene('edit')->check($link_update)){

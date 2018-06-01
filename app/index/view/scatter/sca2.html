@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page title -->
+    <title>{$sys.title}-{$pro.catename}</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="{$sys.desc}" />
+	<meta name="keywords" content="{$sys.keywords}" />
+    <!-- Favicon -->
+    {include file="public/icon" /}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="__STATIC__/home/css/theme.css">
+
+</head>
+<body>
+
+<!-- Header -->
+{include file="header/header" /}
+<!-- /Header -->
+
+<!-- Section: Page Header -->
+<section class="section-page-header">
+    <div class="container">
+        <div class="row">
+
+            <!-- Page Title -->
+            <div class="col-md-8">
+                <h1 class="title">{$pro.catename} - {$pro.title}</h1>
+                <div class="subtitle">{$pro.desc|substr=0,60}</div>
+            </div>
+            <!-- /Page Title -->
+
+            <!-- Breadcrumbs -->
+            <div class="col-md-4">
+                <ul class="breadcrumb">
+                    <li><i class="fa fa-fw fa-home"></i> <a href="/">Home</a></li>
+                    <li><a href="#">{$pro.catename}</a></li>
+                </ul>
+            </div>
+            <!-- /Breadcrumbs -->
+
+        </div>
+    </div>
+</section>
+<!-- /Section: Page Header -->
+
+<!-- Main -->
+<main class="main-container">
+
+    <section>
+        <div class="container">
+
+            <!-- Project -->
+            <div class="row">
+
+                <!-- Project Images -->
+                <div class="col-md-8">
+
+
+                    <div class="project-carousel owl-carousel owl-theme">
+
+                        <div class="item">
+                            <a href="{$pro.thumb}" class="image-popup">
+                                <div class="gallery-image">
+                                    <img src="{$pro.thumb}" width=750 width=422 alt="{$pro.desc}">
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <!-- /Project Images -->
+
+                <!-- Project Information -->
+                <div class="col-md-4 project-information">
+
+                    <h3 class="title">Project Description</h3>
+                    <p>
+                        {$pro.desc}
+                    </p>
+
+                    <h3 class="title">Project Details</h3>
+                    <ul class="details">
+                        <li><span>Author: </span> {$pro.author}</li>
+                        <li><span>Date: </span> {$pro.time|date="Y-M-d H:i:s", ###}</li>
+                        <li><span>Tags: </span> {$pro.tag}</li>
+                    </ul>
+
+
+                    <ul class="social-share">
+                        <!-- JiaThis Button BEGIN -->
+                        <div class="jiathis_style_24x24" style="margin-top: -8px;">
+                            <a class="jiathis_button_qzone"></a>
+                            <a class="jiathis_button_tsina"></a>
+                            <a class="jiathis_button_tqq"></a>
+                            <a class="jiathis_button_weixin"></a>
+                            <a class="jiathis_button_renren"></a>
+                            <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                            <a class="jiathis_counter_style"></a>
+                        </div>
+                        <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                        <!-- JiaThis Button END -->
+                    </ul>
+                    
+                    
+
+                </div>
+                <!-- /Project Information -->
+
+            </div>
+            <!-- /Project -->
+
+        </div>
+    </section>
+    <section style="background: #fbfbfb;border-bottom: solid 2px #996de9;border-top: solid 2px #996de9;">
+        <div class="container">
+
+            <!-- Project -->
+            <div class="row">
+
+                <!-- Project Images -->
+                <div class="col-md-8">
+                    <div id="linenew" style="width: 100%;height:500px;"></div>
+                    <style>
+                        .upload{
+                            padding: 4px 10px;
+                            height: 20px;
+                            line-height: 20px;
+                            position: relative;
+                            border: 1px solid #999;
+                            text-decoration: none;
+                            color: #fff;
+                            background: #996de9;
+                            border-radius: 5px;
+                        }
+                        .change{
+                            position: absolute;
+                            overflow: hidden;
+                            right: 0;
+                            top: 0;
+                            opacity: 0;
+                        }
+                        .upload:hover{background: #fff;color: #996de9;border-color: #996de9;}
+                    </style>
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <a href="javascript:;" style="margin-left: 10px;" class="upload">选择文件<input class="change button" type="file" name="heater"/></a><span style="margin-left: 10px;">（Tip:右键点击保存图片）</span><br/>
+                        <button type="submit" class="btn btn-theme" style="margin-top: 20px;margin-bottom: 50px;"><em class="fa fa-fw fa-paper-plane-o"></em>解析文件</button>
+                        <!--<input type="button" style="margin-top: 20px;margin-bottom: 50px;" class="btn btn-theme" onclick="Click()" value="Download" />-->
+                    </form>
+
+
+					<script src="https://cdn.bootcss.com/echarts/4.0.4/echarts.js"></script>
+					<script src="http://echarts.baidu.com/examples/vendors/echarts-stat/ecStat.min.js?_v_=1519819816100"></script>
+					
+
+                    <script>
+                        var myChart = echarts.init(document.getElementById('linenew'));
+                        
+                        var data = [
+                                    {volist name="pic_view" id="view_pic"}
+                                    	['{$view_pic[0]}', '{$view_pic[1]}'],
+                                    {/volist}
+                                ];
+
+                                // See https://github.com/ecomfe/echarts-stat
+                                var myRegression = ecStat.regression('polynomial', data, 3);
+
+                                myRegression.points.sort(function(a, b) {
+                                    return a[0] - b[0];
+                                });
+
+                                option = {
+
+                                    tooltip: {
+                                        trigger: 'axis',
+                                        axisPointer: {
+                                            type: 'cross'
+                                        }
+                                    },
+                                    title: {
+                                        text: '{$sca_title[0]}',
+                                        subtext: '{$sca_title[1]}',
+                                        sublink: 'http://heater.fsociaty.com',
+                                        left: 'center',
+                                        top: 16
+                                    },
+                                    xAxis: {
+                                        type: 'value',
+                                        splitLine: {
+                                            lineStyle: {
+                                                type: 'dashed'
+                                            }
+                                        },
+                                        splitNumber: 20
+                                    },
+                                    yAxis: {
+                                        type: 'value',
+                                        min: -40,
+                                        splitLine: {
+                                            lineStyle: {
+                                                type: 'dashed'
+                                            }
+                                        }
+                                    },
+                                    grid: {
+                                        top: 90
+                                    },
+                                    series: [{
+                                        name: 'scatter',
+                                        type: 'scatter',
+                                        label: {
+                                            emphasis: {
+                                                show: true,
+                                                position: 'right',
+                                                textStyle: {
+                                                    color: 'blue',
+                                                    fontSize: 16
+                                                }
+                                            }
+                                        },
+                                        data: data
+                                    }, {
+                                        name: 'line',
+                                        type: 'line',
+                                        smooth: true,
+                                        showSymbol: false,
+                                        data: myRegression.points,
+                                        markPoint: {
+                                            itemStyle: {
+                                                normal: {
+                                                    color: 'transparent'
+                                                }
+                                            },
+                                            label: {
+                                                normal: {
+                                                    show: true,
+                                                    position: 'left',
+                                                    formatter: myRegression.expression,
+                                                    textStyle: {
+                                                        color: '#333',
+                                                        fontSize: 14
+                                                    }
+                                                }
+                                            },
+                                            data: [{
+                                                coord: myRegression.points[myRegression.points.length - 1]
+                                            }]
+                                        }
+                                    }]
+                                };
+
+                        myChart.setOption(option);
+
+                    </script>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-small mt bg-light-gray">
+        <div class="container">
+
+            <!-- Section Header -->
+            <div class="row">
+                <div class="col-md-6">
+                    <header>
+                        <h2 class="section-title"><span class="text-theme">Recent</span> Projects</h2>
+                        <p class="section-subtitle">It is a long established fact that a reader</p>
+                    </header>
+                </div>
+            </div>
+            <!-- /Section Header -->
+
+            <!-- Section Content -->
+            <div class="row mt">
+                <div class="col-md-12">
+                    <div class="projects-carousel owl-carousel owl-theme">
+
+                        {volist name="bot_pro1" id="bot_pro1"}
+                        <div class="item recent-project">
+                            <a href="{:url('index/products/index', ['id' => $bot_pro1['id']])}" target="_blank">
+                                <div class="gallery-image">
+                                    <img src="{$bot_pro1.thumb}" width=275 height=155>
+                                </div>
+                            </a>
+                            <a href="#" class="info">
+                                <h4 class="title">{$bot_pro1.title}</h4>
+                                <p class="description"># {$bot_pro1.desc|substr=0,30}</p>
+                            </a>
+                        </div>
+                        {/volist}
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Section content -->
+
+        </div>
+    </section>
+
+</main>
+<!-- /Main -->
+
+<!-- Footer -->
+{include file="footer/footer" /}
+
+<!-- /Footer -->
+
+<!-- Scroll To Top -->
+<div id="scroll-to-top" class="scroll-to-top">
+    <i class="icon fa fa-angle-up"></i>
+</div>
+<!-- /Scroll To Top -->
+
+<!-- Modal: Result Message -->
+<div class="modal fade" id="result" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h4 class="modal-title">Sending message</h4>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="result-icon">
+                    <div class="icon-border">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" preserveAspectRatio="none">
+                            <circle cx="8" cy="8" r="6.215" transform="rotate(90 8 8)"></circle>
+                        </svg>
+                        <i class="icon fa fa-check"></i>
+                    </div>
+                </div>
+
+                <p class="modal-result h4 text-center"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /Modal: Result Message -->
+
+<!-- SCRIPTS -->
+{include file="public/base-js" /}
+<!-- /SCRIPTS -->
+
+<!-- TODO: Remove this block, Demo-version only -->
+<!-- Styleswitcher -->
+<!-- /Styleswitcher -->
+</body>
+</html>

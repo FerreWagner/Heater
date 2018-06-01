@@ -81,15 +81,15 @@
  * Imports
  *--------------------------------------------------------------------------------------------------------------------*/
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,600,500);
-@import '../css/bootstrap.min.css';
-@import '../css/bootstrap-theme.min.css';
-@import '../css/font-awesome.min.css';
-@import '../css/owl.carousel.css';
-@import '../css/owl.theme.css';
-@import '../css/owl.transitions.css';
-@import '../css/magnific-popup.css';
+@import 'https://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.min.css';
+@import 'https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap-theme.min.css';
+@import 'https://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css';
+@import 'https://cdn.bootcss.com/owl-carousel/1.3.3/owl.carousel.css';
+@import 'https://cdn.bootcss.com/owl-carousel/1.3.3/owl.theme.css';
+@import 'https://cdn.bootcss.com/owl-carousel/1.3.2/owl.transitions.css';
+@import 'https://cdn.bootcss.com/magnific-popup.js/1.1.0/magnific-popup.css';
 @import '../css/elegant-icons.css';
-@import '../css/animate.css';
+@import 'https://cdn.bootcss.com/animate.css/3.5.0/animate.css';
 /*--------------------------------------------------------------------------------------------------------------------
  * General Styles
  *--------------------------------------------------------------------------------------------------------------------*/
