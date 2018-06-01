@@ -241,6 +241,33 @@ class Line extends Products
     
         $common->getForm($request);
     
+        $pic_view    = Cookie::get('excel_data');
+        $sheet_name  = Cookie::get('sheet_name')[0]; //sheet表名
+        $data_format = $common->deleteEmpty(array_pop($pic_view));   //最后一条为数据格式
+        $data_danwei = $common->deleteEmpty(array_pop($pic_view));   //倒数第二条为x/y轴的单位
+        
+        foreach ($pic_view as $k => $v){
+            $x_arr[] .= $v[0];
+            $y_arr[] .= $v[1];
+        }
+        
+        $this->view->assign([
+            'x_arr'      => $x_arr,
+            'y_arr'      => $y_arr,
+            'sheet_name' => $sheet_name,
+        ]);
+        return $this->view->fetch(request()->action());
+    }
+    
+    public function line11(Request $request)
+    {
+        $common = new Common();
+        $common->checkExcel();
+        
+        $x_arr = $y_arr = [];
+        
+        $common->getForm($request);
+        
         $pic_view   = Cookie::get('excel_data');
         $sheet_name = Cookie::get('sheet_name')[0]; //sheet表名
         
@@ -248,7 +275,7 @@ class Line extends Products
             $x_arr[] .= $v[0];
             $y_arr[] .= $v[1];
         }
-    
+        
         $this->view->assign([
             'x_arr'      => $x_arr,
             'y_arr'      => $y_arr,
