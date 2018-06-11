@@ -49,8 +49,10 @@ class Index extends Base
         if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
             
             //sina地理位置接口
-            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json&ip={$request->ip()}");
+            //&改为'(&)'或%26
+            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json('&')ip={$request->ip()}");
             $arr_data  = json_decode($area, true);
+            
             $error     = json_last_error();
             
             //json是否存在错误
