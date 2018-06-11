@@ -45,38 +45,38 @@ class Index extends Base
      */
     public function tourist(Request $request)
     {
-        $see_time  = db('tourist')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
-        if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
+//         $see_time  = db('tourist')->field('time')->where('ip', $request->ip())->order('time', 'desc')->find();
+//         if (empty($see_time)){    //(time() - $see_time['time']) > 30 || 
             
-            //sina地理位置接口
-            //&改为'(&)'或%26
-            $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json('&')ip={$request->ip()}");
-            $arr_data  = json_decode($area, true);
+//             //sina地理位置接口
+//             //&改为'(&)'或%26
+//             $area      = file_get_contents("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=json('&')ip={$request->ip()}");
+//             $arr_data  = json_decode($area, true);
             
-            $error     = json_last_error();
+//             $error     = json_last_error();
             
-            //json是否存在错误
-            if (!empty($error)) {
-                $see = [
-                    'type'     => $this->getBrowser(),
-                    'ip'       => $request->ip(),
-                    'country'  => '',
-                    'province' => '',
-                    'city'     => '',
-                    'time'     => time(),
-                ];
-            }else {
-                $see = [
-                    'type'     => $this->getBrowser(),
-                    'ip'       => $request->ip(),
-                    'country'  => $arr_data['country'],
-                    'province' => $arr_data['province'],
-                    'city'     => $arr_data['city'],
-                    'time'     => time(),
-                ];
-            }
-            db('tourist')->insert($see);
-        }
+//             //json是否存在错误
+//             if (!empty($error)) {
+//                 $see = [
+//                     'type'     => $this->getBrowser(),
+//                     'ip'       => $request->ip(),
+//                     'country'  => '',
+//                     'province' => '',
+//                     'city'     => '',
+//                     'time'     => time(),
+//                 ];
+//             }else {
+//                 $see = [
+//                     'type'     => $this->getBrowser(),
+//                     'ip'       => $request->ip(),
+//                     'country'  => $arr_data['country'],
+//                     'province' => $arr_data['province'],
+//                     'city'     => $arr_data['city'],
+//                     'time'     => time(),
+//                 ];
+//             }
+//             db('tourist')->insert($see);
+//         }
     }
     /**
      * 首页banner
