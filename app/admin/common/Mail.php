@@ -60,11 +60,11 @@ class Mail
         $this->mail->Host          = $this->host ? $this->host : 'smtp.163.com';
         
         //填写你的邮箱账号和密码
-        $this->mail->Username      = $this->username ? $this->username : '18408229270@163.com';
+        $this->mail->Username      = $this->username ? $this->username : '1573646491@163.com';
         $this->mail->Password      = $this->password ? $this->password : '1234';
         
         //设置发送方，最好不要伪造地址
-        $this->mail->From          = $this->username ? $this->username : '18408229270@163.com';
+        $this->mail->From          = $this->username ? $this->username : '1573646491@163.com';
         // 发送方-邮件外部发件人
         $this->mail->FromName      = $this->recive_username ? $this->recive_username : 'FerreWagner';
         

@@ -101,7 +101,7 @@ class Process
         148 => 'Terminal stop signal',
         149 => 'Background process attempting to read from tty ("in")',
         150 => 'Background process attempting to write to tty ("out")',
-        151 => 'Urgent data available on socket',
+        151 => 'Urgent data available on weprogram',
         152 => 'CPU time limit exceeded',
         153 => 'File size limit exceeded',
         154 => 'Signal raised by timer counting virtual time: "virtual timer expired"',

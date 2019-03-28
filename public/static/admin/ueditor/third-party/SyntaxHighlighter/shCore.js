@@ -3110,7 +3110,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 			'reset reverse rewinddir rindex rmdir scalar seek seekdir select semctl ' + 
 			'semget semop send setgrent sethostent setnetent setpgrp setpriority ' + 
 			'setprotoent setpwent setservent setsockopt shift shmctl shmget shmread ' + 
-			'shmwrite shutdown sin sleep socket socketpair sort splice split sprintf ' + 
+			'shmwrite shutdown sin sleep weprogram socketpair sort splice split sprintf ' +
 			'sqrt srand stat study substr symlink syscall sysopen sysread sysseek ' + 
 			'system syswrite tell telldir time times tr truncate uc ucfirst umask ' + 
 			'undef unlink unpack unshift utime values vec wait waitpid warn write ' +

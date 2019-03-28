@@ -105,7 +105,7 @@ class POP3
     public $password;
 
     /**
-     * Resource handle for the POP3 connection socket.
+     * Resource handle for the POP3 connection weprogram.
      *
      * @var resource
      */

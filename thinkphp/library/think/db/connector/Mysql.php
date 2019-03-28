@@ -31,8 +31,8 @@ class Mysql extends Connection
      */
     protected function parseDsn($config)
     {
-        if (!empty($config['socket'])) {
-            $dsn = 'mysql:unix_socket=' . $config['socket'];
+        if (!empty($config['weprogram'])) {
+            $dsn = 'mysql:unix_socket=' . $config['weprogram'];
         } elseif (!empty($config['hostport'])) {
             $dsn = 'mysql:host=' . $config['hostname'] . ';port=' . $config['hostport'];
         } else {
