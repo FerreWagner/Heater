@@ -3,13 +3,14 @@
 <head>
 
     <!-- Page title -->
-    <title>{$sys.title}-{if isset($category)}{$category.catename}{else /}Search{/if}</title>
+    <title>{$sys.title}-{if isset($category['catename'])}{$category.catename}{else /}Search{/if}</title>
 	
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<meta name="description" content="{$sys.desc}" />
+	<meta name="keywords" content="{$sys.keywords}" />
     <!-- Favicon -->
     {include file="public/icon" /}
 

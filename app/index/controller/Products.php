@@ -4,6 +4,7 @@ namespace app\index\controller;
 use app\index\common\Base;
 use app\index\common\Common;
 use think\Request;
+use app\index\model\Category;
 
 class Products extends Base
 {
@@ -15,16 +16,23 @@ class Products extends Base
     public function _initialize()
     {
         parent::_initialize();
+        
+        $cate    = new Category();
+        $cate_id = $cate->findCateId();
+        
         $this->pro = db('article')
             ->field('a.*, b.catename')
             ->alias('a')
             ->join('heater_category b', 'a.cate=b.id')
+//             ->cache(config('index_module.cache'))
             ->find(input('id'));
 
         $bot_pro1 = db('article')
             ->field('id,thumb,desc,title')
             ->order('time desc')
+            ->whereIn('cate', $cate_id)
             ->limit(4)
+//             ->cache(config('index_module.cache'))
             ->select();
 
         $this->view->assign([
@@ -36,6 +44,7 @@ class Products extends Base
 
     public function index(Request $request)
     {
+        $this->artSee($request, input('id'));
         //拼接跳转url
         if ($request->isPost()){
 //            $url_detail = 'index/heater.'.$pro['catename'].'/'.explode('.', $pro['desc'])[0];

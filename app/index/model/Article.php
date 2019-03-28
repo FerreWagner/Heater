@@ -35,7 +35,7 @@ class Article extends Model
         $cate    = new Category();
         $pro_pid = $cate->findCateId();
     
-        return $this->field('id, title, thumb, keywords, desc')
+        return $this->field('id, cate, title, thumb, keywords, desc')
                     ->where('cate', 'in', $pro_pid)
                     ->order('order', 'desc')
                     ->limit(6)

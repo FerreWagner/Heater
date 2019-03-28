@@ -12,7 +12,7 @@ return [
     'System/linkdelete',
     'System/linkedit',
     'Article/delete',
-    'Article/add',
+//     'Article/add',
     'Category/update',
     'Category/delete',
     

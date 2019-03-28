@@ -31,7 +31,13 @@ class Banner extends Base
     public function edit(Request $request, $id)
     {
         if ($request->isPost()){
-            $data = $request->param();
+            $data['link'] = $request->param('link');
+            $data['title'] = $request->param('title');
+            $data['desc'] = $request->param('desc');
+            $data['sort'] = $request->param('sort');
+            $data['id'] = $request->param('id');
+            
+//             halt($data);
             $validate = Loader::validate('Banner');
             if(!$validate->scene('edit')->check($data)){
                 $this->error($validate->getError());

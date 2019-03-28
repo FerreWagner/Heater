@@ -4,6 +4,7 @@ namespace app\index\common;
 use think\Controller;
 use think\Request;
 use think\Cookie;
+use think\Log;
 
 class Common extends Controller
 {
@@ -26,6 +27,10 @@ class Common extends Controller
             if ($file){
                 $info = $file->validate(['ext'=>'XLS,XLSX,xls,xlsx'])->move($path);
                 if ($info){
+                    
+                    //日志写入
+                    Log::save();
+                    
                     cookie('heater_file_name', $info->getRealPath(), config('index_module.cookie_time'));
                     return $info->getRealPath();
                 }else{

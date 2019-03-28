@@ -31,8 +31,8 @@ class Article extends Base
         $count   = db('article')->count();
         //search function
         if ($request->isPost()){
-            $search  = $request->param();
-            
+//             $search  = $request->param();
+            $search = request()->post();
             if (empty($search['start']) || empty($search['end'])){
                 $article = db('article')->field('a.*,b.catename')->alias('a')->join('heater_category b','a.cate=b.id')->order('a.id desc')
                                         ->where('title', 'like', '%'.$search['title'].'%')->paginate(config('conf.page'));
@@ -115,7 +115,8 @@ class Article extends Base
     {
         if ($request->isPost()){
             
-            $data = $request->param();
+//             $data = $request->param();
+            $data = request()->post();
             $validate = Loader::validate('Article');
             
             //处理tag
