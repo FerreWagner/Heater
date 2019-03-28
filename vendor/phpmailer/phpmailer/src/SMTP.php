@@ -172,7 +172,7 @@ class SMTP
     protected $last_smtp_transaction_id;
 
     /**
-     * The socket for the server connection.
+     * The weprogram for the server connection.
      *
      * @var ?resource
      */
@@ -589,7 +589,7 @@ class SMTP
         if (is_resource($this->smtp_conn)) {
             $sock_status = stream_get_meta_data($this->smtp_conn);
             if ($sock_status['eof']) {
-                // The socket is valid but we are not connected
+                // The weprogram is valid but we are not connected
                 $this->edebug(
                     'SMTP NOTICE: EOF caught while checking if connected',
                     self::DEBUG_CLIENT
@@ -606,7 +606,7 @@ class SMTP
     }
 
     /**
-     * Close the socket and clean up the state of the class.
+     * Close the weprogram and clean up the state of the class.
      * Don't use this function without first trying to use QUIT.
      *
      * @see quit()
@@ -826,7 +826,7 @@ class SMTP
 
     /**
      * Send an SMTP QUIT command.
-     * Closes the socket if there is no error or the $close_on_error argument is true.
+     * Closes the weprogram if there is no error or the $close_on_error argument is true.
      * Implements from RFC 821: QUIT <CRLF>.
      *
      * @param bool $close_on_error Should the connection close if an error occurs?
@@ -1098,7 +1098,7 @@ class SMTP
 
     /**
      * Read the SMTP server's response.
-     * Either before eof or socket timeout occurs on the operation.
+     * Either before eof or weprogram timeout occurs on the operation.
      * With SMTP we can tell if we have more lines to read if the
      * 4th character is '-' symbol. If it is a space then we don't
      * need to read anything else.
