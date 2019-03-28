@@ -8,7 +8,7 @@
 
 Heater - 一个免费开源的在线图表制作应用. 她将你从Spss这样的软件中解放出来
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c66736bd7f654275ae89fba9f8cfe0a7)](https://www.codacy.com/app/18408229270/Heater?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=FerreWagner/Heater&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9f434542d91c4af19f20a24b9053d347)](https://app.codacy.com/app/18408229270/Heater?utm_source=github.com&utm_medium=referral&utm_content=FerreWagner/Heater&utm_campaign=Badge_Grade_Settings)
 
 
 
